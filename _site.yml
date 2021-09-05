@@ -1,0 +1,40 @@
+name: "Arbeiten mit Blender"
+output: 
+  html_document: 
+    theme: paper
+    toc: true
+    toc_depth: 3
+    toc_float: true
+
+output_dir: "."
+navbar:
+  title: "Arbeiten mit Blender"
+  right:
+    - text: "Cheatsheets"
+      icon: fa-lightbulb
+      menu:
+        - text: "Tastenkombinationen"
+          href: cheatsheets/cheatsheet.pdf
+    - text: "Ressourcen"
+      icon: fa-folder
+      menu: 
+        - text: "Übung 1"
+          href: tba.html
+    - text: "Folien"
+      icon: fa-images
+      menu: 
+        - text: "Theme 1"
+          href: Folien/Materialien_ThemeV1.pdf
+        - text: "Theme 2"
+          href: Folien/Materialien_ThemeV2.pdf            
+        - text: "Theme 3"
+          href: Folien/Materialien_ThemeV3.pdf  
+    - text: "Skript"
+      icon: fa-glasses
+      menu:
+        - text: "1.	Vorbereitung von Blender"
+          href: Chapter_1.html
+        - text: "2.	Die Arbeitsoberfläche von Blender"
+          href: Chapter_2.html
+        - text: "3.	Die Arbeitsoberfläche des 3D Viewports"
+          href: Chapter_3.html

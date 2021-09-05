@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>2. Die Arbeitsoberfläche von Blender</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/Materialien_ThemeV1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/Materialien_ThemeV2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/Materialien_ThemeV3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">2. Die Arbeitsoberfläche von Blender</h1>
+
+</div>
+
+
+<style type="text/css">
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 57%;         # best between 50% and 60%
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  }
+</style>
+<style type="text/css">
+.exercicebox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #9CC2E5 5px center/3em no-repeat;
+}
+</style>
+<div id="das-willkommen-fester" class="section level1">
+<h1>Das Willkommen-Fester</h1>
+<div class="marginnote">
+Optionen im Willkommens-fenster
+</div>
+<p>Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «Recent Files» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «New File» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.</p>
+<div class="figure">
+<img src="images/Chapter2/Welcome_Screen.png" alt="" />
+<p class="caption">Abbildung 2.1: Das Willkommensfenster von Blender</p>
+</div>
+<div class="marginnote">
+Auswahl von Ansichtsvorlagen
+</div>
+<p>Zu den möglichen Ansichts-Vorlagen gehören:</p>
+<ul>
+<li>General: Öffnet eine Standardvorlage für das Bearbeiten von 3D-Objekten.</li>
+<li>2D Animation: öffnet eine Vorlage zum Erstellen von 2D-Animationen.</li>
+<li>Sculpting: Öffnet eine Vorlage, welche für das Sculpting von Objekten geeignet ist. Dabei werden Objekte anhand von Bürsten direkt in ihrer Form verändert.</li>
+<li>VFX: Öffnet eine Vorlage für die Erstellung visueller Effekte (VFX), beispielsweise in Videos.</li>
+<li>Video Editing: Öffnet eine Vorlage zum Bearbeiten von Videos.</li>
+</ul>
+<div class="marginnote">
+Fokus auf «General»
+</div>
+<p>Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «General» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.</p>
+<p>#Die verschiedenen Panels beim General-Projekt</p>
+<div class="marginnote">
+Default Editore
+</div>
+<p>Die verschiedenen Werkzeuge, welche Blender anbietet, sind innerhalb verschiedener Editore aufzufinden. Diese Editore werden als separate und austauschbare Panel-Areale in Blender dargestellt. Beim Start eines neuen Projekts (mit der Vorlage General) ist die Ansicht in vier Areale unterteilt:</p>
+<ul>
+<li>3D Viewport: überspannt von der oberen linken Ecke den grössten Teil des Bildschirms.</li>
+<li>Outliner: Befindet sich in der oberen, rechten Ecke.</li>
+<li>Properties: Befindet sich in der unteren, rechten Ecke.</li>
+<li>Timeline: Befindet sich links, am unteren Rand. Gerade der 3D Viewport, der Outliner und die Properties sind für das Erstellen von 3D Objekten mit Blender von hoher Bedeutung. Die Timeline wird bei Animationen verwendet.</li>
+</ul>
+<div class="figure">
+<img src="images/Chapter2/Default_Areas.jpg" alt="" />
+<p class="caption">Abbildung 2.2: Default-Aufteilung der Arbeitsbereiche</p>
+</div>
+</div>
+<div id="übersicht-über-die-editor-fenster-von-blender" class="section level1">
+<h1>Übersicht über die Editor-Fenster von Blender</h1>
+<div class="marginnote">
+Editore austauschen
+</div>
+<p>In jedem Editor-Areal befindet sich in der linken oberen Ecke ein Knopf. Durch das Drücken dieses Knopfes wird ein Drop-Down-Menü geöffnet. Darin sind alle verfügbaren Editore aufgelistet. Durch das Auswählen eines Editors wird der Editor in dem entsprechenden Areal durch den ausgewählten Editor ersetzt.</p>
+<div class="figure">
+<img src="images/Chapter2/Editor_Select.png" alt="" />
+<p class="caption">Abbildung 2.3: Die Auswahl an verschiedenen Editoren, welche Blender standardmässig mit sich bringt.</p>
+</div>
+<div class="marginnote">
+General Editore
+</div>
+<div id="d-viewport" class="section level2">
+<h2>3D Viewport</h2>
+<p>Der 3D Viewport stellt die bearbeiteten Szenen und die dazugehörigen 3D-Objekte dar. Er bietet die Möglichkeit zur direkten Interaktion mit diesen Objekten und ist für das Modellieren von Objekten essenziell. Bei der Arbeit mit 3D-Objekten ist es der wichtigste Editor.</p>
+</div>
+<div id="image-editor" class="section level2">
+<h2>Image Editor</h2>
+<p>Anhand des Image Editors können 2D-Grafiken betrachtet und bearbeitet werden. Gerenderte Bilder werden ebenfalls in diesem Editor angezeigt.</p>
+</div>
+<div id="uv-editor" class="section level2">
+<h2>UV Editor</h2>
+<p>Der UV Editor wird verwendet, um den Flächen von Objekten eine bestimmte Position auf einer Textur (sogenannte UVs) zuzuweisen oder dessen Zuweisung zu betrachten.</p>
+</div>
+<div id="compositor" class="section level2">
+<h2>Compositor</h2>
+<p>Mithilfe des Compositors lassen sich Bilder, welche beim Rendern erstellt werden, nachträglichen Bearbeitungen unterziehen. Auch externe Bilder können hier bearbeitet werden. Die Bearbeitung erfolgt hier mittels einer visuellen Programmiersprache.</p>
+</div>
+<div id="texture-node-editor" class="section level2">
+<h2>Texture Node Editor</h2>
+<p>Mithilfe des Texture Node Editors können Texturen anhand einer visuellen Programmiersprache erstellt werden. Dieser Editor wird allerdings in Zukunft durch andere Bearbeitungsoptionen ersetzt.</p>
+</div>
+<div id="geometry-node-editor" class="section level2">
+<h2>Geometry Node Editor</h2>
+<p>Der Geometry Node Editor ermöglicht das Bearbeiten von Objekten mittels einer visuellen Programmiersprache. Innerhalb dieses Editors erfolgt dabei die Programmierung die Bearbeitung der geometrischen Figuren, während die Darstellung der Figuren im 3D Viewport erfolgt. Bei den Geometry Nodes handelt es sich um eine neue Funktion von Blender.</p>
+</div>
+<div id="shader-editor" class="section level2">
+<h2>Shader Editor</h2>
+<p>Mithilfe des Shader-Editors können die Materialien, welche einem dreidimensionalen Objekt zugewiesen sind, bearbeitet werden. Dadurch lässt sich bearbeiten, wie die Oberfläche eines Objektes aussieht. Die Bearbeitung erfolgt hier mittels einer visuellen Programmiersprache. Innerhalb dieses Editors werden lediglich die Einstellungen für die Materialien gemacht. Um die Auswirkungen der Materialien zu sehen, wird der 3D Viewport verwendet.</p>
+</div>
+<div id="video-sequencer" class="section level2">
+<h2>Video Sequencer</h2>
+<p>Mithilfe des Video Sequencer können Videoaufnahmen bearbeitet werden. Dieser Editor verfügt zusätzlich über eine Vorschau-Option, mit der sich die Videos direkt betrachten lassen.</p>
+<div class="marginnote">
+Editore für Animationen
+</div>
+</div>
+<div id="movie-clip-editor" class="section level2">
+<h2>Movie Clip Editor</h2>
+<p>Der Movie Clip Editor ermöglicht das Erfassen von Bewegungen in Filmen, so dass diese Bewegungen beispielsweise auch auf 3D-Objekte angewendet werden können. Zudem lassen sich hier auch Videos maskieren.</p>
+</div>
+<div id="dope-sheet" class="section level2">
+<h2>Dope Sheet</h2>
+<p>Das Dope Sheet stellt einzelne Animationspunkte eines Projektes in einem zeitlichen Ablauf tabellarisch dar. Dies basiert auf der früher angewendeten Planung von handgezeichneten Animationen.</p>
+</div>
+<div id="timeline" class="section level2">
+<h2>Timeline</h2>
+<p>Die Timeline stellt einen zeitlichen Verlauf von Animationen dar. Für die ausgewählten Objekte wird hier durch Punkte dargestellt, wann eine Animation im Zeitstrang starten oder enden soll. Zudem findet sich hier auch ein Menü-Knopf, um Animationen abspielen zu lassen.</p>
+</div>
+<div id="graph-editor" class="section level2">
+<h2>Graph Editor</h2>
+<p>Mittels des Graph Editors können Animationen über die Zeit hinweg verfeinert werden. Hierfür werden die einzelnen Animationen mittels Grafen dargestellt. Durch eine Veränderung dieser Grafen kann anschliessend die Animation verfeinert werden.</p>
+</div>
+<div id="drivers" class="section level2">
+<h2>Drivers</h2>
+<p>Der Driver Editor ermöglicht es, Animationen gezielt zu steuern. Dabei können die Eigenschaften eines Objektes verwendet werden, um ein anderes Objekt zu steuern.</p>
+</div>
+<div id="nonlinear-animation" class="section level2">
+<h2>Nonlinear Animation</h2>
+<p>Mittels des Editors für nonlineare Animationen können Animationen ausserhalb eines linearen Ablaufes gesteuert werden. Dies kommt etwa bei komplexeren Veränderungen von Szenen zum Einsatz.</p>
+<div class="marginnote">
+Editore für Programmier-Skripte
+</div>
+</div>
+<div id="text-editor" class="section level2">
+<h2>Text Editor</h2>
+<p>Im Text-Editor können Text-Dokumente eingesehen und erstellt werden. Diese Textdokumente können auch verwendet werden, um mittels der Programmiersprache Python Funktionen für Blender zu verfassen. Zudem können im Text-Editor auch direkt Programmfunktionen in Textdokumenten ausgeführt werden.</p>
+</div>
+<div id="python-console" class="section level2">
+<h2>Python Console</h2>
+<p>Anhand der Python-Konsole lassen sich Codes in der Programmiersprache von Python eingeben. Blender führt diese Codes anschliessend aus.</p>
+</div>
+<div id="info" class="section level2">
+<h2>Info</h2>
+<p>Im Info-Editor werden durchgeführte Aktionen in der Python-Programmiersprache nacheinander aufgelistet. Hier lassen sich auch Fehlermeldungen und Warnungen nachträglich einsehen.</p>
+<div class="marginnote">
+Data Editore
+</div>
+</div>
+<div id="outliner" class="section level2">
+<h2>Outliner</h2>
+<p>Im Outliner werden alle Daten, welche sich in einer Blender-Datei befinden, aufgelistet. Hier lassen sich Objekte innerhalb einer Szene auswählen oder in Ordnerstrukturen (sogenannte Collections) anordnen und gruppieren.</p>
+</div>
+<div id="porperties" class="section level2">
+<h2>Porperties</h2>
+<p>Im Properties-Panel lassen sich eine Reihe von Einstellungen machen. Dies umfasst neben Einstellungen zu einem aktuell ausgewählten Objekt auch Einstellungen zum Rendern, zur Szenengestaltung oder zu physikalischen Simulationen.</p>
+</div>
+<div id="file-browser" class="section level2">
+<h2>File Browser</h2>
+<p>Mithilfe des File-Browsers lassen sich Dateien auf dem Computer darstellen und suchen. Dadurch können Dokumente direkt in die Szene hineingezogen werden, ohne dass Blender minimiert werden muss. Zudem können hier auch Dateien abgespeichert werden.</p>
+</div>
+<div id="spreadsheet" class="section level2">
+<h2>Spreadsheet</h2>
+<p>Mithilfe des Spreadsheet lassen sich alle Datenpunkte eines Objektes mitsamt deren Position in der 3D Welt angeben. Nebst den punkten können auch die Positionen der verschiedenen Kanten und Flächen von Objekten angezeigt werden.</p>
+</div>
+<div id="preferences" class="section level2">
+<h2>Preferences</h2>
+<p>Unter den Preferences lassen sich die Einstellungen von Blender bearbeiten. Die Preferences können auch unter «Edit | Preferences» geöffnet werden.</p>
+<p>#Vorgefertigte Editor-Anordnungen Schnelle Auswahl von Editoren mittels Editor-Anordnungen In der Menü-Leiste sind für verschiedene Arbeitsschritte bei der 3D-Modellierung bereits vorgefertigte Ansichtsoptionen verfügbar. Durch einen Klick auf den Reiter «Texture Paint» wird beispielsweise eine Anordnung gezeigt, welche ideal dafür ist, um ein Objekt mit einer Textur zu bemalen. In diesem Falle wird beispielsweise nebst dem 3D Viewport auch der Image Editor geöffnet. Mittels der Registerkarte «+» können zudem weitere Editor-Anordnungen basierend auf einer Vorlage für die Schnellauswahl hinzugefügt werden.</p>
+</div>
+</div>
+<div id="neuanordnen-der-editor-areale" class="section level1">
+<h1>Neuanordnen der Editor-Areale</h1>
+<p>Weitere Editor-Areale hinzufügen Die einzelnen Editor-Fenster können nicht nur beliebig ausgetauscht werden, sondern auch nach eigenem Belieben vergrössert oder verkleinert werden. In den Abgrenzungsbereichen zwischen den Fenstern verändert sich der Maus-Cursor. Von dort aus lassen sich die Editor-Areale durch Hin- und Herziehen vergrössern oder verkleinern.</p>
+<div class="marginnote">
+Editor in neuem Fenster öffnen
+</div>
+<p>In den Ecken der einzelnen Editor-Fenster gibt es zudem die Möglichkeit durch Hinausziehen der Ecke in eine Richtung, das Fenster in zwei Editore aufzuteilen. Wenn dabei gleichzeitig die ƒ Taste gedrückt wird, wird derselbe Editor in einem neuen, einzelnen Fenster geöffnet.</p>
+<div class="marginnote">
+Editor-Areale schliessen
+</div>
+<p>Um ein Editor-Fenster zu schliessen, wird jeweils ein anderes Editor-Fenster über das zu schliessende Fenster gezogen. Dadurch werden die beiden Fenster verbunden. Um zwei Fenster zu verbinden, wird eine der beiden Ecken, welche sich zwischen den beiden Fenstern befindet, ausgewählt und das zu behaltende Fenster über das zu entfernende Fenster gezogen. Dies kann allerdings fummelig werden, da die Aktion recht ähnlich zum Öffnen von neuen Fenstern ist.</p>
+</div>
+<div class="exercicebox">
+<div id="übung-1-panel-auswahl" class="section level1">
+<h1>Übung 1: Panel-Auswahl</h1>
+<div id="übung-1.1" class="section level2">
+<h2>Übung 1.1</h2>
+<p>Ordnen Sie die Arbeitsoberflächen entsprechend der nachfolgenden Abbildung an. <img src="images/Chapter2/Exercise_1.png" /></p>
+</div>
+</div>
+<div id="übung-1.2" class="section level1">
+<h1>Übung 1.2</h1>
+<p>Ordnen Sie die Arbeitsoberflächen entsprechend der nachfolgenden Abbildung an. <img src="images/Chapter2/Exercise_2.png" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

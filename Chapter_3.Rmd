@@ -1,0 +1,148 @@
+---
+title: "3.	Die Arbeitsoberfläche des 3D Viewports"
+
+---
+
+
+```{css sidenote, echo = FALSE}
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 57%;         # best between 50% and 60%
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  }
+```
+
+
+````{css caution,  echo=FALSE}
+.infobox {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #d2f8d2 5px center/3em no-repeat; 
+  background-image: urls("images/caution.png");
+}
+
+.caution {
+  background-image: "images/caution.png"
+}
+````
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<div class="marginnote"> Funktion des 3D Viewports
+ </div>
+
+Der 3D Viewport stellt eine der wichtigsten Arbeitsoberflächen in Blender dar. In ihm werden die 3D Objekte, so wie die Szenen, in denen sie integriert werden, angezeigt. Zudem werden im 3D Viewport eine Reihe anderer Einstellungen dargestellt, welche in anderen Editoren. Die Bearbeitung der grundlegenden Struktur von 3D Objekten erfolgt in der Regel direkt im 3D Viewport. Der Arbeitsbereich des 3D Viewports lässt sich in verschiedene Areale aufteilen, welche nachfolgend genauer betrachtet werden.
+
+# Toolbar
+
+<div class="marginnote"> Toolbars </div>
+
+Die Toolbar befindet sich auf der linken Seite der 3D View. Allerdings sind Toolbars auch in anderen Editoren anzutreffen. Die Toolbars lassen sich jeweils mit der Taste T ein- und ausblenden. Da es auch im 3D Viewport verschiedene Bearbeitungsmöglichkeiten gibt, variieren die Elemente in der der Toolbar abhängig vom Bearbeitungsmodus.
+In diesem Kurs werden wir vor allem mit Tastenkombinationen arbeiten, wenn Operationen durchgeführt werden. Die grundlegendsten Operationen, welche in der Toolbar durchgeführt werden können, werden trotzdem kurz erwähnt.
+
+# Sidebar
+
+<div class="marginnote"> Sidebars </div>
+Die Sidebar befindet sich auf der rechten Seite des Viewport Displays, muss allerdings noch mit der Taste N geöffnet werden. Mit dieser Taste lässt sich die Sidebar ebenfalls wieder verbergen. Die Sidebar ist auch in anderen Editoren anzutreffen und wird dort ebenfalls mit der Taste N ein- und ausgeblendet.
+Die Sidebar ist zudem anhand von Registerkarten in zusätzliche Kategorien eingeordnet. Unter dem Register «Item» können etwa Einstellungen zum aktuell ausgewählten Objekt betrachtet und verändert werden, im Register «Tool» können Einstellungen zum aktuell ausgewählten Werkzeug verfeinert werden und unter dem Register «View» können Einstellungen zur Ansicht betrachtet und verfeinert werden.
+
+# Header
+Im Header sind zusätzliche Einstellungen aufzufinden. Diese können nicht nur zwischen den einzelnen Editoren variieren, sondern auch zwischen den einzelnen Bearbeitungsmodi innerhalb der 3D-View.
+
+## Auswahl-Einstellungen
+In der oberen linken Ecke, direkt neben dem Bedienfeld für die Auswahl des Editors, befinden sich Einstellungsmöglichkeiten, wie eine Auswahl genauer erfolgen soll.
+
+## Erweiterte Hilfsmittel zur Bearbeitung
+
+<div class="marginnote"> Hilfsmittel zur Bearbeitung von Objekten </div>
+
+In der Mitte des Headers befinden sich eine Reihe von erweiterten Einstellungen, welche bei der Objektbearbeitung als Hilfsmittel verwendet werden können. Hierzu gehört beispielsweise die proportionale Bearbeitung von Objekten oder das Festlegen von Bezugspunkten für Transformationen. Diese Hilfsmittel werden in einem späteren Kapitel ausführlich behandelt.
+
+## Bearbeitungsmodus
+
+<div class="marginnote"> Auswahl des Bearbeitungs-Modus </div>
+
+In der Zeile unterhalb des Headers befindet sich links das Menü zur Auswahl des Bearbeitungsmodus. Dabei wird definiert, wie das aktuelle Objekt bearbeitet werden soll. So kann im Object-Mode das Objekt als Ganzes bearbeitet werden, während im Edit-Mode die Struktur des Objektes bearbeitet werden kann.
+
+## Anzeige-Optionen
+
+<div class="marginnote"> Anzeige-Optionen </div>
+
+In der rechten oberen Ecke befinden sich Optionen zur Darstellung der Objekte in der 3D-View. Diese umfassen:
+
+*   View Object Types
+*   Show Gizmos
+*   Viewport Overlays
+*   Toggle X Ray
+*   Viewport Shading
+
+
+### View Object Types
+
+<div class="marginnote"> Ein- und Ausblenden von Objektarten </div>
+
+Hier lassen sich verschiedene Arten von Objekten alle gemeinsam innerhalb einer Szene verstecken, indem das Auge zu der entsprechenden Objektart abgewählt wird. Durch das Abwählen des Auges neben dem Objekttyp «Camera» werde etwa alle Kameras aus der Szene unsichtbar gemacht. Die Objekte sind allerdings noch vorhanden und weisen immer noch dieselbe Funktion auf – sie werden lediglich nicht mehr im 3D Viewport angezeigt. Neben dem Auge lässt sich zudem anhand des Knopfes mit einem abgebildeten Cursor einstellen, dass die entsprechenden Objektarten nicht mehr auswählbar sind.
+
+### Show Gizmos
+
+<div class="marginnote"> Navigations-Tools ein und Ausblenden
+ </div>
+
+Innerhalb dieser Option lassen sich in der oberen rechten Ecke Tools zur Navigation mittels der Kamera ein- und ausblenden. Zudem kann hier die Darstellung eines Gizmos bei der aktuellen Auswahl aktiviert werden. Dieses Gizmo kann verwendet werden, um Objekte mittels der Maus zu rotieren, zu skalieren oder zu bewegen.
+
+### Viewport Overlays
+
+<div class="marginnote"> Orientierungs-Objekte im Viewport ein- und ausblenden </div>
+
+Durch die Deaktivierung des Viewport Overlays wird im 3D Viewport die Ansicht bestimmter Hilfsmittel (beispielsweise die Achsen oder die Markierung der aktuellen Auswahl) ausgeschaltet. Im Drop-Down Menü lässt sich zudem die Darstellung von einzelnen Hilfsmitteln individuell abwählen.
+
+### Toggle X Ray
+
+<div class="marginnote"> Röntgenblick ein- und ausschalten </div>
+
+Wenn die Schaltfläche «Toggle X Ray» ausgewählt ist, erweitert sich die Ansicht von Objekten auch durch sie hindurch. Dies ermöglicht es etwa, dass auch ein Objekt, welches hinter einem anderen Objekt verborgen liegt, betrachtet werden kann. Wenn diese Option aktiviert ist, können zudem auch die verborgenen Objekte mittels eines Mausklicks angewählt werden. Die Schaltfläche kann auch mit den Tasten <kbd>Alt</kbd> + <kbd>Z</kbd> ein- und ausgeschaltet werden.
+
+### Viewport Shading
+
+<div class="marginnote"> Art der Objekt-Darstellung im Viewport </div>
+
+In der rechten oberen Ecke befinden sich vier Knöpfe, um einzustellen, welche Elemente bei der Darstellung der Objekte berücksichtigt werden sollen. Je nach Auswahl werden dadurch die Objekte unterschiedlich dargestellt:
+
+*   Wireframe: Die Objekte werden in ihrer Struktur als Gitternetz angezeigt, so dass deren Aufbaugitter klar ersichtlich wird. Hierbei werden die Flächen der Objekte nicht dargestellt.
+*   Solid: Die Objekte werden als Ganzes dargestellt, so dass auch die Flächen sichtbar sind. Allerdings werden die verwendeten Materialien und Texturen nicht berücksichtigt.
+*   Material Preview: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung wird anhand von vorgefertigten Szenen und Umgebungen beleuchtet, so dass eine schnelle Vorschau möglich ist.
+*   Render: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung und die Beleuchtung entsprechen den Einstellungen der aktuellen Szene, so dass eine Vorschau für die gerenderte Szene möglich ist.
+Alternativ kann die Taste Z gedrückt werden. Dadurch erscheint bei der Maus ein Menü, mit allen vier Optionen zum Viewport Shading zur Auswahl.
+
+
+## Letzte Aktion verfeinern
+Temporäres Menü zur Verfeinerung der letzten Aktion
+Wenn eine Aktion in Blender durchgeführt wird, erscheint in der linken unteren Ecke des 3D Viewports temporär ein Menü. Dieses Menü kann aufgeklappt werden und bietet abhängig von der durchgeführten Aktion eine Reihe Verfeinerungen. Zu beachten ist jedoch, dass dieses Menü sofort wieder verschwindet, sobald ein Mausklick ausserhalb des Menüs erfolgt. Um das Menü wieder erscheinen zu lassen muss die Aktion rückgängig gemacht und erneut durchgeführt werden.
+
+
+## Dargestellte Viewport Overlays
+
+<div class="marginnote"> Achsen </div>
+
+Sofern die Ansicht der Viewport Overlays aktiviert ist, werden im 3D Viewport einige nützliche Dinge dargestellt. Zum einen werden die verschiedenen drei Achsen in unterschiedlichen Farben vom Nullpunkt der Szene aus dargestellt:
+
+*   X-Achse: Rot
+*   Y-Achse: Grün
+*   Z-Achse: Blau
+
+Zudem wird leicht schattiert ein Gitternetz dargestellt, bei dem jedes Quadrat eine Einheit von einem Meter darstellt. Wird aus der Szene hinausgezoomt werden diese Quadrate zunehmend kleiner, dafür werden anschliessend quadratische Felder mit der Einheit von 10 Metern sichtbar.
+
+<div class="marginnote"> 3D Cursor </div>
+
+Innerhalb des 3D Viewports ist zudem der 3D-Cursor sichtbar. Dieser ist an einer bestimmten Position in der Szene platziert und dort mittels eines rot-weissen-Kreises dargestellt, der etwas einem Rettungsring ähnelt. Er kann als Bezugsort für Transformationen verwendet werden. Zudem werden an seiner Position jeweils neue Objekte hinzugefügt.
