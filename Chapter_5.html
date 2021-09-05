@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>5. Erste Schritte</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/Materialien_ThemeV1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/Materialien_ThemeV2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/Materialien_ThemeV3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">5. Erste Schritte</h1>
+
+</div>
+
+
+<style type="text/css">
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 57%;         # best between 50% and 60%
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  }
+</style>
+<style type="text/css">
+caution {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #d2f8d2 5px center/3em no-repeat; 
+  background-image: urls("images/caution.png");
+}
+</style>
+<style type="text/css">
+remember {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #yellow 5px center/3em no-repeat; 
+}
+</style>
+<div id="die-default-szene" class="section level1">
+<h1>Die Default-Szene</h1>
+<div class="marginnote">
+Objekte in der Default-Szene
+</div>
+<p>Beim Start eins neuen Projekts erscheint eine Default-Szene. Diese Szene beinhaltet bereits die wesentlichen Dinge, welche für eine 3D-Szene benötigt werden:</p>
+<ul>
+<li><strong>Würfel</strong>: Genau in der Mitte der Szene befindet sich der Default-Cube. Bei diesem Würfel handelt es sich um ein 3D-Objekt. Er hat eine Grösse von 2x2x2 Metern.</li>
+<li><strong>Kamera</strong>: Von der Kamera aus wird eine Szene bei der anschliessenden Verarbeitung der Szene (z.B. in einem gerenderten Bild oder einem Video) betrachtet. In der Default-Szene ist die Kamera auf den Würfel gerichtet.</li>
+<li><strong>Lichtquelle</strong>: Die Lichtquelle wird dafür benötigt, dass der Würfel in der gerenderten Aufnahme beleuchtet wird. Ohne eine Lichtquelle sind die 3D-Objekte beim anschliessenden Rendern nicht sichtbar – es sei denn, sie stellen selbst eine Lichtquelle dar.</li>
+</ul>
+<div class="caution">
+<p>Die Default-Szene kann manuell angepasst werden. Hierfür muss zunächst eine Default-Szene erstellt werden, welche bei jedem Start erscheinen soll. Diese kann dann unter «<em>File | Defaults | Save Startup File</em>» als neue Start-up-Szene gespeichert werden.</p>
+</div>
+</div>
+<div id="auswahl-von-objekten" class="section level1">
+<h1>Auswahl von Objekten</h1>
+<div class="marginnote">
+Auswahl und Abwahl mittels Mausklick
+</div>
+<p>—— Hinweis ——</p>
+<p>Durch das Anklicken mittels der linken Maustaste können Objekte im 3D Viewport ausgewählt werden. Die ausgewählten Objekte sind anschliessend anhand einer farblichen Markierung erkennbar. Durch das Klicken in den leeren Raum des Viewport Display lassen sich die Objekte wieder abwählen. Zudem wird durch die Auswahl eines anderen Objektes, das vorher ausgewählte Objekt abgewählt.</p>
+<div class="marginnote">
+Mehrfachwahl mittels <kbd>Shift</kbd>
+</div>
+<p>Um mehrere Objekte gleichzeitig auszuwählen, gibt es verschiedene Möglichkeiten. Eine Möglichkeit besteht darin, dass nacheinander Objekte bei gedrückter <kbd>Shift</kbd> Taste angeklickt werden und so zur Auswahl hinzugefügt werden. Durch die Auswahl von mehreren Objekten wird das zuletzt ausgewählt Objekt mit einer orangenen Farbe markiert und die vorherig ausgewählten Objekte mittels einer roten Farbe markiert.</p>
+<div class="marginnote">
+Aktives Objekt
+</div>
+<p>Die Markierung mit einer orangen Farbe gibt jeweils an, dass es sich bei diesem Objekt um das <strong>aktive Objekt</strong> handelt. Diese Unterscheidung wird in späteren Kapiteln noch von Bedeutung sein, etwa wenn Merkmale vom aktiven Objekt auf andere Objekte übertragen werden sollen, oder wenn ein Objekt in Bezug zum aktiven Objekt verändert werden soll. Für den aktuellen Stand ist jedoch vor allem wichtig, wie die Objekte ausgewählt werden und hierfür macht die rote oder orange Markierung noch keinen Unterschied aus.</p>
+<div class="marginnote">
+Box-Selection mittels <kbd>B</kbd>
+</div>
+<p>Alternativ kann auf den Box-Select-Modus zurückgegriffen werden. Dieser wird mit der Taste <kbd>B</kbd> aktiviert. Durch das gedrückt Halten der linken Maustaste lässt sich anschliessend ein Viereck über den Bildschirm ziehen. Alle Objekte, welche sich anschliessend innerhalb dieser Box befinden werden nach dem Loslassen der rechten Maustaste ausgewählt. Mittels der Taste <kbd>Esc</kbd> oder der rechten Maustaste lässt sich die Box-Selection abbrechen.</p>
+<div class="marginnote">
+Circle-Selection mittels <kbd>C</kbd>
+</div>
+<p>Alternativ können Objekte auch mit dem Circle-Select-Modus ausgewählt werden. Der Circle-Select-Modus wird mit der Taste <kbd>C</kbd> aktiviert. Während dem Circle-Select-Modus ist der Maus-Cursor von einem Kreis umgeben. Mithilfe des Mausrads kann die Grösse des Kreises kleiner einstellt werden. Durch einen Klick mit der linken Maustaste werden die Objekte, welche sich innerhalb dieses Kreises befinden, alle ausgewählt. Durch das Bewegen des Cursors bei gedrückter linken Maustaste können so eine Reihe weiterer Objekte ausgewählt werden. Der Circle-Select-Modus muss allerdings aktiv beendet werden, da ein weiterer Klick mit der linken Maustaste zu einer weiteren Auswahl von Objekten führt. Um den Circle-Select-Modus wieder zu verlassen kann die Taste <kbd>Enter</kbd>, <kbd>Esc</kbd> oder der rechten Maustaste gedrückt werden. Anschliessend sind alle Objekte, welche im Circle-Select-Modus angeklickt wurden, ausgewählt.</p>
+<div class="marginnote">
+Auswahl umkehren
+</div>
+<p>Mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>I</kbd> ist es auch möglich die Auswahl umzukehren. Dadurch werden alle ausgewählten Objekte abgewählt und alle anderen Objekte ausgewählt. Wenn alle Objekte innerhalb einer Szene ausgewählt werden soll, kann die Taste <kbd>A</kbd> gedrückt werden. Dadurch werden auch Objekte, die möglicherweise ausserhalb des gerade sichtbaren Bereichs liegen, ausgewählt.</p>
+<div class="marginnote">
+Auswahl von Objekten im Outliner
+</div>
+<p>Im Outliner auf der rechten Seite wird mittels einer blauen Markierung angezeigt, welches Objekt gerade ausgewählt ist. Zudem lassen sich auch hier Objekte auswählen, indem sie mittels der linken Maustaste angeklickt werden. Die Auswahl von mehreren Objekten kann analog wie im Viewport Display mittels dem gedrückt Halten der <kbd>Shift</kbd> gemacht werden oder durch eine Box-Auswahl mittels der Taste <kbd>B</kbd>. Auch hier können Alle Objekte mittels der Taste <kbd>A</kbd> gemeinsam ausgewählt werden. Der Circle-Select-Mode funktioniert allerdings nicht im Outliner.</p>
+</div>
+<div id="hinzufügen-von-objekten" class="section level1">
+<h1>Hinzufügen von Objekten</h1>
+<p>Hinzufügen von Objekten mittels <kbd>Shift</kbd> + <kbd>A</kbd></p>
+<p>Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>A</kbd> erscheint beim Mauszeiger das Menü-Feld «<em>Add</em>». Dabei handelt es sich um dasselbe Menü-Feld, welches auch unter dem Reiter «<em>Add</em>», in der linken oberen Ecke aufgerufen werden kann. Mithilfe dieses Menü-Felds können eine Reihe von verschiedenen Objekten im Viewport Display hinzugefügt werden. Dabei gibt es eine Reihe verschiedener Objektarten, welche hinzugefügt werden können. Beispielsweise kann unter «<em>Mesh | Cube</em>» ein Würfel in die Szene hinzugefügt werden. Ein neues Objekt wird jeweils an der Position des 3D-Cursors eingefügt.</p>
+<div class="marginnote">
+Position des neuen Objektes
+</div>
+<p>Wenn ein neues Objekt hinzugefügt wird, wird dieses Objekt direkt angewählt und farblich markiert. Zudem erscheint in der unteren linken Ecke des Viewport Displays ein Kontext-Menü-Feld. Dieses Menü-Feld kann aufgeklappt werden und beinhaltet Einstellungen zum Objekt, welche noch spezifiziert werden können. Beim Hinzufügen eines Würfels besteht etwa die Möglichkeit, dass man dessen Grösse (Size), seine Position und seine Rotation entlang der X, Y und Z-Achse anpassen kann. Da das Objekt jeweils an der Stelle des 3D-Cursors erscheint, entspricht die Position des Objektes in diesem Menü jeweils auch der Position des 3D-Cursors.</p>
+<div class="marginnote">
+Kontext-Menü zum neuen Objekt
+</div>
+<p>Das Kontext-Menü, welches beim Hinzufügen von Objekten erscheint, ist nur temporär vorhanden. Sobald mit der linken Maustaste in einen Bereich ausserhalb des Kontext-Menüs geklickt wird verschwindet das Menü-Feld. Es gibt keine Möglichkeit dieses Menü-Feld zurückzuholen – es ist für immer für dieses Objekt verschwunden. Wenn das Menü nochmals benötigt werden sollte, muss das entsprechende Objekt erneut zur Szene hinzugefügt werden.</p>
+</div>
+<div id="merke" class="section level1 remember">
+<h1>Merke…</h1>
+<ul>
+<li>Kontext-Menü-Felder erscheinen in der linken unteren Ecke des Viewport Displays und sind nur temporär verfügbar. Nach einem Klick ausserhalb des Menü-Feldes verschwinden dieses Felder und können nicht mehr zurückgeholt werden</li>
+</ul>
+</div>
+<div id="löschen-von-objekten" class="section level1">
+<h1>Löschen von Objekten</h1>
+<div class="marginnote">
+Löschen von Objekten mittels <kbd>X</kbd>
+</div>
+<p>Wenn ein Objekt gelöscht werden soll, muss dieses zunächst ausgewählt werden. Mittels der Taste <kbd>X</kbd> wird der Befehl für die Löschung des ausgewählten Objektes gegeben. Dieser muss anschliessend kurz bestätigt werden, entweder mit einem Mausklick auf das daraufhin bei der Maus erscheinende «<em>Delete</em>»-Feld oder mittels der Taste <kbd>Enter</kbd>. Alternativ kann auch die Taste <kbd>Delete</kbd> verwendet werden – hierbei wird das Objekt direkt gelöscht, ohne dass eine Bestätigung nötig ist.</p>
+</div>
+<div id="übung-2-hinzufügen-und-löschen" class="section level1 exercicebox">
+<h1>Übung 2: Hinzufügen und Löschen</h1>
+<div id="übung-2.1" class="section level2">
+<h2>Übung 2.1</h2>
+<p>Löschen Sie alle Objekte aus der Szene</p>
+</div>
+<div id="übung-2.2" class="section level2">
+<h2>Übung 2.2</h2>
+<p>Erstellen Sie einen neuen Würfel mit der Grösse 1 und einer Rotation von 90°. Welche Achse sie hierfür wählen spielt keine Rolle.</p>
+</div>
+</div>
+<div id="merke-1" class="section level1 remember">
+<h1>Merke…</h1>
+<ul>
+<li>Mittels <kbd>Shift</kbd> + <kbd>A</kbd> erscheint beim Mauszeiger das Menü zum Hinzufügen von Objekten</li>
+<li>Um Objekte zu löschen, müssen sie zunächst ausgewählt werden und können anschliessend mit der Taste kbd&gt;X</kbd oder kbd>Delete&lt;/kbd gelöscht werden.</li>
+</ul>
+</div>
+<p>#Objekte vervielfältigen</p>
+<div class="marginnote">
+Methoden zur Vervielfältigung von Objekten
+</div>
+<p>Ausgewählte Objekte können auf verschiedene Arten dupliziert werden. Jede diese Arten hat ihre eigenen Besonderheiten:</p>
+<ul>
+<li>Duplizieren des Objektes</li>
+<li>Verbundene Duplikate erstellen</li>
+<li>Einfügen einer Kopie des Objektes mittels Copy-Paste</li>
+</ul>
+<div id="objekte-duplizieren" class="section level2">
+<h2>Objekte duplizieren</h2>
+<div class="marginnote">
+Duplikat eines Objektes erstellen mittels <kbd>Shift&gt; + <kbd>D</kbd>
+</div>
+<p>Die schnellste Methode, um Objekte zu duplizieren besteht darin, dass die entsprechenden Objekte, welche dupliziert werden sollen, ausgewählt werden und anschliessend mit der Taste <kbd>Shift</kbd> + <kbd>D</kbd> der Befehl zur Duplikation der Objekte erfolgt. Dadurch entsteht an der Position des originalen Objekts ein Duplikat, welches mit der Bewegung des Maus-Cursors im Raum bewegt werden kann. Durch einen Klick mit der linken Maustaste oder <kbd>Enter</kbd> wird das Objekt anschliessend platziert. Die Bewegung des duplizierten Objekts kann auch mittels <kbd>Esc</kbd> abgebrochen werden. Dadurch wird das Duplikat allerdings nicht gelöscht, sondern an derselben Position des Originals platziert.</p>
+</div>
+<div id="verbundene-duplikate-erstellen" class="section level2">
+<h2>Verbundene Duplikate erstellen</h2>
+<div class="marginnote">
+Verbundene Duplikate erstellen mittels <kbd>Alt</kbd> + <kbd>D</kbd>
+</div>
+<p>Nebst einem normalen Duplikat kann auch ein verbundenes Duplikat erstellt werden. Hierfür wird nach der Auswahl der zu duplizierenden Objekte die Tastenkombination Taste <kbd>Alt</kbd> + <kbd>D</kbd> gedrückt. Auch hier kann das Objekt mit der Maus im Raum bewegt und mittels der linken Maustaste oder <kbd>Enter</kbd> platziert werden. Wird nun in weiteren Arbeitsschritten entweder das originale oder das verbunden-duplizierte Objekt bearbeitet, führt dies dazu, dass dieselben Veränderungen gleichzeitig auch bei den verbunden-duplizierten Objekten durchgeführt werden.</p>
+</div>
+<div id="copy-paste-von-objekten" class="section level2">
+<h2>Copy-Paste von Objekten</h2>
+<div class="marginnote">
+Objekte mittels Copy-Paste vervielfältigen
+</div>
+<p>Eine weitere Methode zur Vervielfältigung von Objekten besteht darin, dass die zu vervielfältigenden Objekte ausgewählt und mittels <kbd>Cmd</kbd> + <kbd>C</kbd> kopiert und anschliessend mittels <kbd>Cmd</kbd> + <kbd>V</kbd> wieder eingefügt werden. Im Gegensatz zur normalen und der verbundenen Duplizierung werden die eingefügten Objekte direkt platziert und müssen durch weitere Befehle verschoben werden. Zudem werden bei dieser Methode den eingefügten Objekten teils auch von Materialien eine Kopie eingefügt. Dadurch führt eine Bearbeitung des Materials des originalen Objekts nicht zu einer Veränderung des Materials des neu eingefügten Objekts. Allerdings kann man dem eingefügten Objekt auch wieder das originale Material zuweisen.</p>
+</div>
+<div id="verbinden-von-objekten" class="section level1">
+<h1>Verbinden von Objekten</h1>
+<div class="marginnote">
+Join mittels <kbd>Cmd</kbd> + <kbd>J</kbd>
+</div>
+<p>Mehrere Objekte lassen sich auch so verbinden, dass sie zu einem Objekt werden. Hierfür müssen die zu verbindenden Objekte markiert werden. Die Verbindung der Objekte erfolgt anschliessend mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>J</kbd>. Wichtig ist dabei, dass eines der markierten Objekte das aktive Objekt darstellt. Üblicherweise handelt es sich dabei um das zuletzt ausgewählte Objekt. Das aktive Objekt ist jeweils anhand einer orangen statt einer roten Markierung ersichtlich. Die anderen Objekte werden anschliessend zum aktiven Objekt hinzugefügt.</p>
+</div>
+<div id="verstecken-von-objekten" class="section level1">
+<h1>Verstecken von Objekten</h1>
+<div class="marginnote">
+Verstecken von Objekten mittels <kbd>H</kbd>
+</div>
+<p>Gerade wenn eine Szene sehr komplex ist, kann es vorkommen, dass sich die Objekte gegenseitig verdecken und die Bearbeitung etwas schwieriger wird. In diesem Falle gibt es die Möglichkeit Objekte in der Ansicht zu verstecken. Ausgewählte Objekte können mittels der Taste <kbd>H</kbd> versteckt werden. Im Outliner sind die Objekte nach wie vor noch angegeben, allerdings grau hinterlegt. Mittels der Tastenkombination <kbd>Alt</kbd> + <kbd>H</kbd> werden alle versteckten Objekte wieder angezeigt. Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>H</kbd> lassen sich zudem alle Objekte, ausser den ausgewählten Objekten, verstecken. Dadurch sind nur noch die markierten Objekte sichtbar.</p>
+<div class="marginnote">
+Versteckte Objekte im Outliner aufdecken
+</div>
+<p>Um einzelne Objekte wieder anzeigen zu lassen, kann im Outliner das geschlossene Auge neben dem entsprechenden Objekt angewählt werden. Analog kann auch ein geöffnetes Auge angewählt werden, um die Objekte zu verstecken. Das Verstecken von Objekten bezieht nur auf den Viewport Display. In einem finalen Render werden die Objekte trotzdem gerendert.</p>
+<div class="caution">
+<p>Statt Objekte in einer Szene zu verstecken kann alternativ auch die lokale Ansicht mittels der Taste <kbd>/</kbd> auf diese Objekte angewendet werden. In dieser Ansicht werden alle anderen Objekte ausgeblendet. Um wieder in die normale Ansicht zu gelangen, muss erneut die Taste <kbd>/</kbd> gedrückt werden.</p>
+</div>
+</div>
+<div id="anordnen-in-collections" class="section level1">
+<h1>Anordnen in Collections</h1>
+<div class="marginnote">
+Collections
+</div>
+<p>Im Outliner lassen sich die verschiedenen Objekte in Collections anordnen. Hierfür werden die Objekte jeweils in eine Collection hineingezogen. Anschliessend werden die Objekte innerhalb dieser Collection aufgelistet. Auch andere Collections können in eine Collection hineingezogen werden. Somit können mithilfe der Collections auch Ordnerstrukturen im Outliner erstellt werden. Dies ermöglicht es etwa, dass die Objekte innerhalb einer Collection als gemeinsame Gruppe für komplexere Vorhaben verwendet werden können – etwa für Partikel-Effekte.</p>
+<div class="marginnote">
+Hinzufügen und Deaktivieren von Collections
+</div>
+<p>Mithilfe der Schaltfläche oben rechts in der Ecke des Outliners können neue Collections hinzugefügt werden. Mittelt dem Kontrollkästchen neben einer Collection lassen sich die Objekte innerhalb einer Collection deaktivieren. Die entsprechenden Objekte werden anschliessend im Viewport nicht mehr angezeigt und auch beim Rendern nicht mehr berücksichtig.</p>
+</div>
+<div id="speichern" class="section level1">
+<h1>Speichern</h1>
+<div class="marginnote">
+Zwischen-Speichern mittels <kbd>Cmd</kbd> + <kbd>S</kbd> ist unabdingbar
+</div>
+<p>Bisher wurden bereits einige Tastenkombinationen angesprochen. Die wichtigste Tastenkombination stellt allerdings die Kombination für das Abspeichern des aktuellen Projekts dar: <kbd>Cmd</kbd> + <kbd>S</kbd>. Zwischenspeichern ist bei der Arbeit mit Blender eine wichtige Empfehlung. Je nach Komplexität des Projektes kann es manchmal vorkommen, dass das Programm unerwartet abstürzt und die Fortschritte bis zum letzten Speicherpunkt verloren gehen. Aus diesem Grund empfiehlt es sich, das Projekt lieber einmal zu viel als einmal zu wenig abzuspeichern.</p>
+<div class="marginnote">
+Kopie speichern
+</div>
+<p>Alternativ kann das Projekt auch unter «<em>File | Save</em>» abgespeichert werden. Nebst der Möglichkeit, dass ein Projekt unter indem neuen Namen gespeichert und fortgeführt wird («File | Save as», <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>S</kbd>) gibt es auch die Möglichkeit mittels «<em>File | Save Copy</em>» (<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>) eine Backup-Version abzuspeichern und in dem originalen File weiterzuarbeiten.</p>
+<div class="marginnote">
+.blend-Files
+</div>
+<p>Die Projekte werden jeweils in Blenders programmeigenem Format .blend abgespeichert. Diese Datei enthält anschliessend alle Objekte, Animationen und Einstellungen des Projektes. Das .blend-Dateiformat kann lediglich mittels Blender geöffnet werden. Wenn externe Dateien (beispielsweise Texturen, Soundeffekte oder Videos) im Projekt eingebunden werden, müssen diese ebenfalls mit dem Projekt weitergegeben werden. Es gibt jedoch die Möglichkeit unter «<em>File | External Data | Pack all into .blend</em>» alle diese externen Dateien in das .blend File einzuspeichern. Dadurch erhöht sich allerdings die Grösse des abgespeicherten Files.</p>
+<div class="marginnote">
+Exportieren
+</div>
+<p>Um Programme auch für andere Projekte verfügbar zu machen, müssen sie in einem anderen Dateiformat ausgegeben werden. Unter «<em>File | Export</em>» steht eine Reihe von verschiedenen Dateiformaten zur Verfügung, welche von unterschiedlichen Programmen geöffnet werden können. Die meisten dieser Dateiformate kann Blender wiederum importieren und darstellen.</p>
+</div>
+<div id="merke-2" class="section level1 remember">
+<h1>Merke…</h1>
+<ul>
+<li>Lieber einmal mehr mit der Kombination <kbd>Cmd</kbd> + <kbd>S</kbd> speichern als die Fortschritte zu verlieren.</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

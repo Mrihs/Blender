@@ -38,3 +38,9 @@ navbar:
           href: Chapter_2.html
         - text: "3.	Die Arbeitsoberfläche des 3D Viewports"
           href: Chapter_3.html
+        - text: "4.	Navigation der Ansicht im 3D Viewport"
+          href: Chapter_4.html
+        - text: "5.	Erste Schritte"
+          href: Chapter_5.html
+        
+        

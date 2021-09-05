@@ -1,0 +1,88 @@
+---
+title: "4.	Navigation der Ansicht im 3D Viewport"
+
+---
+
+
+```{css sidenote, echo = FALSE}
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 57%;         # best between 50% and 60%
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  }
+```
+
+
+````{css caution,  echo=FALSE}
+.infobox {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #d2f8d2 5px center/3em no-repeat; 
+  background-image: urls("images/caution.png");
+}
+
+.caution {
+  background-image: "images/caution.png"
+}
+````
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+<div class="marginnote"> Navigation in der 3d Ansicht </div>
+
+Die Ansicht auf die Objekte im 3D Viewport kann beliebig verändert werden. Nebst der standardmässigen Ansichtssteuerung über die Maus kann auch das Nummernfeld der Tastatur verwendet werden. In der Regel werden beide Optionen verwendet. Die Navigation mit der Maus bietet tendenziell eine grössere Flexibilität, während die Navigation mit der Tastatur eine grössere Präzision ermöglicht.
+
+
+# Ansicht mit der Maus verändern
+
+<div class="marginnote"> Ansicht mit der Maus verändern </div>
+
+Je nach Aufbau der verwendeten Computermaus unterscheidet sich die Navigation durch die 3D-View mit der Maus etwas. Bei einer Computermaus mit einem Mausrad erfolgt die Navigation in der 3D-View durch Mausbewegungen bei gedrückter Rad-Taste. Bei Trackpads oder Mäusen mit integriertem Trackpad erfolgt die Navigation mittels Wischbewegungen. Bei einer normalen Bewegung wird dabei lediglich die Ansicht entsprechend der Bewegung rotiert. Durch gleichzeitiges Drücken der <kbd>Shift</kbd> Taste wird die Ansicht in die entsprechenden Richtungen bewegt (ohne eine Rotation). Mittels gedrückter <kbd>Cmd</kbd> Taste kann durch die Mausbewegung hinein- oder heraus-gezoomt werden. Durch das Drehen des Mausrades wird die Ansicht ebenfalls hinein- oder heraus-gezoomt.
+
+# Navigation mit der Tastatur
+
+<div class="marginnote"> Emulation des Zahlenblocks </div>
+
+Anstelle der Maus kann die Ansicht auch mittels dem verfügt auf der Tastatur erfolgen. Diese Option ergibt sich allerdings nur, wenn man über einen Nummernblock verfügt. Wenn kein Nummernblock zur Verfügung steht, lassen sich auch die Zahlen-Tasten oberhalb der Buchstaben für die Navigation verwenden. Hierfür muss allerdings in den Benutzereinstellungen (*Edit | Preferences*) in den Einstellungen zum «*Input*» beim Keyboard-Reiter die Einstellung «*Emulate Numpad*» aktiviert werden.
+
+<div class="marginnote"> Rotieren und Drehen der Ansicht </div>
+
+Mittels der Tasten <kbd>2</kbd>, <kbd>4</kbd>, <kbd>6</kbd> und <kbd>8</kbd> kann die Ansicht jeweils entsprechend ihrer relativen Anordnung auf dem Zahlenblock rotiert werden. Die Taste <kbd>2</kbd> rotiert dementsprechend nach unten, die Taste <kbd>4</kbd> nach links, die Taste <kbd>6</kbd> nach rechts und die Taste <kbd>8</kbd> nach oben. Werden dieselben Tasten bei gedrückter <cbd>Cmd</kbd> Taste gedrückt, wird die Ansicht in die entsprechende Position bewegt, ohne eine Rotation durchzuführen. Mittels gedrückter <kbd>Shift</kbd> Taste kann die Ansicht durch die Taste <kbd>6</kbd> zudem im Uhrzeigersinn und mittels der Taste <kbd>4</kbd> gegen den Uhrzeigersinn gedreht werden. Um näher hineinzuzoomen wird die Taste <kbd>+</kbd> und zum Hinauszoomen die Taste <kbd>-</kbd> verwendet.
+
+<div class="marginnote"> Präzise Ansichten ansteuern </div>
+
+Mittels der Taste <kbd>1</kbd> kann die Ansicht direkt in die Vorderansicht gedreht werden. Die Ansicht erfolgt anschliessend entlang der Y-Achse. Die Rückansicht ist mit der Tastenkombination <kbd>Cmd</kbd>+<kbd>1</kbd> einstellbar. Mittels der Taste <kbd>3</kbd> wird die Seitenansicht – von der rechten Seite aus zum Objekt hin – gewählt. Das Objekt wird in diesem Falle entlang der X-Achse betrachtet. Mit der Tastenkombination <kbd>Cmd</kbd>+<kbd>3</kbd> ist die Seitenansicht von der linken Seite aus einstellbar. Um die Szene von der Vogelperspektive aus zu betrachten kann die Taste <kbd>7</kbd> ausgewählt werden. Hierbei erfolgt die Ansicht der Z-Achse entlang. Mittels der Tastenkombination <kbd>Cmd</kbd>+<kbd>7</kbd> erfolgt die Ansicht von unten.
+
+<div class="marginnote"> Perspektivische und orthografische Darstellung </div>
+
+Jede der Ansichten kann auf zwei Arten erfolgen: perspektivisch oder orthografisch. Die perspektivische Ansicht berücksichtigt Tiefeninformationen, so dass weiter entfernte Objekte kleiner dargestellt werden. Die orthografische Perspektive ignoriert die Tiefeninformationen, wodurch weiter entfernte Objekte gleich gross angezeigt werden wie nähere, gleich grosse Objekte auf der entsprechenden Achse. Diese Perspektive hat den Vorteil, dass Objekte in ihrer geometrischen Form in 2D betrachtet werden können. Mittels der Taste <kbd>5</kbd> kann zwischen diesen beiden Ansichtsmodi gewechselt werden.
+
+<div class="marginnote"> Kamera-Ansicht </div>
+
+Mittels der Taste <kbd>0</kbd> kann die Ansicht zudem direkt in die Position der Kamera gelegt werden. Dadurch wird die Szene genau so betrachtet, wie sie es im finalen Render betrachtet werden wird. Wenn in einer Szene keine Kamera vorhanden ist, steht diese Ansicht nicht zur Verfügung. Wenn mehrere Kameras vorhanden sind, wird jeweils Kamera, welche die aktive Render-Kamera darstellt, anvisiert.
+
+<div class="marginnote"> Fokus auf ein Objekt </div>
+
+In komplexeren Szenen kann es sein, dass man etwas die Übersicht über die Objekte verliert, oder dass sie sich gegenseitig im Weg stehen bei der Ansicht. Mittels der Taste <kbd>.</kbd> wird die Ansicht direkt auf ein ausgewähltes Objekt gezoomt. Mittels der Taste <kbd>/</kbd> kann zudem die lokale Ansicht aktiviert werden. In dieser Ansicht wird lediglich das ausgewählte Objekt dargestellt, so dass es in komplexen Szenen besser betrachtet werden kann. Allerdings muss anschliessend die Taste <kbd>/</kbd> erneut gedrückt werden, um die lokale Ansicht wieder zu verlassen.
+
+# Navigation mittels Gizmos
+
+Auf der rechten Seite des 3D Viewports lassen sich zudem Schaltflächen anzeigen, mit denen die Ansicht gesteuert werden kann. Um diese anzeigen zu lassen, müssen die Gizmos eingeschaltet sein. Wird die linke Mausaste auf das Kamera-Icon angewendet, wird die Kamera-Ansicht aktiviert. Das Icon darunter, welches ein Gitternetz darstellt, dient dem Wechsel zwischen perspektivischer und orthografischer Ansicht. Darüber Die beiden oberen Icons dienen dem Zoomen (mittels der Lupe) und dem Bewegen der Ansicht (Hand). Hierfür muss das Icon angeklickt werden und die Maus anschliessend bei weiterhin gedrückter Maustaste bewegt werden. Zuoberst findet sich zudem ein Koordinatensystem, mit dem die Perspektive per Mausklick verändert werden kann.
+
+
+
+# Merke
+
+...!

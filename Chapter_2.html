@@ -388,6 +388,12 @@ div.tocify {
     <li>
       <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
     </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -432,7 +438,7 @@ div.tocify {
 <div class="marginnote">
 Optionen im Willkommens-fenster
 </div>
-<p>Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «Recent Files» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «New File» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.</p>
+<p>Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «<em>Recent Files</em>» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «<em>New File</em>» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.</p>
 <div class="figure">
 <img src="images/Chapter2/Welcome_Screen.png" alt="" />
 <p class="caption">Abbildung 2.1: Das Willkommensfenster von Blender</p>
@@ -442,26 +448,26 @@ Auswahl von Ansichtsvorlagen
 </div>
 <p>Zu den möglichen Ansichts-Vorlagen gehören:</p>
 <ul>
-<li>General: Öffnet eine Standardvorlage für das Bearbeiten von 3D-Objekten.</li>
-<li>2D Animation: öffnet eine Vorlage zum Erstellen von 2D-Animationen.</li>
-<li>Sculpting: Öffnet eine Vorlage, welche für das Sculpting von Objekten geeignet ist. Dabei werden Objekte anhand von Bürsten direkt in ihrer Form verändert.</li>
-<li>VFX: Öffnet eine Vorlage für die Erstellung visueller Effekte (VFX), beispielsweise in Videos.</li>
-<li>Video Editing: Öffnet eine Vorlage zum Bearbeiten von Videos.</li>
+<li><strong>General</strong>: Öffnet eine Standardvorlage für das Bearbeiten von 3D-Objekten.</li>
+<li><strong>2D Animation</strong>: öffnet eine Vorlage zum Erstellen von 2D-Animationen.</li>
+<li><strong>Sculpting</strong>: Öffnet eine Vorlage, welche für das Sculpting von Objekten geeignet ist. Dabei werden Objekte anhand von Bürsten direkt in ihrer Form verändert.</li>
+<li><strong>VFX</strong>: Öffnet eine Vorlage für die Erstellung visueller Effekte (VFX), beispielsweise in Videos.</li>
+<li><strong>Video Editing</strong>: Öffnet eine Vorlage zum Bearbeiten von Videos.</li>
 </ul>
 <div class="marginnote">
 Fokus auf «General»
 </div>
-<p>Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «General» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.</p>
+<p>Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «<em>General</em>» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.</p>
 <p>#Die verschiedenen Panels beim General-Projekt</p>
 <div class="marginnote">
 Default Editore
 </div>
 <p>Die verschiedenen Werkzeuge, welche Blender anbietet, sind innerhalb verschiedener Editore aufzufinden. Diese Editore werden als separate und austauschbare Panel-Areale in Blender dargestellt. Beim Start eines neuen Projekts (mit der Vorlage General) ist die Ansicht in vier Areale unterteilt:</p>
 <ul>
-<li>3D Viewport: überspannt von der oberen linken Ecke den grössten Teil des Bildschirms.</li>
-<li>Outliner: Befindet sich in der oberen, rechten Ecke.</li>
-<li>Properties: Befindet sich in der unteren, rechten Ecke.</li>
-<li>Timeline: Befindet sich links, am unteren Rand. Gerade der 3D Viewport, der Outliner und die Properties sind für das Erstellen von 3D Objekten mit Blender von hoher Bedeutung. Die Timeline wird bei Animationen verwendet.</li>
+<li><strong>3D Viewport</strong>: überspannt von der oberen linken Ecke den grössten Teil des Bildschirms.</li>
+<li><strong>Outliner</strong>: Befindet sich in der oberen, rechten Ecke.</li>
+<li><strong>Properties</strong>: Befindet sich in der unteren, rechten Ecke.</li>
+<li><strong>Timeline</strong>: Befindet sich links, am unteren Rand. Gerade der 3D Viewport, der Outliner und die Properties sind für das Erstellen von 3D Objekten mit Blender von hoher Bedeutung. Die Timeline wird bei Animationen verwendet.</li>
 </ul>
 <div class="figure">
 <img src="images/Chapter2/Default_Areas.jpg" alt="" />
@@ -577,7 +583,7 @@ Data Editore
 <div id="preferences" class="section level2">
 <h2>Preferences</h2>
 <p>Unter den Preferences lassen sich die Einstellungen von Blender bearbeiten. Die Preferences können auch unter «Edit | Preferences» geöffnet werden.</p>
-<p>#Vorgefertigte Editor-Anordnungen Schnelle Auswahl von Editoren mittels Editor-Anordnungen In der Menü-Leiste sind für verschiedene Arbeitsschritte bei der 3D-Modellierung bereits vorgefertigte Ansichtsoptionen verfügbar. Durch einen Klick auf den Reiter «Texture Paint» wird beispielsweise eine Anordnung gezeigt, welche ideal dafür ist, um ein Objekt mit einer Textur zu bemalen. In diesem Falle wird beispielsweise nebst dem 3D Viewport auch der Image Editor geöffnet. Mittels der Registerkarte «+» können zudem weitere Editor-Anordnungen basierend auf einer Vorlage für die Schnellauswahl hinzugefügt werden.</p>
+<p>#Vorgefertigte Editor-Anordnungen Schnelle Auswahl von Editoren mittels Editor-Anordnungen In der Menü-Leiste sind für verschiedene Arbeitsschritte bei der 3D-Modellierung bereits vorgefertigte Ansichtsoptionen verfügbar. Durch einen Klick auf den Reiter «<em>Texture Paint</em>» wird beispielsweise eine Anordnung gezeigt, welche ideal dafür ist, um ein Objekt mit einer Textur zu bemalen. In diesem Falle wird beispielsweise nebst dem 3D Viewport auch der Image Editor geöffnet. Mittels der Registerkarte «<em>+</em>» können zudem weitere Editor-Anordnungen basierend auf einer Vorlage für die Schnellauswahl hinzugefügt werden.</p>
 </div>
 </div>
 <div id="neuanordnen-der-editor-areale" class="section level1">

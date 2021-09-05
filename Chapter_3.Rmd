@@ -48,17 +48,17 @@ Der 3D Viewport stellt eine der wichtigsten Arbeitsoberflächen in Blender dar. 
 
 <div class="marginnote"> Toolbars </div>
 
-Die Toolbar befindet sich auf der linken Seite der 3D View. Allerdings sind Toolbars auch in anderen Editoren anzutreffen. Die Toolbars lassen sich jeweils mit der Taste T ein- und ausblenden. Da es auch im 3D Viewport verschiedene Bearbeitungsmöglichkeiten gibt, variieren die Elemente in der der Toolbar abhängig vom Bearbeitungsmodus.
+Die **Toolbar** befindet sich auf der linken Seite der 3D View. Allerdings sind Toolbars auch in anderen Editoren anzutreffen. Die Toolbars lassen sich jeweils mit der Taste <kbd>T</kbd> ein- und ausblenden. Da es auch im 3D Viewport verschiedene Bearbeitungsmöglichkeiten gibt, variieren die Elemente in der der Toolbar abhängig vom Bearbeitungsmodus.
 In diesem Kurs werden wir vor allem mit Tastenkombinationen arbeiten, wenn Operationen durchgeführt werden. Die grundlegendsten Operationen, welche in der Toolbar durchgeführt werden können, werden trotzdem kurz erwähnt.
 
 # Sidebar
 
 <div class="marginnote"> Sidebars </div>
-Die Sidebar befindet sich auf der rechten Seite des Viewport Displays, muss allerdings noch mit der Taste N geöffnet werden. Mit dieser Taste lässt sich die Sidebar ebenfalls wieder verbergen. Die Sidebar ist auch in anderen Editoren anzutreffen und wird dort ebenfalls mit der Taste N ein- und ausgeblendet.
-Die Sidebar ist zudem anhand von Registerkarten in zusätzliche Kategorien eingeordnet. Unter dem Register «Item» können etwa Einstellungen zum aktuell ausgewählten Objekt betrachtet und verändert werden, im Register «Tool» können Einstellungen zum aktuell ausgewählten Werkzeug verfeinert werden und unter dem Register «View» können Einstellungen zur Ansicht betrachtet und verfeinert werden.
+Die **Sidebar** befindet sich auf der rechten Seite des Viewport Displays, muss allerdings noch mit der Taste <kbd>N</kbd> geöffnet werden. Mit dieser Taste lässt sich die Sidebar ebenfalls wieder verbergen. Die Sidebar ist auch in anderen Editoren anzutreffen und wird dort ebenfalls mit der Taste <kbd>N</kbd> ein- und ausgeblendet.
+Die Sidebar ist zudem anhand von Registerkarten in zusätzliche Kategorien eingeordnet. Unter dem Register «*Item*» können etwa Einstellungen zum aktuell ausgewählten Objekt betrachtet und verändert werden, im Register «*Tool*» können Einstellungen zum aktuell ausgewählten Werkzeug verfeinert werden und unter dem Register «*View*» können Einstellungen zur Ansicht betrachtet und verfeinert werden.
 
 # Header
-Im Header sind zusätzliche Einstellungen aufzufinden. Diese können nicht nur zwischen den einzelnen Editoren variieren, sondern auch zwischen den einzelnen Bearbeitungsmodi innerhalb der 3D-View.
+Im **Header** sind zusätzliche Einstellungen aufzufinden. Diese können nicht nur zwischen den einzelnen Editoren variieren, sondern auch zwischen den einzelnen Bearbeitungsmodi innerhalb der 3D-View.
 
 ## Auswahl-Einstellungen
 In der oberen linken Ecke, direkt neben dem Bedienfeld für die Auswahl des Editors, befinden sich Einstellungsmöglichkeiten, wie eine Auswahl genauer erfolgen soll.
@@ -92,7 +92,7 @@ In der rechten oberen Ecke befinden sich Optionen zur Darstellung der Objekte in
 
 <div class="marginnote"> Ein- und Ausblenden von Objektarten </div>
 
-Hier lassen sich verschiedene Arten von Objekten alle gemeinsam innerhalb einer Szene verstecken, indem das Auge zu der entsprechenden Objektart abgewählt wird. Durch das Abwählen des Auges neben dem Objekttyp «Camera» werde etwa alle Kameras aus der Szene unsichtbar gemacht. Die Objekte sind allerdings noch vorhanden und weisen immer noch dieselbe Funktion auf – sie werden lediglich nicht mehr im 3D Viewport angezeigt. Neben dem Auge lässt sich zudem anhand des Knopfes mit einem abgebildeten Cursor einstellen, dass die entsprechenden Objektarten nicht mehr auswählbar sind.
+Hier lassen sich verschiedene Arten von Objekten alle gemeinsam innerhalb einer Szene verstecken, indem das Auge zu der entsprechenden Objektart abgewählt wird. Durch das Abwählen des Auges neben dem Objekttyp «*Camera*» werde etwa alle Kameras aus der Szene unsichtbar gemacht. Die Objekte sind allerdings noch vorhanden und weisen immer noch dieselbe Funktion auf – sie werden lediglich nicht mehr im 3D Viewport angezeigt. Neben dem Auge lässt sich zudem anhand des Knopfes mit einem abgebildeten Cursor einstellen, dass die entsprechenden Objektarten nicht mehr auswählbar sind.
 
 ### Show Gizmos
 
@@ -111,7 +111,7 @@ Durch die Deaktivierung des Viewport Overlays wird im 3D Viewport die Ansicht be
 
 <div class="marginnote"> Röntgenblick ein- und ausschalten </div>
 
-Wenn die Schaltfläche «Toggle X Ray» ausgewählt ist, erweitert sich die Ansicht von Objekten auch durch sie hindurch. Dies ermöglicht es etwa, dass auch ein Objekt, welches hinter einem anderen Objekt verborgen liegt, betrachtet werden kann. Wenn diese Option aktiviert ist, können zudem auch die verborgenen Objekte mittels eines Mausklicks angewählt werden. Die Schaltfläche kann auch mit den Tasten <kbd>Alt</kbd> + <kbd>Z</kbd> ein- und ausgeschaltet werden.
+Wenn die Schaltfläche «**Toggle X Ray**» ausgewählt ist, erweitert sich die Ansicht von Objekten auch durch sie hindurch. Dies ermöglicht es etwa, dass auch ein Objekt, welches hinter einem anderen Objekt verborgen liegt, betrachtet werden kann. Wenn diese Option aktiviert ist, können zudem auch die verborgenen Objekte mittels eines Mausklicks angewählt werden. Die Schaltfläche kann auch mit den Tasten <kbd>Alt</kbd> + <kbd>Z</kbd> ein- und ausgeschaltet werden.
 
 ### Viewport Shading
 
@@ -119,11 +119,11 @@ Wenn die Schaltfläche «Toggle X Ray» ausgewählt ist, erweitert sich die Ansi
 
 In der rechten oberen Ecke befinden sich vier Knöpfe, um einzustellen, welche Elemente bei der Darstellung der Objekte berücksichtigt werden sollen. Je nach Auswahl werden dadurch die Objekte unterschiedlich dargestellt:
 
-*   Wireframe: Die Objekte werden in ihrer Struktur als Gitternetz angezeigt, so dass deren Aufbaugitter klar ersichtlich wird. Hierbei werden die Flächen der Objekte nicht dargestellt.
-*   Solid: Die Objekte werden als Ganzes dargestellt, so dass auch die Flächen sichtbar sind. Allerdings werden die verwendeten Materialien und Texturen nicht berücksichtigt.
-*   Material Preview: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung wird anhand von vorgefertigten Szenen und Umgebungen beleuchtet, so dass eine schnelle Vorschau möglich ist.
-*   Render: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung und die Beleuchtung entsprechen den Einstellungen der aktuellen Szene, so dass eine Vorschau für die gerenderte Szene möglich ist.
-Alternativ kann die Taste Z gedrückt werden. Dadurch erscheint bei der Maus ein Menü, mit allen vier Optionen zum Viewport Shading zur Auswahl.
+*   **Wireframe**: Die Objekte werden in ihrer Struktur als Gitternetz angezeigt, so dass deren Aufbaugitter klar ersichtlich wird. Hierbei werden die Flächen der Objekte nicht dargestellt.
+*   **Solid**: Die Objekte werden als Ganzes dargestellt, so dass auch die Flächen sichtbar sind. Allerdings werden die verwendeten Materialien und Texturen nicht berücksichtigt.
+*   **Material Preview**: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung wird anhand von vorgefertigten Szenen und Umgebungen beleuchtet, so dass eine schnelle Vorschau möglich ist.
+*   **Render**: Die Objekte werden als Ganzes dargestellt, inklusive deren Materialien und Texturen. Die Umgebung und die Beleuchtung entsprechen den Einstellungen der aktuellen Szene, so dass eine Vorschau für die gerenderte Szene möglich ist.
+Alternativ kann die Taste <kbd>Z</kbd> gedrückt werden. Dadurch erscheint bei der Maus ein Menü, mit allen vier Optionen zum Viewport Shading zur Auswahl.
 
 
 ## Letzte Aktion verfeinern

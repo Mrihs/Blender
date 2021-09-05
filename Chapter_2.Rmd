@@ -34,7 +34,7 @@ title: "2.	Die Arbeitsoberfläche von Blender"
 
 <div class="marginnote"> Optionen im Willkommens-fenster </div>
 
-Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «Recent Files» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «New File» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.
+Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «*Recent Files*» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «*New File*» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.
 
 ![Abbildung 2.1: Das Willkommensfenster von Blender](images/Chapter2/Welcome_Screen.png)
 
@@ -42,15 +42,15 @@ Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster w
 
 Zu den möglichen Ansichts-Vorlagen gehören:
 
-*   General: Öffnet eine Standardvorlage für das Bearbeiten von 3D-Objekten.
-*   2D Animation: öffnet eine Vorlage zum Erstellen von 2D-Animationen.
-*   Sculpting: Öffnet eine Vorlage, welche für das Sculpting von Objekten geeignet ist. Dabei werden Objekte anhand von Bürsten direkt in ihrer Form verändert.
-*   VFX: Öffnet eine Vorlage für die Erstellung visueller Effekte (VFX), beispielsweise in Videos.
-*   Video Editing: Öffnet eine Vorlage zum Bearbeiten von Videos.
+*   **General**: Öffnet eine Standardvorlage für das Bearbeiten von 3D-Objekten.
+*   **2D Animation**: öffnet eine Vorlage zum Erstellen von 2D-Animationen.
+*   **Sculpting**: Öffnet eine Vorlage, welche für das Sculpting von Objekten geeignet ist. Dabei werden Objekte anhand von Bürsten direkt in ihrer Form verändert.
+*   **VFX**: Öffnet eine Vorlage für die Erstellung visueller Effekte (VFX), beispielsweise in Videos.
+*   **Video Editing**: Öffnet eine Vorlage zum Bearbeiten von Videos.
 
 <div class="marginnote"> Fokus auf «General» </div>
 
-Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «General» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.
+Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «*General*» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.
 
 
 #Die verschiedenen Panels beim General-Projekt
@@ -59,10 +59,10 @@ Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils 
 
 Die verschiedenen Werkzeuge, welche Blender anbietet, sind innerhalb verschiedener Editore aufzufinden. Diese Editore werden als separate und austauschbare Panel-Areale in Blender dargestellt. Beim Start eines neuen Projekts (mit der Vorlage General) ist die Ansicht in vier Areale unterteilt:
 
-*   3D Viewport: überspannt von der oberen linken Ecke den grössten Teil des Bildschirms.
-*   Outliner: Befindet sich in der oberen, rechten Ecke.
-*   Properties: Befindet sich in der unteren, rechten Ecke.
-*   Timeline: Befindet sich links, am unteren Rand.
+*   **3D Viewport**: überspannt von der oberen linken Ecke den grössten Teil des Bildschirms.
+*   **Outliner**: Befindet sich in der oberen, rechten Ecke.
+*   **Properties**: Befindet sich in der unteren, rechten Ecke.
+*   **Timeline**: Befindet sich links, am unteren Rand.
 Gerade der 3D Viewport, der Outliner und die Properties sind für das Erstellen von 3D Objekten mit Blender von hoher Bedeutung. Die Timeline wird bei Animationen verwendet.
 
 ![Abbildung 2.2: Default-Aufteilung der Arbeitsbereiche](images/Chapter2/Default_Areas.jpg)
@@ -153,7 +153,7 @@ Unter den Preferences lassen sich die Einstellungen von Blender bearbeiten. Die 
 
 #Vorgefertigte Editor-Anordnungen
 Schnelle Auswahl von Editoren mittels Editor-Anordnungen
-In der Menü-Leiste sind für verschiedene Arbeitsschritte bei der 3D-Modellierung bereits vorgefertigte Ansichtsoptionen verfügbar. Durch einen Klick auf den Reiter «Texture Paint» wird beispielsweise eine Anordnung gezeigt, welche ideal dafür ist, um ein Objekt mit einer Textur zu bemalen. In diesem Falle wird beispielsweise nebst dem 3D Viewport auch der Image Editor geöffnet. Mittels der Registerkarte «+» können zudem weitere Editor-Anordnungen basierend auf einer Vorlage für die Schnellauswahl hinzugefügt werden.
+In der Menü-Leiste sind für verschiedene Arbeitsschritte bei der 3D-Modellierung bereits vorgefertigte Ansichtsoptionen verfügbar. Durch einen Klick auf den Reiter «*Texture Paint*» wird beispielsweise eine Anordnung gezeigt, welche ideal dafür ist, um ein Objekt mit einer Textur zu bemalen. In diesem Falle wird beispielsweise nebst dem 3D Viewport auch der Image Editor geöffnet. Mittels der Registerkarte «*+*» können zudem weitere Editor-Anordnungen basierend auf einer Vorlage für die Schnellauswahl hinzugefügt werden.
 
 # Neuanordnen der Editor-Areale
 Weitere Editor-Areale hinzufügen

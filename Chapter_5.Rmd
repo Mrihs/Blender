@@ -1,0 +1,229 @@
+---
+title: "5.	Erste Schritte"
+
+---
+
+
+```{css sidenote, echo = FALSE}
+.sidenote, .marginnote { 
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 57%;         # best between 50% and 60%
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  }
+```
+
+
+````{css caution,  echo=FALSE}
+caution {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #d2f8d2 5px center/3em no-repeat; 
+  background-image: urls("images/caution.png");
+}
+````
+
+````{css remember,  echo=FALSE}
+remember {
+  padding: 4em 4em 4em 4em;
+  margin-bottom: 10px;
+  border: 2px green;
+  border-radius: 10px;
+  background: #yellow 5px center/3em no-repeat; 
+}
+````
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Die Default-Szene
+
+<div class="marginnote"> Objekte in der Default-Szene </div>
+
+Beim Start eins neuen Projekts erscheint eine Default-Szene. Diese Szene beinhaltet bereits die wesentlichen Dinge, welche für eine 3D-Szene benötigt werden:
+
+*   **Würfel**: Genau in der Mitte der Szene befindet sich der Default-Cube. Bei diesem Würfel handelt es sich um ein 3D-Objekt. Er hat eine Grösse von 2x2x2 Metern.
+*   **Kamera**: Von der Kamera aus wird eine Szene bei der anschliessenden Verarbeitung der Szene (z.B. in einem gerenderten Bild oder einem Video) betrachtet. In der Default-Szene ist die Kamera auf den Würfel gerichtet.
+*   **Lichtquelle**: Die Lichtquelle wird dafür benötigt, dass der Würfel in der gerenderten Aufnahme beleuchtet wird. Ohne eine Lichtquelle sind die 3D-Objekte beim anschliessenden Rendern nicht sichtbar – es sei denn, sie stellen selbst eine Lichtquelle dar.
+
+
+::: {.caution  data-latex="{caution}"}
+Die Default-Szene kann manuell angepasst werden. Hierfür muss zunächst eine Default-Szene erstellt werden, welche bei jedem Start erscheinen soll. Diese kann dann unter «*File | Defaults | Save Startup File*» als neue Start-up-Szene gespeichert werden.
+:::
+
+# Auswahl von Objekten
+
+<div class="marginnote"> Auswahl und Abwahl mittels Mausklick </div>
+
+------ Hinweis ------
+
+Durch das Anklicken mittels der linken Maustaste können Objekte im 3D Viewport ausgewählt werden. Die ausgewählten Objekte sind anschliessend anhand einer farblichen Markierung erkennbar. Durch das Klicken in den leeren Raum des Viewport Display lassen sich die Objekte wieder abwählen. Zudem wird durch die Auswahl eines anderen Objektes, das vorher ausgewählte Objekt abgewählt.
+
+<div class="marginnote"> Mehrfachwahl mittels <kbd>Shift</kbd> </div>
+
+Um mehrere Objekte gleichzeitig auszuwählen, gibt es verschiedene Möglichkeiten. Eine Möglichkeit besteht darin, dass nacheinander Objekte bei gedrückter <kbd>Shift</kbd> Taste angeklickt werden und so zur Auswahl hinzugefügt werden. Durch die Auswahl von mehreren Objekten wird das zuletzt ausgewählt Objekt mit einer orangenen Farbe markiert und die vorherig ausgewählten Objekte mittels einer roten Farbe markiert.
+
+<div class="marginnote"> Aktives Objekt </div>
+
+Die Markierung mit einer orangen Farbe gibt jeweils an, dass es sich bei diesem Objekt um das **aktive Objekt** handelt. Diese Unterscheidung wird in späteren Kapiteln noch von Bedeutung sein, etwa wenn Merkmale vom aktiven Objekt auf andere Objekte übertragen werden sollen, oder wenn ein Objekt in Bezug zum aktiven Objekt verändert werden soll. Für den aktuellen Stand ist jedoch vor allem wichtig, wie die Objekte ausgewählt werden und hierfür macht die rote oder orange Markierung noch keinen Unterschied aus.
+
+<div class="marginnote"> Box-Selection mittels <kbd>B</kbd> </div>
+
+Alternativ kann auf den Box-Select-Modus zurückgegriffen werden. Dieser wird mit der Taste <kbd>B</kbd> aktiviert. Durch das gedrückt Halten der linken Maustaste lässt sich anschliessend ein Viereck über den Bildschirm ziehen. Alle Objekte, welche sich anschliessend innerhalb dieser Box befinden werden nach dem Loslassen der rechten Maustaste ausgewählt. Mittels der Taste <kbd>Esc</kbd> oder der rechten Maustaste lässt sich die Box-Selection abbrechen. 
+
+
+<div class="marginnote"> Circle-Selection mittels <kbd>C</kbd> </div>
+
+Alternativ können Objekte auch mit dem Circle-Select-Modus ausgewählt werden. Der Circle-Select-Modus wird mit der Taste <kbd>C</kbd> aktiviert. Während dem Circle-Select-Modus ist der Maus-Cursor von einem Kreis umgeben. Mithilfe des Mausrads kann die Grösse des Kreises kleiner einstellt werden. Durch einen Klick mit der linken Maustaste werden die Objekte, welche sich innerhalb dieses Kreises befinden, alle ausgewählt. Durch das Bewegen des Cursors bei gedrückter linken Maustaste können so eine Reihe weiterer Objekte ausgewählt werden. Der Circle-Select-Modus muss allerdings aktiv beendet werden, da ein weiterer Klick mit der linken Maustaste zu einer weiteren Auswahl von Objekten führt. Um den Circle-Select-Modus wieder zu verlassen kann die Taste <kbd>Enter</kbd>, <kbd>Esc</kbd> oder der rechten Maustaste gedrückt werden. Anschliessend sind alle Objekte, welche im Circle-Select-Modus angeklickt wurden, ausgewählt.
+
+<div class="marginnote"> Auswahl umkehren </div>
+
+Mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>I</kbd> ist es auch möglich die Auswahl umzukehren. Dadurch werden alle ausgewählten Objekte abgewählt und alle anderen Objekte ausgewählt. Wenn alle Objekte innerhalb einer Szene ausgewählt werden soll, kann die Taste <kbd>A</kbd> gedrückt werden. Dadurch werden auch Objekte, die möglicherweise ausserhalb des gerade sichtbaren Bereichs liegen, ausgewählt.
+
+<div class="marginnote"> Auswahl von Objekten im Outliner </div>
+
+Im Outliner auf der rechten Seite wird mittels einer blauen Markierung angezeigt, welches Objekt gerade ausgewählt ist. Zudem lassen sich auch hier Objekte auswählen, indem sie mittels der linken Maustaste angeklickt werden. Die Auswahl von mehreren Objekten kann analog wie im Viewport Display mittels dem gedrückt Halten der <kbd>Shift</kbd> gemacht werden oder durch eine Box-Auswahl mittels der Taste <kbd>B</kbd>. Auch hier können Alle Objekte mittels der Taste <kbd>A</kbd> gemeinsam ausgewählt werden. Der Circle-Select-Mode funktioniert allerdings nicht im Outliner.
+
+# Hinzufügen von Objekten
+
+Hinzufügen von Objekten mittels <kbd>Shift</kbd> + <kbd>A</kbd>
+
+Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>A</kbd> erscheint beim Mauszeiger das Menü-Feld «*Add*». Dabei handelt es sich um dasselbe Menü-Feld, welches auch unter dem Reiter «*Add*», in der linken oberen Ecke aufgerufen werden kann. Mithilfe dieses Menü-Felds können eine Reihe von verschiedenen Objekten im Viewport Display hinzugefügt werden. Dabei gibt es eine Reihe verschiedener Objektarten, welche hinzugefügt werden können. Beispielsweise kann unter «*Mesh | Cube*» ein Würfel in die Szene hinzugefügt werden. Ein neues Objekt wird jeweils an der Position des 3D-Cursors eingefügt.
+
+<div class="marginnote"> Position des neuen Objektes </div>
+
+Wenn ein neues Objekt hinzugefügt wird, wird dieses Objekt direkt angewählt und farblich markiert. Zudem erscheint in der unteren linken Ecke des Viewport Displays ein Kontext-Menü-Feld. Dieses Menü-Feld kann aufgeklappt werden und beinhaltet Einstellungen zum Objekt, welche noch spezifiziert werden können. Beim Hinzufügen eines Würfels besteht etwa die Möglichkeit, dass man dessen Grösse (Size), seine Position und seine Rotation entlang der X, Y und Z-Achse anpassen kann. Da das Objekt jeweils an der Stelle des 3D-Cursors erscheint, entspricht die Position des Objektes in diesem Menü jeweils auch der Position des 3D-Cursors.
+
+<div class="marginnote"> Kontext-Menü zum neuen Objekt
+ </div>
+
+Das Kontext-Menü, welches beim Hinzufügen von Objekten erscheint, ist nur temporär vorhanden. Sobald mit der linken Maustaste in einen Bereich ausserhalb des Kontext-Menüs geklickt wird verschwindet das Menü-Feld. Es gibt keine Möglichkeit dieses Menü-Feld zurückzuholen – es ist für immer für dieses Objekt verschwunden. Wenn das Menü nochmals benötigt werden sollte, muss das entsprechende Objekt erneut zur Szene hinzugefügt werden.
+
+::: {.remember  data-latex="{remember}"}
+# Merke...
+
+*   Kontext-Menü-Felder erscheinen in der linken unteren Ecke des Viewport Displays und sind nur temporär verfügbar. Nach einem Klick ausserhalb des Menü-Feldes verschwinden dieses Felder und können nicht mehr zurückgeholt werden
+
+:::
+
+ 
+# Löschen von Objekten
+
+<div class="marginnote"> Löschen von Objekten mittels <kbd>X</kbd> </div>
+
+Wenn ein Objekt gelöscht werden soll, muss dieses zunächst ausgewählt werden. Mittels der Taste <kbd>X</kbd> wird der Befehl für die Löschung des ausgewählten Objektes gegeben. Dieser muss anschliessend kurz bestätigt werden, entweder mit einem Mausklick auf das daraufhin bei der Maus erscheinende «*Delete*»-Feld oder mittels der Taste <kbd>Enter</kbd>. Alternativ kann auch die Taste <kbd>Delete</kbd> verwendet werden – hierbei wird das Objekt direkt gelöscht, ohne dass eine Bestätigung nötig ist.
+
+
+::: {.exercicebox  data-latex="{exercicebox}"}
+# Übung 2: Hinzufügen und Löschen
+## Übung 2.1 
+Löschen Sie alle Objekte aus der Szene
+
+## Übung 2.2 
+Erstellen Sie einen neuen Würfel mit der Grösse 1 und einer Rotation von 90°. Welche Achse sie hierfür wählen spielt keine Rolle.
+:::
+ 
+
+::: {.remember  data-latex="{remember}"}
+# Merke...
+
+*   Mittels <kbd>Shift</kbd> + <kbd>A</kbd> erscheint beim Mauszeiger das Menü zum Hinzufügen von Objekten
+*   Um Objekte zu löschen, müssen sie zunächst ausgewählt werden und können anschliessend mit der Taste kbd>X</kbd oder kbd>Delete</kbd gelöscht werden. 
+
+:::
+
+#Objekte vervielfältigen
+
+<div class="marginnote"> Methoden zur Vervielfältigung von Objekten </div>
+Ausgewählte Objekte können auf verschiedene Arten dupliziert werden. Jede diese Arten hat ihre eigenen Besonderheiten:
+
+*   Duplizieren des Objektes
+*   Verbundene Duplikate erstellen
+*   Einfügen einer Kopie des Objektes mittels Copy-Paste
+
+## Objekte duplizieren
+
+<div class="marginnote"> Duplikat eines Objektes erstellen mittels <kbd>Shift> + <kbd>D</kbd> </div>
+
+Die schnellste Methode, um Objekte zu duplizieren besteht darin, dass die entsprechenden Objekte, welche dupliziert werden sollen, ausgewählt werden und anschliessend mit der Taste <kbd>Shift</kbd> + <kbd>D</kbd> der Befehl zur Duplikation der Objekte erfolgt. Dadurch entsteht an der Position des originalen Objekts ein Duplikat, welches mit der Bewegung des Maus-Cursors im Raum bewegt werden kann. Durch einen Klick mit der linken Maustaste oder <kbd>Enter</kbd> wird das Objekt anschliessend platziert. Die Bewegung des duplizierten Objekts kann auch mittels <kbd>Esc</kbd> abgebrochen werden. Dadurch wird das Duplikat allerdings nicht gelöscht, sondern an derselben Position des Originals platziert.
+
+## Verbundene Duplikate erstellen
+
+<div class="marginnote"> Verbundene Duplikate erstellen mittels <kbd>Alt</kbd> + <kbd>D</kbd> </div>
+
+Nebst einem normalen Duplikat kann auch ein verbundenes Duplikat erstellt werden. Hierfür wird nach der Auswahl der zu duplizierenden Objekte die Tastenkombination Taste <kbd>Alt</kbd> + <kbd>D</kbd> gedrückt. Auch hier kann das Objekt mit der Maus im Raum bewegt und mittels der linken Maustaste oder <kbd>Enter</kbd> platziert werden. Wird nun in weiteren Arbeitsschritten entweder das originale oder das verbunden-duplizierte Objekt bearbeitet, führt dies dazu, dass dieselben Veränderungen gleichzeitig auch bei den verbunden-duplizierten Objekten durchgeführt werden.
+
+## Copy-Paste von Objekten
+
+<div class="marginnote"> Objekte mittels Copy-Paste vervielfältigen </div>
+
+Eine weitere Methode zur Vervielfältigung von Objekten besteht darin, dass die zu vervielfältigenden Objekte ausgewählt und mittels <kbd>Cmd</kbd> + <kbd>C</kbd> kopiert und anschliessend mittels <kbd>Cmd</kbd> + <kbd>V</kbd> wieder eingefügt werden. Im Gegensatz zur normalen und der verbundenen Duplizierung werden die eingefügten Objekte direkt platziert und müssen durch weitere Befehle verschoben werden. Zudem werden bei dieser Methode den eingefügten Objekten teils auch von Materialien eine Kopie eingefügt. Dadurch führt eine Bearbeitung des Materials des originalen Objekts nicht zu einer Veränderung des Materials des neu eingefügten Objekts. Allerdings kann man dem eingefügten Objekt auch wieder das originale Material zuweisen.
+
+# Verbinden von Objekten
+
+<div class="marginnote"> Join mittels <kbd>Cmd</kbd> + <kbd>J</kbd> </div>
+
+Mehrere Objekte lassen sich auch so verbinden, dass sie zu einem Objekt werden. Hierfür müssen die zu verbindenden Objekte markiert werden. Die Verbindung der Objekte erfolgt anschliessend mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>J</kbd>. Wichtig ist dabei, dass eines der markierten Objekte das aktive Objekt darstellt. Üblicherweise handelt es sich dabei um das zuletzt ausgewählte Objekt. Das aktive Objekt ist jeweils anhand einer orangen statt einer roten Markierung ersichtlich. Die anderen Objekte werden anschliessend zum aktiven Objekt hinzugefügt.
+
+# Verstecken von Objekten
+
+<div class="marginnote"> Verstecken von Objekten mittels <kbd>H</kbd> </div>
+
+Gerade wenn eine Szene sehr komplex ist, kann es vorkommen, dass sich die Objekte gegenseitig verdecken und die Bearbeitung etwas schwieriger wird. In diesem Falle gibt es die Möglichkeit Objekte in der Ansicht zu verstecken. Ausgewählte Objekte können mittels der Taste <kbd>H</kbd> versteckt werden. Im Outliner sind die Objekte nach wie vor noch angegeben, allerdings grau hinterlegt. Mittels der Tastenkombination <kbd>Alt</kbd> + <kbd>H</kbd> werden alle versteckten Objekte wieder angezeigt. Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>H</kbd> lassen sich zudem alle Objekte, ausser den ausgewählten Objekten, verstecken. Dadurch sind nur noch die markierten Objekte sichtbar. 
+
+<div class="marginnote"> Versteckte Objekte im Outliner aufdecken </div>
+
+Um einzelne Objekte wieder anzeigen zu lassen, kann im Outliner das geschlossene Auge neben dem entsprechenden Objekt angewählt werden. Analog kann auch ein geöffnetes Auge angewählt werden, um die Objekte zu verstecken. Das Verstecken von Objekten bezieht nur auf den Viewport Display. In einem finalen Render werden die Objekte trotzdem gerendert.
+
+
+::: {.caution  data-latex="{caution}"}
+Statt Objekte in einer Szene zu verstecken kann alternativ auch die lokale Ansicht mittels der Taste <kbd>/</kbd> auf diese Objekte angewendet werden. In dieser Ansicht werden alle anderen Objekte ausgeblendet. Um wieder in die normale Ansicht zu gelangen, muss erneut die Taste <kbd>/</kbd>  gedrückt werden.
+:::
+
+
+# Anordnen in Collections
+
+<div class="marginnote"> Collections </div>
+
+Im Outliner lassen sich die verschiedenen Objekte in Collections anordnen. Hierfür werden die Objekte jeweils in eine Collection hineingezogen. Anschliessend werden die Objekte innerhalb dieser Collection aufgelistet. Auch andere Collections können in eine Collection hineingezogen werden. Somit können mithilfe der Collections auch Ordnerstrukturen im Outliner erstellt werden. Dies ermöglicht es etwa, dass die Objekte innerhalb einer Collection als gemeinsame Gruppe für komplexere Vorhaben verwendet werden können – etwa für Partikel-Effekte.
+
+<div class="marginnote"> Hinzufügen und Deaktivieren von Collections
+ </div>
+
+Mithilfe der Schaltfläche oben rechts in der Ecke des Outliners können neue Collections hinzugefügt werden. Mittelt dem Kontrollkästchen neben einer Collection lassen sich die Objekte innerhalb einer Collection deaktivieren. Die entsprechenden Objekte werden anschliessend im Viewport nicht mehr angezeigt und auch beim Rendern nicht mehr berücksichtig.
+
+# Speichern
+
+<div class="marginnote"> Zwischen-Speichern mittels <kbd>Cmd</kbd> + <kbd>S</kbd> ist unabdingbar </div>
+
+Bisher wurden bereits einige Tastenkombinationen angesprochen. Die wichtigste Tastenkombination stellt allerdings die Kombination für das Abspeichern des aktuellen Projekts dar: <kbd>Cmd</kbd> + <kbd>S</kbd>. Zwischenspeichern ist bei der Arbeit mit Blender eine wichtige Empfehlung. Je nach Komplexität des Projektes kann es manchmal vorkommen, dass das Programm unerwartet abstürzt und die Fortschritte bis zum letzten Speicherpunkt verloren gehen. Aus diesem Grund empfiehlt es sich, das Projekt lieber einmal zu viel als einmal zu wenig abzuspeichern.
+
+<div class="marginnote"> Kopie speichern </div>
+
+Alternativ kann das Projekt auch unter «*File | Save*» abgespeichert werden. Nebst der Möglichkeit, dass ein Projekt unter indem neuen Namen gespeichert und fortgeführt wird («File | Save as», <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>S</kbd>) gibt es auch die Möglichkeit mittels «*File | Save Copy*» (<kbd>Cmd</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>) eine Backup-Version abzuspeichern und in dem originalen File weiterzuarbeiten.
+
+<div class="marginnote"> .blend-Files </div>
+
+Die Projekte werden jeweils in Blenders programmeigenem Format .blend abgespeichert. Diese Datei enthält anschliessend alle Objekte, Animationen und Einstellungen des Projektes. Das .blend-Dateiformat kann lediglich mittels Blender geöffnet werden. Wenn externe Dateien (beispielsweise Texturen, Soundeffekte oder Videos) im Projekt eingebunden werden, müssen diese ebenfalls mit dem Projekt weitergegeben werden. Es gibt jedoch die Möglichkeit unter «*File | External Data | Pack all into .blend*» alle diese externen Dateien in das .blend File einzuspeichern. Dadurch erhöht sich allerdings die Grösse des abgespeicherten Files.
+
+<div class="marginnote"> Exportieren </div>
+
+Um Programme auch für andere Projekte verfügbar zu machen, müssen sie in einem anderen Dateiformat ausgegeben werden. Unter «*File | Export*» steht eine Reihe von verschiedenen Dateiformaten zur Verfügung, welche von unterschiedlichen Programmen geöffnet werden können. Die meisten dieser Dateiformate kann Blender wiederum importieren und darstellen. 
+ 
+
+::: {.remember  data-latex="{remember}"}
+# Merke...
+
+*   Lieber einmal mehr mit der Kombination <kbd>Cmd</kbd> + <kbd>S</kbd> speichern als die Fortschritte zu verlieren. 
+
+:::
