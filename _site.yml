@@ -2,6 +2,7 @@ name: "Arbeiten mit Blender"
 output: 
   html_document: 
     theme: paper
+    css: styles.css
     toc: true
     toc_depth: 3
     toc_float: true
