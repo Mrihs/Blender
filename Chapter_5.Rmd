@@ -1,8 +1,6 @@
 ---
 title: "5.	Erste Schritte"
-
 ---
-
 
 ```{css sidenote, echo = FALSE}
 .sidenote, .marginnote { 
@@ -19,25 +17,43 @@ title: "5.	Erste Schritte"
   }
 ```
 
-
-````{css caution,  echo=FALSE}
-caution {
-  padding: 4em 4em 4em 4em;
+````{css info,  echo=FALSE}
+.info {
+  padding: 1.5em 1.5em 1.5em 10em;
   margin-bottom: 10px;
-  border: 2px green;
+  border: 2px #C5E0B4;
   border-radius: 10px;
-  background: #d2f8d2 5px center/3em no-repeat; 
-  background-image: urls("images/caution.png");
+  background: #A9D18E 5px center/3em no-repeat; 
+  background-image: url(images/icons/info.png);
+  background-size: 15%;
+  min-height: 150px;
 }
 ````
 
 ````{css remember,  echo=FALSE}
-remember {
-  padding: 4em 4em 4em 4em;
+.remember {
+  padding: 1.5em 1.5em 1.5em 10em;
   margin-bottom: 10px;
-  border: 2px green;
+  border: 2px #FFE699;
   border-radius: 10px;
-  background: #yellow 5px center/3em no-repeat; 
+  background: #FFD966 5px center/3em no-repeat;
+  background-image: url(images/icons/Remember.png);
+  background-size: 15%;
+  min-height: 150px;
+}
+````
+
+````{css exercise,  echo=FALSE}
+.exercise {
+  padding: 1.5em 1.5em 1.5em 1.5em;
+  margin-bottom: 10px;
+  border: 2px #9CC2E5;
+  border-radius: 10px;
+  background: #9CC2E5 5px center/3em no-repeat;
+  background-image: url(images/icons/exercise.png);
+  background-size: 15%;
+  background-position: right top; 
+  min-height: 150px;
 }
 ````
 
@@ -57,7 +73,7 @@ Beim Start eins neuen Projekts erscheint eine Default-Szene. Diese Szene beinhal
 *   **Lichtquelle**: Die Lichtquelle wird dafür benötigt, dass der Würfel in der gerenderten Aufnahme beleuchtet wird. Ohne eine Lichtquelle sind die 3D-Objekte beim anschliessenden Rendern nicht sichtbar – es sei denn, sie stellen selbst eine Lichtquelle dar.
 
 
-::: {.caution  data-latex="{caution}"}
+::: {.info  data-latex="{info}"}
 Die Default-Szene kann manuell angepasst werden. Hierfür muss zunächst eine Default-Szene erstellt werden, welche bei jedem Start erscheinen soll. Diese kann dann unter «*File | Defaults | Save Startup File*» als neue Start-up-Szene gespeichert werden.
 :::
 
@@ -124,7 +140,7 @@ Das Kontext-Menü, welches beim Hinzufügen von Objekten erscheint, ist nur temp
 Wenn ein Objekt gelöscht werden soll, muss dieses zunächst ausgewählt werden. Mittels der Taste <kbd>X</kbd> wird der Befehl für die Löschung des ausgewählten Objektes gegeben. Dieser muss anschliessend kurz bestätigt werden, entweder mit einem Mausklick auf das daraufhin bei der Maus erscheinende «*Delete*»-Feld oder mittels der Taste <kbd>Enter</kbd>. Alternativ kann auch die Taste <kbd>Delete</kbd> verwendet werden – hierbei wird das Objekt direkt gelöscht, ohne dass eine Bestätigung nötig ist.
 
 
-::: {.exercicebox  data-latex="{exercicebox}"}
+::: {.exercise  data-latex="{exercise}"}
 # Übung 2: Hinzufügen und Löschen
 ## Übung 2.1 
 Löschen Sie alle Objekte aus der Szene
@@ -186,7 +202,7 @@ Gerade wenn eine Szene sehr komplex ist, kann es vorkommen, dass sich die Objekt
 Um einzelne Objekte wieder anzeigen zu lassen, kann im Outliner das geschlossene Auge neben dem entsprechenden Objekt angewählt werden. Analog kann auch ein geöffnetes Auge angewählt werden, um die Objekte zu verstecken. Das Verstecken von Objekten bezieht nur auf den Viewport Display. In einem finalen Render werden die Objekte trotzdem gerendert.
 
 
-::: {.caution  data-latex="{caution}"}
+::: {.info  data-latex="{info}"}
 Statt Objekte in einer Szene zu verstecken kann alternativ auch die lokale Ansicht mittels der Taste <kbd>/</kbd> auf diese Objekte angewendet werden. In dieser Ansicht werden alle anderen Objekte ausgeblendet. Um wieder in die normale Ansicht zu gelangen, muss erneut die Taste <kbd>/</kbd>  gedrückt werden.
 :::
 
@@ -222,8 +238,7 @@ Um Programme auch für andere Projekte verfügbar zu machen, müssen sie in eine
  
 
 ::: {.remember  data-latex="{remember}"}
-# Merke...
+Merke...
 
 *   Lieber einmal mehr mit der Kombination <kbd>Cmd</kbd> + <kbd>S</kbd> speichern als die Fortschritte zu verlieren. 
-
 :::

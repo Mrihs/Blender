@@ -1,9 +1,6 @@
 ---
 title: "4.	Navigation der Ansicht im 3D Viewport"
-
 ---
-
-
 ```{css sidenote, echo = FALSE}
 .sidenote, .marginnote { 
   float: right;
@@ -19,19 +16,43 @@ title: "4.	Navigation der Ansicht im 3D Viewport"
   }
 ```
 
-
-````{css caution,  echo=FALSE}
-.infobox {
-  padding: 4em 4em 4em 4em;
+````{css info,  echo=FALSE}
+.info {
+  padding: 1.5em 1.5em 1.5em 10em;
   margin-bottom: 10px;
-  border: 2px green;
+  border: 2px #C5E0B4;
   border-radius: 10px;
-  background: #d2f8d2 5px center/3em no-repeat; 
-  background-image: urls("images/caution.png");
+  background: #A9D18E 5px center/3em no-repeat; 
+  background-image: url(images/icons/info.png);
+  background-size: 15%;
+  min-height: 150px;
 }
+````
 
-.caution {
-  background-image: "images/caution.png"
+````{css remember,  echo=FALSE}
+.remember {
+  padding: 1.5em 1.5em 1.5em 10em;
+  margin-bottom: 10px;
+  border: 2px #FFE699;
+  border-radius: 10px;
+  background: #FFD966 5px center/3em no-repeat;
+  background-image: url(images/icons/Remember.png);
+  background-size: 15%;
+  min-height: 150px;
+}
+````
+
+````{css exercise,  echo=FALSE}
+.exercise {
+  padding: 1.5em 1.5em 1.5em 1.5em;
+  margin-bottom: 10px;
+  border: 2px #9CC2E5;
+  border-radius: 10px;
+  background: #9CC2E5 5px center/3em no-repeat;
+  background-image: url(images/icons/exercise.png);
+  background-size: 15%;
+  background-position: right top; 
+  min-height: 150px;
 }
 ````
 
@@ -82,7 +103,8 @@ In komplexeren Szenen kann es sein, dass man etwas die Übersicht über die Obje
 Auf der rechten Seite des 3D Viewports lassen sich zudem Schaltflächen anzeigen, mit denen die Ansicht gesteuert werden kann. Um diese anzeigen zu lassen, müssen die Gizmos eingeschaltet sein. Wird die linke Mausaste auf das Kamera-Icon angewendet, wird die Kamera-Ansicht aktiviert. Das Icon darunter, welches ein Gitternetz darstellt, dient dem Wechsel zwischen perspektivischer und orthografischer Ansicht. Darüber Die beiden oberen Icons dienen dem Zoomen (mittels der Lupe) und dem Bewegen der Ansicht (Hand). Hierfür muss das Icon angeklickt werden und die Maus anschliessend bei weiterhin gedrückter Maustaste bewegt werden. Zuoberst findet sich zudem ein Koordinatensystem, mit dem die Perspektive per Mausklick verändert werden kann.
 
 
+::: {.remember  data-latex="{remember}"}
+# Merke...
 
-# Merke
-
-...!
+![](images/Chapter4/Numpad.png){width=50%}
+:::
