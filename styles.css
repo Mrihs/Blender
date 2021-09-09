@@ -7,11 +7,18 @@ body {
     font-size: 19px;
 }
 
+kbd {
+  background-color: white;
+  border: 1px outset #333;
+  color: black;
+  padding: 1px 3px;
+}
+
 .sidenote, .marginnote { 
   float: left;
   clear: left;
-  margin-left: -40%;
-  width: 35%;
+  margin-left: -20%;
+  width: 15%;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1.1rem;
@@ -38,7 +45,7 @@ body {
   border: 2px #FFE699;
   border-radius: 10px;
   background: #FFD966 5px center/3em no-repeat;
-    background-image: url(images/icons/Remember.png);
+    background-image: url(images/icons/remember.png);
   background-size: 15%;
   min-height: 150px;
 }
@@ -113,7 +120,17 @@ a.navbar-brand:hover {
 }
 
 
-   /* TOC links */
+/* TOC Position */
+  
+.tocify {
+  object-position: -7.5 ;
+  width: -20% !important;
+  margin-left: -7.5% !important;
+}
+
+
+
+ /* TOC links */
 
 .list-group-item {
     color: #FFFFFF;

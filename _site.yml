@@ -25,11 +25,11 @@ navbar:
       icon: fa-images
       menu: 
         - text: "Theme 1"
-          href: Folien/Materialien_ThemeV1.pdf
+          href: Folien/materialien_theme1.pdf
         - text: "Theme 2"
-          href: Folien/Materialien_ThemeV2.pdf            
+          href: Folien/materialien_theme2.pdf
         - text: "Theme 3"
-          href: Folien/Materialien_ThemeV3.pdf  
+          href: Folien/materialien_theme3.pdf
     - text: "Skript"
       icon: fa-glasses
       menu:
