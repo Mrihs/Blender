@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>12. Methoden der Objektbearbeitung im Edit-Mode</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/materialien_theme1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Einführung in die Arbeitsoberfläche von Blender</li>
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
+    <li>
+      <a href="Chapter_6.html">6. Objektarten</a>
+    </li>
+    <li>
+      <a href="Chapter_7.html">7.	Primitive Meshes</a>
+    </li>
+    <li>
+      <a href="Chapter_8.html">8.	Methoden der Objekt-Transformation</a>
+    </li>
+    <li>
+      <a href="Chapter_9.html">9.	Objekte im Viewport Display transformieren</a>
+    </li>
+    <li>
+      <a href="Chapter_10.html">10.	Object und Edit-Mode</a>
+    </li>
+    <li class="dropdown-header">Grundmechanismen der Objektbearbeitung</li>
+    <li>
+      <a href="Chapter_11.html">11.	Einstieg in den Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_12.html">12.	Methoden der Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_13.html">13.	Hilfestellungen für die Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_14.html">14.	Tutorial: Erstellen eines Glases</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">12. Methoden der Objektbearbeitung im Edit-Mode</h1>
+
+</div>
+
+
+<div id="fill" class="section level1">
+<h1>Fill</h1>
+<div class="marginnote">
+Elemente verbinden mittels F
+</div>
+<p>Wie bereits angesprochen können Elemente mittels der Taste D dupliziert werden und an einer anderen Stelle platziert werden. Diese neuen Elemente sind allerdings durch keine Edges und Faces mit der originalen Struktur verbunden. Hierfür kann der Befehl «Fill» benutzt werden, um Elemente zu verbinden. Mittels der Taste F lässt sich der Befehl «Fill» verwenden. Werden etwa zwei einzelne Vertices ausgewählt, werden diese mittels der Taste F durch ein Edge verbunden. Werden drei einzelne Vertices ausgewählt, werden diese nicht nur durch ein Edge verbunden, sondern zugleich auch mit einem Face.</p>
+</div>
+<div id="extrude" class="section level1">
+<h1>Extrude</h1>
+<div class="figure">
+<img src="images/Chapter12/extrude.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.1: Extrude-Icon</p>
+</div>
+<div class="marginnote">
+Extrudieren mittels E
+</div>
+<p>Wenn Elemente dupliziert werden, wird jeweils die Fill-Funktion verwendet, um sie wieder mit ihren ursprünglichen Elementen zu verwenden. Dies ist beschwerlich. Zudem muss auch darauf geachtet werden, dass allfällige innere Faces wieder entfernt werden. Deshalb wird selten mit dem Duplizieren gearbeitet, sondern mit der Funktion «Extrude». Diese Funktion ist in der Toolbar verfügbar, kann aber auch direkt mit der Taste E ausgewählt werden.</p>
+<div class="marginnote">
+Extrusion verbindet Elemente direkt
+</div>
+<p>Beim Extrudieren von Elementen werden diese Elemente nicht nur dupliziert, sondern auch automatisch mit den originalen Elementen verbunden. Wird beispielsweise bei der Auswahl eines Faces die Taste E gedrückt, wird dieses Face von der originalen Position gelöst und kann verschoben werden. Gleichzeitig ist es allerdings über weitere Faces noch mit den Vertices des originalen Faces verbunden. Beim Extrudieren werden also die ausgewählten Elemente aus dem Objekt herausgezogen, ohne die originalen Vertices zu löschen.</p>
+<div class="marginnote">
+Beim Extrudieren erzeugte Elemente
+</div>
+<p>Nebst Faces lassen sich auch Vertices und Edges extrudieren. Wenn ein einzelner Vertex extrudiert wird, generiert Blender automatisch ein Edge zwischen dem originalen Vertex und dem extrudierten Vertex. Wenn ein Edge extrudiert wird generiert Blender automatisch ein Face zwischen dem originalen Edge und dem neuen Edge. Wird ein Face extrudiert, werden automatisch Faces zwischen den originalen Vertices/Edges und den neuen Vertices/Edges erstellt.</p>
+<div class="marginnote">
+Extrudieren präzisieren
+</div>
+<p>Wie auch beim Duplizieren kann die Extrusion mittels der Tasten X, Y oder z auf einzelne Achsen beschränkt werden und mittels der Angabe von Zahlen angegeben werden, wie gross die Distanz zum originalen Median der Auswahl sein soll. Zudem kann das Extrudieren auch mittels der Taste S mit einer Skalierung verbunden werden.</p>
+<div class="marginnote">
+Faces werden per Default entlang Normalen extrudiert
+</div>
+<p>Beim Extrudieren von Faces erfolgt die Bearbeitung per Default entlang der Normalen des Faces. Dadurch wird automatisch entlang der Ausrichtung der Faces extrudiert. Dies ist bei Vertices und Edges nicht der Fall.</p>
+</div>
+<div id="übung-6-extrudieren" class="section level1 exercise">
+<h1>Übung 6: Extrudieren</h1>
+<div id="übung-6.1" class="section level2">
+<h2>Übung 6.1</h2>
+<p>Erstellen Sie folgende Objekte ausgehend von einem Würfel. <img src="images/Chapter12/exercise_extrude.png" style="width:50.0%" /></p>
+</div>
+</div>
+<div id="knife" class="section level1">
+<h1>Knife</h1>
+<div class="figure">
+<img src="images/Chapter12/knife.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.2: Knife-Icon</p>
+</div>
+<div class="marginnote">
+Schneiden
+</div>
+<p>Es ist möglich Faces und Edges mittels des Befehles «Knife» zu verschneiden. Dadurch resultieren neue Vertices innerhalb von Flächen und Kanten. Diese Operation lässt sich ebenfalls in der Toolbar auswählen. Allerdings ist es auch möglich mittels der Taste K diese Operation direkt auf der Tastatur anzuwählen.</p>
+<div class="marginnote">
+Ansicht im Schnitt-Modus
+</div>
+<p>Sobald das Knife-Werkzeug über die Toolbar oder die Taste K aktiviert wird, verwandelt sich der Maus-Cursor in ein Messer. Wird die Maus nun über das Objekt bewegt, wird mittels eines grünen Vierecks angezeigt, an welcher Stelle am Objekt gerade geschnitten werden kann. Befindet sich an dieser Stelle zudem ein Vertex wird dies durch eine rote Umrandung des grünen Vierecks signalisiert. Befindet sich das grüne Viereck an einem Edge, wird dieses Edge grün markiert.</p>
+<div class="marginnote">
+Schnitte setzen
+</div>
+<p>Um Schnitte zu platzieren, wird die † gedrückt. Die Schnittpositionen werden anhand eines Vierecks markiert und weitere Schnitte können ebenfalls mit der † an der entsprechenden Position gesetzt werden. Dabei werden automatisch die Edges zwischen den einzelnen Schnittpunkten erzeugt. Passieren Schnittpunkte ein Edge, wird an der Schnittstelle des Edges zudem automatisch ein Vertex erzeugt.</p>
+<div class="marginnote">
+Schnitte bestätigen oder abbrechen
+</div>
+<p>Mittels der Taste √ oder ¶ wird der Schneidevorgang bestätigt. Dadurch wird der Schneidmodus verlassen und die entsprechenden Vertices und Edges. Um den Schneideprozess abzubrechen kann die Ω oder € gedrückt werden.</p>
+</div>
+<div id="loop-cut" class="section level1">
+<h1>Loop Cut</h1>
+<div class="figure">
+<img src="images/Chapter12/loopcut.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.3: Loop-Cut-Icon</p>
+</div>
+<div class="marginnote">
+Prinzip des Loop Cuts
+</div>
+<p>Das Messer-Werkzeug ist nützlich, um kreativ und flexibel Schnitte zu erzeugen. Oftmals werden allerdings gerade Schnitte entlang einer ganzen Fläche benötigt, idealerweise auch gerade in der Mitte. Hierfür ist das Loop-Cut-Werkzeug geeignet. Nebst der exakten Mitte können auch andere Schnitteinheiten exakt berücksichtig werden, wie etwa beispielsweise, dass ein Bereich exakt nach einem Zehntel der Länge geschnitten werden soll.</p>
+<div class="marginnote">
+Loop Cut mittels ≈+R
+</div>
+<p>Das Loop Cut Tool kann entweder in der Toolbar oder mittels der Tastenkombination ≈+R aktiviert werden. Wird anschliessend über die Maus über die Oberfläche des Cursors gerichtet werden Vorschläge dargestellt, wie das Objekt gerade durchtrennt werden kann. Dabei werden Faces, die aneinander liegen als Reihe Loop berücksichtig, so dass sie durchtrennt werden können.</p>
+<div class="marginnote">
+Mehrere Schnitte im Loop Cut setzen
+</div>
+<p>Es können auch mehrere Schnitte entlang der Linie gemacht werden. Hierfür wird die Anzahl Schnitte als Zahl über die Tastatur eingegeben werden. So kann etwa der Standardwürfel entlang einer Flächenreihe in drei gleichgrosse Flächen unterteilt werden, indem die Taste 3 gedrückt wird und anschliessend die Zahl 2 eingegeben wird. Dadurch werden zwei Linien angezeigt, welche den Bereich in gleich grosse Teile unterteilt.</p>
+<div class="marginnote">
+Loop Cut bestätigen oder abbrechen
+</div>
+<p>Durch einen Klick mit der † oder ¶ wird bestätigt, dass das Objekt entlang der dargestellten Linie zerschnitten werden soll. Um den Schneideprozess abzubrechen kann Ω, ‘ oder € gedrückt werden.</p>
+<div class="marginnote">
+Loop Cut justieren
+</div>
+<p>Wenn die Auswahl der Linie bestätigt wird, kann anschliessend noch justiert werden, in welchem Bereich der Schnitt geschehen soll. Per Default liegt der Schnitt genau in der Mitte. Mittels einer Bewegung mit dem Mauscursor kann der Schnitt noch entlang des Loops verschoben werden. Alternativ kann auch mittels einer Zahleneingabe über die Tastatur definiert werden, in welchem Bereich der Schnitt erfolgen soll. Mit einem Wert von 0.5 wird ein einzelner Schnitt dadurch etwa im prozentual um die Hälfte, in die gegen die eine Richtung verschoben, mit einem Wert von -0.5 wird der Schnitt prozentual in die Hälfte in die andere Richtung verschoben. Durch einen Klick mit der † oder ¶ wird die Linie bestätigt und die Schnitte werden gesetzt. Durch das Drücken der ‘ oder € wird der Schnitt in der Mitte des Loops vollzogen.</p>
+<div class="info">
+<p>Der Loop-Cut kann auch auf Edges angewendet werden, die noch nicht Teil eines Faces sind. Dabei wird das Edge genau in der Mitte durch einen Vertex in zwei Edges unterteilt</p>
+</div>
+</div>
+<div id="edge-slide" class="section level1">
+<h1>Edge Slide</h1>
+<div class="figure">
+<img src="images/Chapter12/edgeslide.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.4: Edge-Slide-Icon</p>
+</div>
+<div class="marginnote">
+Edge Slide
+</div>
+<p>Der Loop Cut beinhaltet eigentlich zwei Prozesse: Die Festlegung eines Schnittes innerhalb eines Loops und zusätzlich die Festlegung in welchem Bereich des Face-Loops der Cut erfolgen soll. Letzterer Prozess kann bei der Auswahl eines Loops an Edges direkt erfolgen. Dieser Prozess wird als Edge Slide bezeichnet und kann in der Toolbar aktiviert werden.</p>
+<p>#Subdivide</p>
+<div class="marginnote">
+Unterteilung mittels Loop Cut
+</div>
+<p>Dank des Loop-Cuts ist es möglich, dass der Standardwürfel in gleich grosse Unterwürfel unterteilt wird. Hierfür muss lediglich auf alle drei Loops des Würfels ein Cut angewendet werden. Anschliessend ist jede Seite des Würfels in vier Faces unterteilt.</p>
+<div class="marginnote">
+Subdivision um Objekte zu unterteilen
+</div>
+<p>Statt alle drei Loop Cuts einzeln machen zu müssen kann der Würfel auch unterteilt werden mittels des Befehles «Subdivide». Dieser ist über das Menü «Edge | Subdivide» verfügbar. Anschliessend werden alle ausgewählten Faces entlang zweier Achsen unterteilt, so dass sie aus vier einzelnen Faces bestehen. Im Kontext-Menü zur letzten durchgeführten Aktion kann zudem die Anzahl Unterteilungen erhöht werden.</p>
+</div>
+<div id="bevel" class="section level1">
+<h1>Bevel</h1>
+<div class="figure">
+<img src="images/Chapter12/bevel.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.5: Bevel-Icon</p>
+</div>
+<div class="marginnote">
+Abrunden mittels B
+</div>
+<p>Mithilfe der Bevel-Transformation können Kanten abgerundet werden. Hierfür wird das entsprechende Edge durch mehrere Edges ersetzt, so dass eine Abrundung der Kante erfolgen kann. Der Befehl für das Abschrägen kann über die Toolbar erfolgen oder mittels der Taste B.</p>
+<div class="marginnote">
+Abrundung durchführen
+</div>
+<p>Um eine Kante abrunden zu können muss das entsprechende Edge zunächst ausgewählt werden. Nach der Auswahl kann die Bearbeitung mit der Taste B gestartet werden. Dadurch erscheint am Maus-Cursor ein Faden, welcher zum Median der Auswahl führt. Durch das Entfernen des Mauscursors vom Median weg werden die ausgewählten Edges in je zwei Edge aufgeteilt, die sich von den originalen Edges wegentfernen und dabei eine Abrundung bilden. Durch einen Klick mit der † oder ¶ wird die Abrundung zu einer bestimmten Position bestätigt. Durch das Drücken der Ω, ‘ oder € wird der Vorgang abgebrochen.</p>
+<div class="marginnote">
+Abrundung verfeinern
+</div>
+<p>Im Kontext-Menü zur letzten durchgeführten Aktion sind jeweils weitere Optionen zur Transformation möglich. So können die Anzahl Segmente, mit der die Abrundung erfolgt noch erhöht werden. Je mehr Segmente, desto glatter wirkt die Abrundung. Zudem kann auch noch die Form anhand des Faktors für den «Shape» bearbeitet werden. Je näher dieser Faktor gegen 0 strebt, desto mehr erfolgt die Abrundung zum Inneren des Objektes, und je näher der Faktor gegen 1 strebt, desto mehr erfolgt die Abrundung zum Äusseren des Objektes.</p>
+<div class="marginnote">
+Vertices abrunden
+</div>
+<p>Die Bevel-Transformation kann sowohl für Edges als auch für Vertices angewendet werden. Wenn etwa ein Objekt lediglich aus einer Fläche besteht und die Ecken dieser Fläche bearbeitet werden, wird die Bevel-Transformation auf die Vertices in den Ecken angewendet. In diesem Falle muss im Kontext-Menü zur letzten durchgeführten Aktion eingestellt werden, dass die Vertices bearbeitet werden anstelle der Edges. Hierfür wird unter der Zeile «Affect» Vertices ausgewählt. Bei der Bearbeitung von Kanten zwischen mehreren Faces werden jeweils die Edges der Bevel-Transformation unterzogen, so dass die Zeile «Affect» auf Edges gestellt werden muss.</p>
+</div>
+<div id="inset-faces" class="section level1">
+<h1>Inset Faces</h1>
+<div class="figure">
+<img src="images/Chapter12/inset.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.6: Inset Faces-Icon</p>
+</div>
+<div class="marginnote">
+Intrusion mittels I
+</div>
+<p>Die Transformation Inset Faces stellt einen Spezialfall der Extrusion dar. Dabei wird eine Fläche unterteilt in zusätzliche Flächen darin. Wie auch bei der Extrusion werden dabei neue Vertices erstellt, welche direkt an den originalen Vertices andocken. Unterschiedlich ist allerdings, dass die neuen Vertices einen Teil der originalen Faces darstellen und somit deren Position innerhalb dieser Faces liegen muss. Die Bearbeitung mittels Inset Faces kann entweder über die Toolbar oder mittels der Taste I erfolgen.</p>
+<div class="marginnote">
+Intrusion durchführen
+</div>
+<p>Um die Bearbeitung zu starten, muss mindestens ein Face ausgewählt werden und anschliessend die Taste I gedrückt werden. Wie auch beim Skalieren von Elementen ist der Mauscursors nun mittels eines Fadens zum Median der Auswahl verbunden. Wenn die Maus nun näher zum Median hin bewegt wird, erscheinen zusätzliche Faces innerhalb der Auswahl, die jeweils kleiner werden, je näher der Cursor dem Median kommt.</p>
+<div class="marginnote">
+Dicke der Intrusion
+</div>
+<p>Die Intrusion wird anhand der Dicke der neu erstellten Faces beschrieben. Wird beispielsweise nach dem Drücken der Taste I die Taste 1 gedrückt, sind die neuen Faces jeweils um einen Meter von ihren alten Faces entfernt. Durch zu hohe Zahlen kann dies dazu führen, dass sich die Faces in sich kreuzen.</p>
+<div class="marginnote">
+Individuelle Intrusion
+</div>
+<p>Die Funktion Inset Faces kann zudem auch auf die Faces individuell angewendet werden. Im Normallfall werden zwei nebeneinander ausgewählte Faces gemeinsam bearbeitet. Es ist jedoch auch möglich die Faces individuell anzusteuern, so dass die ausgewählten Faces individuell bearbeitet werden. Hierfür muss im Kontext-Menü zur letzten durchgeführten Aktion die Option «Individual» angewählt werden.</p>
+</div>
+<div id="spin" class="section level1">
+<h1>Spin</h1>
+<div class="figure">
+<img src="images/Chapter12/spin.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.7: Spin-Icon</p>
+</div>
+<div class="marginnote">
+Spin
+</div>
+<p>Mittels Spin können einzelne oder mehrere Vertices in einer kreisförmigen Anordnung extrudiert werden. Wenn diese Transformation ausgewählt ist, erscheint in der Nähe des 3D-Cursors ein Gizmo, welches eine abgerundete Linie, mit einem Plus-Symbol an beiden Enden. Falls dieses Gizmo nicht angezeigt wird, sollte überprüft werden, ob die Darstellung der Gizmos im 3D-Viewport aktiviert ist.</p>
+<div class="marginnote">
+Spin durchführen
+</div>
+<p>Um Vertices nun kreisförmig zu extrudieren, müssen Sie zunächst ausgewählt werden. Anschliessend kann an einem der beiden Pluszeichen gezogen werden und das Vertices wird kreisförmig um den 3D-Cursor herum extrudiert. Dabei werden per Default 12 Vertices erstellt – unabhängig davon, wie weit im Kreis extrudiert wird.</p>
+<div class="marginnote">
+Spin verfeinern
+</div>
+<p>Im Kontext-Menü zur letzten durchgeführten Aktion kann die Aktion noch bearbeitet werden, so dass etwa die Anzahl extrudierter Vertices unter «Steps» verändert werden kann. Je mehr Vertices extrudiert werden, desto glatter wirkt der Kreis. Unter «Angle» kann mittels einer Winkelangabe eingestellt werden, wie weit herum die Extrusion erfolgen soll. Wenn die Zeile «Auto Merge» aktiviert ist, werden Vertices an derselben Position – beispielsweise die Vertices am Start und Ende einer 360° Umdrehung – zu einem Vertex kombiniert.</p>
+</div>
+<div id="merge" class="section level1">
+<h1>Merge</h1>
+<div class="marginnote">
+Verbinden mittels M
+</div>
+<p>In den bisherigen Transformationen wurden jeweils neue Vertice, Edges oder Faces hinzugefügt. Manchmal kommt es vor, dass einige Elemente wieder entfernt werden müssen, oder dass sie an einer Stelle verbunden werden müssen. Hierfür kann der Befehl «Merge» verwendet werden. Dieser lässt sich mittels der Taste M innerhalb eines Kontextmenüs bei der Maus auswählen.</p>
+<div class="marginnote">
+Elemente im Median verbinden
+</div>
+<p>Wenn beispielsweise zwei Vertices ausgewählt werden und die Taste M gedrückt wird, können die Vertices durch «At Center» beim Median zwischen den beiden Vertices verbunden werden. Dabei werden die beiden Vertices zusammengeführt zu einem Vertex, welches alle Edges und Faces der originalen Vertices aufnimmt. Das Mergen kann zudem mit beliebig vielen Vertices vollzogen werden. Bei der Auswahl von Edges und Faces werden dabei die beteiligten Vertices zur Zusammenführung verwendet.</p>
+<div class="marginnote">
+Andere Verbindungs-Punkte
+</div>
+<p>Nebst dem Medianpunkt der Vertices können auch folgende Positionen zur Zusammenführung ausgewählt werden:</p>
+<ul>
+<li><strong>At Cursor</strong>: Die Vertices werden an der Position des 3D-Cursors zusammengeführt.</li>
+<li><strong>At First</strong>: Die Vertices werden beim Vertex, welcher als erstes ausgewählt wurde, zusammengeführt.</li>
+<li><strong>At Last</strong>: Die Vertices werden beim Vertex, welcher als letztes ausgewählt wurde, zusammengeführt.</li>
+<li><strong>Collapse</strong>: Wenn mehrere Edges ausgewählt werden, die nicht miteinander verbunden sind, werden die Vertices jeweils in der Mitte des jeweiligen Edges zusammengeführt. Das Zusammenführen erfolgt also hierbei einzeln für jedes Edge in dessen Mitte (bei den anderen Optionen werden alle Vertices an demselben Punkt zusammengeführt).</li>
+</ul>
+<div class="marginnote">
+Merge by Distance
+</div>
+<p>Eine besondere Rolle kommt der Funktion «Merge by Distance» zu. Dabei werden alle Vertices zusammen verbunden, deren Distanz geringer als die vorgegebene Distanz ist. Im Kontext-Menü zur letzten Aktion lässt sich die Distanz, unterhalb derer alle Vertices verbunden werden sollen anpassen. In der Die Funktion wird allerdings nur auf die ausgewählten Vertices angewendet. In der Fussleiste von Blender wird temporär angegeben, wie viele Vertices bei dieser Aktion aufgelöst werden.</p>
+<div class="marginnote">
+Merge erfolgt nur auf Auswahl
+</div>
+<p>Diese Methode ist besonders geeignet um allfällige Vertices, welche an derselben Position wie andere Vertices liegen zu eliminieren oder zu verbinden. Da die Aktion allerdings nur auf ausgewählte Vertices angewendet wird, empfiehlt es sich vorgängig alle Vertices direkt mit der Taste A auszuwählen.</p>
+</div>
+<div id="weitere-operationen-in-der-toolbar" class="section level1">
+<h1>Weitere Operationen in der Toolbar</h1>
+<p>Nebst den bisher behandelten Operationen zur Objektbearbeitung im Edit-Mode bietet die Toolbar noch eine Reihe weiterer Optionen, welche der Vollständigkeit halber noch kurz aufgeführt werden.</p>
+<div id="add-cube" class="section level2">
+<h2>Add Cube</h2>
+<div class="figure">
+<img src="images/Chapter12/addcube.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.8: Add Cube-Icon</p>
+</div>
+<div class="marginnote">
+Würfel hinzufügen
+</div>
+<p>Mittels des Befehles «Add Cube» kann ein neuer Würfel erstellt werden. Um den Mauscursor erscheint dabei ein Gitternetz, um zu signalisieren, wo der Würfel erstellt wird. Anschliessend kann mittels gedrückter † der Grundriss des Würfels erstellt werden. Nachdem † die losgelassen wurde lässt sich anschliessend noch die Höhe des Würfels einstellen, welche anschliessend mit † bestätigt werden muss. Mit € oder Ω lässt sich der Vorgang abbrechen. Die neu erstellten Würfel werden im Edit Mode zu Bestandteilen des Objekts, welches gerade bearbeitet werden. Der Befehl «Add Cube» steht allerdings auch im Object-Mode zur Verfügung. Werden dort neue Würfel erstellt bilden diese jeweils eigenständige Objekte.</p>
+</div>
+<div id="smooth" class="section level2">
+<h2>Smooth</h2>
+<div class="figure">
+<img src="images/Chapter12/smooth.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.9: Smooth-Icon</p>
+</div>
+<div class="marginnote">
+Objekte glätten
+</div>
+<p>Mittels dem Befehl Smooth können Objekte glatter gemacht werde. Dies geschieht, indem die Winkel der Edges gemittelt werden. Statt eines 90° Winkels entsteht dann ein geringerer Winkel.</p>
+</div>
+<div id="shrinkfatten" class="section level2">
+<h2>Shrink/Fatten</h2>
+<div class="figure">
+<img src="images/Chapter12/shrinkenfatten.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.10: Shrink/Fatten-Icon</p>
+</div>
+<div class="marginnote">
+Objekte zusammenziehen oder aufblähen
+</div>
+<p>Beim Befehl «Shrink/Fatten» werden die ausgewählten Vertices entlang ihrer eigenen Normalen bewegt. Dadurch kann das Objekt aufgebläht oder zusammengezogen werden. Dies ist beispielsweise nützlich, wenn der Mantel eines Zylinders ausgewählt und sein Radius vergrössert werden soll, ohne dessen Höhe zu verändern.</p>
+</div>
+<div id="shear" class="section level2">
+<h2>Shear</h2>
+<div class="figure">
+<img src="images/Chapter12/shear.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.11: Shear-Icon</p>
+</div>
+<div class="marginnote">
+Objekte auseinanderziehen
+</div>
+<p>Mittels der Shear-Transformation werden die ausgewählten Punkte in einer Achse auseinandergezogen. Die Transformation geschieht dabei so, dass parallel verlaufende Linien geschert werden und praktisch nebeneinander vorbeiziehen.</p>
+</div>
+<div id="rip-region" class="section level2">
+<h2>Rip Region</h2>
+<div class="figure">
+<img src="images/Chapter12/ripregion.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.12: Rip Region Icon</p>
+</div>
+<div class="marginnote">
+Regionen aufteilen
+</div>
+<p>Mittels des Befehls “Rip Region” können Vertice, welche an mehreren Faces andocken aufgeteilt werden. Die Faces werden dabei an der Stelle der entsprechenden Vertices getrennt und werden durch Vertice, welche sozusagen von den originalen Vertices abgezogen werden, neu gebildet.</p>
+</div>
+<div id="poly-build" class="section level2">
+<h2>Poly Build</h2>
+<div class="figure">
+<img src="images/Chapter12/polybuild.jpeg" style="width:15.0%" alt="" />
+<p class="caption">Abbildung 12.13: Poly Build-Icon</p>
+</div>
+<div class="marginnote">
+Poly Build Modus
+</div>
+<p>Beim Poly Build handelt es sich um einen interaktiven Modus um Geometrien zu erweitern. Dabei schlägt Blender bei gedrückter ≈ Taste vor, wie neue Elemente erstellt werden können und durch einen Klick mittels † wird die Erstellung bestätigt. Mittels der Kombination ƒ+† können Vertices gelöscht werden und mittels der † bewegt werden.</p>
+</div>
+</div>
+<div id="übung-7-objektbearbeitung" class="section level1 exercise">
+<h1>Übung 7: Objektbearbeitung</h1>
+<div id="übung-7.1" class="section level2">
+<h2>Übung 7.1</h2>
+<p>Verändern Sie den Standardwürfel im Edit-Mode so, dass er die Form eines Hauses hat. <img src="images/Chapter12/haus.png" style="width:15.0%" /></p>
+</div>
+<div id="übung-7.2-leistungsnachweis-2" class="section level2">
+<h2>Übung 7.2 Leistungsnachweis 2</h2>
+<p>Erstellen Sie eine Vase. Die Vase sollte rund sein und eine Öffnung haben – ansonsten sind Sie frei in Ihrer Gestaltung. Achten Sie zudem darauf, dass Sie unterschiedliche Faces für den Innenbereich der Vase, als auch für den Aussenbereich der Vase verwenden, so dass die Vase ein gewisse Dicke besitzt. <img src="images/Chapter12/vase.png" style="width:15.0%" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

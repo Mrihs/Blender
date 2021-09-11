@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>10. Object und Edit-Mode</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/materialien_theme1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Einführung in die Arbeitsoberfläche von Blender</li>
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
+    <li>
+      <a href="Chapter_6.html">6. Objektarten</a>
+    </li>
+    <li>
+      <a href="Chapter_7.html">7.	Primitive Meshes</a>
+    </li>
+    <li>
+      <a href="Chapter_8.html">8.	Methoden der Objekt-Transformation</a>
+    </li>
+    <li>
+      <a href="Chapter_9.html">9.	Objekte im Viewport Display transformieren</a>
+    </li>
+    <li>
+      <a href="Chapter_10.html">10.	Object und Edit-Mode</a>
+    </li>
+    <li class="dropdown-header">Grundmechanismen der Objektbearbeitung</li>
+    <li>
+      <a href="Chapter_11.html">11.	Einstieg in den Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_12.html">12.	Methoden der Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_13.html">13.	Hilfestellungen für die Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_14.html">14.	Tutorial: Erstellen eines Glases</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">10. Object und Edit-Mode</h1>
+
+</div>
+
+
+<div id="die-verschiedenen-bearbeitungs-modi" class="section level1">
+<h1>Die verschiedenen Bearbeitungs-Modi</h1>
+<div class="marginnote">
+Object-Mode
+</div>
+<p>Die bisherigen Transformationen, die an Objekten gemacht wurden, haben sich immer auf den Object-Modus bezogen. Dabei wurden grundlegende Eigenschaften von Objekten (Position, Rotation und Skalierung) verändert. Die Form des Objektes selbst wurde dabei nicht verändert, sondern lediglich seine Darstellungsweise. Indem wir die Werte im Sideview wieder alle auf die Ursprungswerte zurücksetzen, erhalten wir das Objekt wieder in seiner originalen Form. Wir können die Werte aber auch wieder eingeben und so beliebige Transformationen machen, welche einfach nachzuvollziehen sind. Durch die bisherigen Transformationen haben wird allerdings nur das Objekt als Ganzes bearbeitet. Dies zeichnet die Transformationen im Object-Modus aus. Nebst dem Object-Mode gibt es noch eine Reihe anderer Modi. In der oberen linken Ecke des Viewports ist jeweils ersichtlich, in welchem Modus man sich befindet. Durch einen Klick auf das Drop-Down-Feld erscheint eine Liste der verfügbaren Modi:</p>
+<div class="marginnote">
+Die verschiedenen Bearbeitungs-Modi
+</div>
+<ul>
+<li><strong>Object-Mode</strong>: In diesem Modus können die Objekte in einer Szene als Ganzes transformiert und angeordnet werden.</li>
+<li><strong>Edit Mode</strong>: In diesem Modus können die einzelnen Bestandteile des Objekts anvisiert und bearbeitet werden.</li>
+<li><strong>Sculpt Mode</strong>: In diesem Modus kann das Objekt anhand von Sculpting-Tools bearbeitet werden.</li>
+<li><strong>Vertex Paint</strong>: In diesem Modus werden einzelne Punkte des Objekts (sogenannte Vertice) angesteuert und mit Attributen versehen.</li>
+<li><strong>Weight Paint</strong>: In diesem Modus wird dem Objekt verschiedene Gewichte aufgemalt, so dass anschliessend verschiedene Bestandteile des Objekts unterschiedliche Funktionen erfüllen.</li>
+<li><strong>Texture Paint</strong>: In diesem Modus ist es möglich ein Objekt mit einer Textur zu bemalen.</li>
+</ul>
+<div class="marginnote">
+Wechsel zwischen Object- und Edit-Mode
+</div>
+<p>Im Rahmen dieses Kurses wird vor allem mit dem Object- und dem Edit-Mode gearbeitet. Der Wechsel zwischen diesen beiden Modi stellt allerdings generell einen wichtigen Modi-Wechsel dar. Deshalb ist es auch möglich mittels einer einzigen Taste zwischen diesen beiden Modi hin und her zu wechseln – nämlich mittels der Taste œ. Dabei wird in den Edit-Mode für das aktuell ausgewählte Objekt gewechselt. Für Objekte, welche nicht aus einzelnen Komponenten bestehen (beispielsweise Kameras oder Lichtquellen) ist kein Edit-Mode verfügbar.</p>
+<div id="info" class="section level4">
+<h4>INFO</h4>
+<p>Das Zurücksetzen der Transformationen kann direkt mittels folgenden Shortcuts erfolgen: Zurücksetzen der Position: <kbd>Alt</kbd> + <kbd>G</kbd> Zurücksetzen der Rotation: <kbd>Alt</kbd> + <kbd>R</kbd> Zurücksetzen der Skalierung: <kbd>Alt</kbd> + <kbd>S</kbd></p>
+</div>
+</div>
+<div id="struktur-von-3d-meshes" class="section level1">
+<h1>Struktur von 3D-Meshes</h1>
+<div class="marginnote">
+Der Gitteraufbau von 3D-Meshes
+</div>
+<p>Beim Wechseln in den Edit-Mode erscheint das Modell in seiner Struktur bestehend aus mehreren Polygonen. Die Polygone - und somit auch das Modell - besteht in seiner grundlegenden Struktur aus folgenden Elementen:</p>
+<ul>
+<li>Vertice: Einzelne Punkte in einem Mesh</li>
+<li>Edges: Linien zwischen zwei Vertices in einem Mesh</li>
+<li>Faces: Flächen zwischen mehreren Edges/Vertices in einem Mesh</li>
+</ul>
+<div class="figure">
+<img src="images/Chapter10/structure.png" style="width:25.0%" alt="" />
+<p class="caption">Abbildung 1: Vertices, Edges und Faces</p>
+</div>
+<div id="abbildung-6" class="section level4">
+<h4>ABBILDUNG 6</h4>
+<div class="marginnote">
+Select-Modus wechseln
+</div>
+<p>Im Edit-Mode kann jeweils eines der drei Elemente ausgewählt werden, je nachdem in welchem Select-Modus man sich befindet. Die drei Select-Modi sind in der linken oberen Ecke, direkt neben dem Auswahlfeld für den Bearbeitungs-Modi (in dem Falle der Edit-Mode) aufzufinden.</p>
+<div class="figure">
+<img src="images/Chapter10/select_icons.png" style="width:25.0%" alt="" />
+<p class="caption">Abbildung 2: Buttons für den Vertice- Edge- und Face-Select-Modus in der linken oberen Ecke des Edit-Modus.</p>
+</div>
+</div>
+<div id="vertices" class="section level2">
+<h2>Vertices</h2>
+<div class="marginnote">
+Vertices
+</div>
+<p>Ein Vertex (Mehrzahl: Vertice) stellt die grundlegendste Einheit in einem Mesh dar. Jeder Vertex beschreibt einen Punkt in einem Mesh dar. Anders als die Objekte selbst, beinhalten Vertices nur das Merkmal Position. Die Merkmale Skalierung und Rotation gibt es für Vertices nicht. Ein Vertex hat deshalb auch keine Dimensionen.</p>
+<div class="marginnote">
+Auswahl von Vertices
+</div>
+<p>Werden zwei miteinander verbundene Vertices ausgewählt, so wird automatisch auch das dazwischen liegende Edge ausgewählt. Ebenso wird automatisch das dazugehörige Face mit ausgewählt, wenn alle Vertices dieses Faces ausgewählt werden. Ein einzelner Vertex kann allerdings nur im Vertex-Select-Mode angewählt werden.</p>
+</div>
+<div id="edges" class="section level2">
+<h2>Edges</h2>
+<div class="marginnote">
+Edges
+</div>
+<p>Edges beschreiben Linien, welche zwischen zwei Vertices liegen. Da ein Edge genau der Verbindung zwischen zwei Vertices entspricht ist dessen Mittelpunkt identisch zur Mitte zwischen den beiden Vertices.</p>
+<div class="marginnote">
+Auswahl von Edges
+</div>
+<p>Im Edge-Select-Modus können die Edges als solche ausgewählt werden. Dabei werden automatisch auch die beiden zum Edge dazugehörigen Vertices ausgewählt. Wenn alle Edges eines Faces ausgewählt werden, dann wird automatisch auch das dazugehörige Face ausgewählt.</p>
+</div>
+<div id="faces" class="section level2">
+<h2>Faces</h2>
+<div class="marginnote">
+Faces
+</div>
+<p>Faces stellen die Fläche zwischen verbundenen Edges/Vertices dar. Die Position des Faces entspricht dem Mittelpunkt dieser Fläche und somit dem Mittelpunkt der dazugehörigen Vertice. Mittels dem Face-Select-Modus können Faces direkt angewählt werden. Alternativ kann ein Face auch angewählt werden, indem im Vertex-Select-Modus alle zum Face dazugehörigen Vertices ausgewählt werden, oder indem im Edge-Select-Modus alle zum Face dazugehörigen Vertices ausgewählt werden.</p>
+</div>
+</div>
+<div id="anzahl-vertices-in-einem-face" class="section level1">
+<h1>Anzahl Vertices in einem Face</h1>
+<div class="marginnote">
+Anzahl Vertices in einem Face
+</div>
+<p>Der Default-Cube, den Blender jeweils beim Start eines neuen Projektes zur Verfügung stellt besteht aus 6 Faces. Jedes dieser Faces beinhaltet vier Vertices. Es ist allerdings auch möglich, dass ein Face aus mehr oder weniger Vertices besteht. Es gibt verschiedene Begriffe, basierend auf der Anzahl Vertices in einem Face:</p>
+<div class="marginnote">
+Bezeichnung von Faces aufgrund Anzahl Vertices
+</div>
+<ul>
+<li>Triangles (Tris): bestehen aus drei Vertices</li>
+<li>Quadrangles (Quads): Bestehen aus vier Vertices</li>
+<li>N-Gons: Bestehen aus n Vertices</li>
+</ul>
+<div class="info">
+<p>Polygone und Faces sind in ihrer Bedeutung praktisch deckungsgleich. In der genaueren Betrachtung beschreiben die Faces allerdings spezifischer die Flächen als solche, während die Polygone eher die Gesamtheit von Faces, Edges und Vertices beschreiben.</p>
+</div>
+<div class="marginnote">
+Tris aus Quads ableiten
+</div>
+<p>Aus Quads lassen sich sehr einfach Tris bilden. Hierfür muss lediglich jedes Quad zwischen zwei gegenüberliegenden Vertices zerschnitten werden. Somit wird also jede Fläche in zwei Dreiecke unterteil. Beim Rendern von Bildern anhand der Objekte werden Quads sogar automatisch in Tris unterteilt. Im Normalfall ist dies für den Benutzer allerdings kaum ersichtlich.</p>
+<div class="figure">
+<img src="images/Chapter10/tris.png" style="width:25.0%" alt="" />
+<p class="caption">Abbildung 8: Der Standardwürfel bestehend aus Tris statt aus Quads.</p>
+</div>
+<div class="marginnote">
+Bevorzugung von Quads
+</div>
+<p>Trotzdem ist es sinnvoll sich beim Modellieren von 3D-Objekten eher an die Verwendung von Quads zu gewöhnen. Viele Tricks und Kniffe der Objektbearbeitung lassen sich einfacher auf Quads anwenden oder teilweise gar nicht auf Tris. Somit erleichtert die Arbeit mit Quads den Arbeitsprozess erheblich. Weiterhin sind Quads auch in vielen Animationsstudios der Standard.</p>
+<div class="marginnote">
+Anwendung von Tris
+</div>
+<p>Arbeiten mit Tris ist trotzdem durchaus möglich. Zudem ist es auch nicht problematisch, wenn in einem 3D-Objekt vereinzelte Tris auftauchen. In manchen Situationen sind Tris allerdings auch flexibler als Quads. Wenn allerdings die Objekte komplett aus Tris bestehen sollen, macht dies gerade in gemeinschaftlichen Prozessen nur Sinn, wenn alle beteiligten Personen mit Tris umgehen können.</p>
+<div class="figure">
+<img src="images/Chapter10/profs.png" alt="" />
+<p class="caption">Abbildung 4: Links eine gerenderte 3D Figur und rechts die Figur in ihrer Gitterstruktur.</p>
+</div>
+</div>
+<div id="merke" class="section level1 remember">
+<h1>Merke…</h1>
+<ul>
+<li>Vertices beschreiben die einzelnen Punkte in einem 3D-Objekt</li>
+<li>Edges beschreiben die verbundenen Punkte in einem 3D-Objekt</li>
+<li>Faces beschreiben verbundene Flächen zwischen mehr als zwei Vertices</li>
+<li>Faces mit vier Vertices (Quads) sind zu bevorzugen</li>
+</ul>
+</div>
+<div id="auswahl-von-vertices-edges-und-faces-im-edit-mode" class="section level1">
+<h1>Auswahl von Vertices, Edges und Faces im Edit-Mode</h1>
+<div class="marginnote">
+Auswahl von Vertices, Edges und Faces im Edit-Mode
+</div>
+<p>Abhängig davon, welcher Select-Mode gerade aktiviert ist, lassen sich entweder die Vertices, die Edges oder Faces auswählen. Die Auswahl der jeweiligen Elemente geschieht mittels der linken Maustaste. Wie auch im Object-Mode können mittels gedrückter ƒ Taste zusätzliche Elemente ausgewählt werden. Ebenso kann mit der Taste C der Circle-Select-Mode und mittels der Taste B der Box-Select-Mode verwendet werden. Zudem kann mit der Tastenkombination ≈ + I die Auswahl umgekehrt werden.</p>
+<div class="marginnote">
+Select linked mittels L
+</div>
+<p>Im Edit-Modus gibt es zudem noch einige zusätzliche Auswahl-Optionen. Wenn sich die Maus über einem Element eines Objekts befindet kann mit der Taste L beispielsweise alle Elemente, welche direkt über Edges damit verbunden sind ausgewählt werden. Dies ermöglich es, alle verbundenen Elemente auszuwählen. Um auch unverbundene Elemente eines Objektes auszuwählen kann die Taste A gedrückt werden.</p>
+<div class="marginnote">
+Edge-Loop-Select bei gedrückter Taste ¥
+</div>
+<p>Zudem lassen sich auch ganze Verbindungen von Edges auswählen, wenn die Taste ¥ während der Auswahl gedrückt wird. Dadurch werden alle Edges, die gemeinsam eine Linie bilden ausgewählt. Dies ist auch im Vertex Select-Modus möglich. Im Face-Select-Modus werden alle Faces, die gemeinsam eine Linie bilden ausgewählt (hierfür muss der Mausklick allerdings bei einem Edge erfolgen – nicht in der Fläche des Faces).</p>
+</div>
+<div id="das-innere-des-objekts" class="section level1">
+<h1>Das Innere des Objekts</h1>
+<div class="marginnote">
+Virtuelle Objekte haben meist keine Füllung
+</div>
+<p>So wie auch in der realen Welt haben virtuelle 3D-Objekte Flächen, welche aus mindestens drei Seiten bestehen und mindestens drei Ecken. Im Gegensatz zu Objekten in der realen Welt, bestehen virtuelle Objekte allerdings aus keiner Füllung. Wenn wir also in der realen Welt einen Apfel mit einem Messer in der Mitte teilen, so sehen wir was sich unter der Schale befindet, etwa das Fruchtfleisch oder der Kern. Wenn wir ein 3D-Mesh in der Hälfte trennen und auseinanderziehen, befindet sich darin nichts. Es besteht somit lediglich aus der Oberfläche der Objekte, welche auch sichtbar ist. Anhand der gewohnten Form stellen wir uns anschliessend den Inhalt vor.</p>
+<div class="marginnote">
+Wenn das Innere Sichtbar wird
+</div>
+<p>In Videospielen kann es vereinzelt vorkommen, dass die Kamera durch einen Fehler in ein Objekt hineingelangt. Dabei sieht man anschliessend dieses Objekt von der Innenseite. In manchen Fällen ist es allerdings auch so, dass das entsprechende Objekt schlicht von der Innenseite aus nicht mehr sichtbar ist.</p>
+</div>
+<div id="normalen-die-richtige-seite-der-faces-finden" class="section level1">
+<h1>Normalen: die richtige Seite der Faces finden</h1>
+<div class="marginnote">
+Die zwei Seiten von Faces
+</div>
+<p>Da 3D-Meshes keinen inneren Hohlraum haben, bilden die Faces die Oberfläche, welche das Objekt abdecken. Dies bedeutet aber auch, dass es zwei Seiten gibt: Eine Oberfläche, die betrachtet werden soll und eine nicht zu betrachtende Rückseite. In den meisten Fällen ist schnell klar, welche Seite eines Objektes von Bedeutung ist. Einen Apfel betrachtet man jeweils von aussen, also ist die nach aussen gerichtete Seite jene Seite, welche betrachtet werden soll. Ebenso verhält es sich bei einer Tasse. In diesem Falle ist ebenfalls die nach aussen gerichtete Seite von Bedeutung.</p>
+<div class="marginnote">
+Die zu betrachtende Seite eines Würfels
+</div>
+<p>Wie verhält es sich bei Blenders Standard-Würfel? Auch bei diesem sind die Normalen nach aussen gerichtet. Die Platzierung der Kamera in der Default-Szene legt diese Einstellung auch nahe. Allerdings wäre es auch möglich, dass der Default-Cube von innen betrachtet werden soll – etwa, wenn eine Szene im inneren eines Raumes dargestellt werden soll und der Würfel die Wände, den Boden und die Decke des Raumes darstellt. In diesem Falle ist nicht mehr die Aussenseite des Würfels von Bedeutung, sondern die Innenseite.</p>
+<div class="marginnote">
+Normalen
+</div>
+<p>Um mit dieser Problematik umgehen zu können, verfügen 3D-Objekte über die sogenannten Normalen. Die Normalen geben jeweils an, in welche Richtung Vertice, Edges und Faces gerichtet sind. Wenn ein Würfel etwa von innen betrachtet werden soll, müssen die Normalen nach innen gekehrt werden. Wenn der Würfel allerdings als solches von aussen betrachtet werden soll, dann müssen die Normalen nach aussen gekehrt sein.</p>
+<div class="marginnote">
+Normalen darstellen
+</div>
+<p>Die Normalen eines 3D-Objektes lassen sich lediglich in der Edit-View betrachten. Ihre Ansicht muss allerdings zusätzlich aktiviert oh werden. Dies wird im Overlay-Drop-Down-Menü in der rechten oberen Ecke, unter dem Menü Normals aktiviert. Anschliessend erscheinen in den Faces kleine blaue Striche, welche in diejenige Richtung zeigen, gegen die das Face dargestellt ist.</p>
+<div class="marginnote">
+Normalen umkehren und neu berechnen
+</div>
+<p>Wenn alle Faces innerhalb eines Objekts ausgewählt werden, mittels der Taste A, kann anschliessend mittels der Tastenkombination ¥ + N das Normals-Menü bei der Maus geöffnet werden. Unter der Option «Flip» können anschliessend alle Normals in die umgekehrte Richtung gekehrt werden. Zudem können die Normals hier auch mittels der Option «Recalculate Outside» zur äusseren Seite hin berechnet werden oder mittels «Reculaculate Inside» zur inneren Seite hin berechnet werden.</p>
+<div class="info">
+<p>Je nach Einstellungen von Game-Engines oder Materialien kann es sein, dass die Rückseite gar nicht dargestellt wird. In diesem Falle würde man durch die Seiten, auf der sich keine Normalen befinden durchschauen und das andere Ende des Objektes an dieser Stelle sehen, da dort die Normalen auf die eigene Ansicht hin zugewendet sind.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

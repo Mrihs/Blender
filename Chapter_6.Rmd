@@ -1,0 +1,138 @@
+---
+title: "6.	Objektarten"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<div class="marginnote"> Verschiedene Arten von Objekten </div>
+
+Beim Hinzufügen von Objekten mittels der Taste <kbd>Shift</kbd> + <kbd>A</kbd> erscheint das Menü für das Hinzufügen von Objekten beim Maus-Cursor. Die verschiedenen Objekte sind dabei in verschiedene Typen von Objekten unterteilt. Diese Objekte unterscheiden sich hinsichtlich ihres Aufbaus, aber auch hinsichtlich ihrer Funktion.
+
+# Mesh
+
+<div class="marginnote"> Meshes </div>
+
+Ein Mesh stellt ein 3D-Objekt dar. Meshes haben eine Gitterähnliche Struktur aus Punkten, Linien und verbundenen Flächen, welche in ihrer Gesamtstruktur das Objekt darstellen. Der Hauptfokus dieses Kurses wird auf die Meshes gelegt, von daher werden sie später noch ausführlich beschrieben.
+
+# Curve
+
+<div class="marginnote"> Kurven </div>
+
+Vor der Entwicklung der Meshes wurden in Computergrafiken Kurven und Oberflächen verwendet. Sie haben den Vorteil, dass sie weniger Computerleistung benötigen. Kurven verfügen über weniger Kontrollpunkte, wodurch sie auch einfacher zu bearbeiten sind. In einigen Anwendungen werden sie heute immer noch verwendet. Blender verfügt über zwei Arten von Kurven, Bézier-Kurven und NURBS-Kurven. Die beiden Arten von Kurven unterscheiden sich hinsichtlich ihrer zugrundeliegenden Berechnungen.
+
+<div class="marginnote"> Kurven können Oberflächen enthalten </div>
+
+Neu hinzugefügt Kurven beinhalten zunächst keine Oberfläche und erscheinen dadurch nicht beim Rendern. Allerdings können ihnen Oberflächen hinzugefügt werden, so dass sie auch als Objekte erkennbar werden. Zudem können Kurven auch als Hilfestellung bei Animationen verwendet werden, indem etwa Pfade für eine Animation mit ihnen vorgegeben werden.
+
+# Surface
+
+<div class="marginnote"> Oberflächen </div>
+
+Die Oberflächen sind ähnlich zu den Kurven. Während Kurven 2D-Objekte darstellen, sind die Oberflächen ihre 3D-Erweiterungen. Obwohl Kurven und Oberflächen somit denselben Typ von Objekten darstellen können sie nicht gleichzeitig auftreten. In einem Objekt können somit nicht sowohl Kurven als auch Oberflächen vorhanden sein.
+
+# Metaball
+
+<div class="marginnote"> Metas </div>
+
+Metabälle gehören zur Objekt-Familie der Metas, welche Blender prozedural aufbaut. Anders als beispielsweise Meshes oder Kurven sind sie nicht durch Kontrollpunkte oder Gitternetze aufgebaut, sondern werden mathematisch von Blender berechnet. Wenn zwei Meta-Objekte in der Nähe voneinander sind, können sie miteinander interagieren.
+
+# Text
+
+<div class="marginnote"> Text </div>
+
+Text-Objekte beinhalten einen Text, der anschliessend als Objekt dargestellt wird. Der Text hat dabei wie die Kurven oder die Oberflächen lediglich zwei Dimensionen, so wie auch 2D-Kurven.
+
+# Volume
+
+<div class="marginnote"> Volumen </div>
+
+Volume-Objekte sind lediglich Objekt-Container. Ihnen können OpenVDB-Dateien angehängt werden um volumetrische Daten (beispielsweise Wolken oder Rauch) zu erzeugen. Diese Dateien können mittels Blenders eigenen Simulationen erzeugt werden, oder in anderen Programmen erzeugt und abgespeichert werden.
+
+# Grease Pencil
+
+<div class="marginnote"> Grease Pencil </div>
+
+Grease Pencils sind Objekte, welche es ermöglichen, direkt in den dreidimensionalen Raum zu zeichnen. Dadurch können etwa 2D-Animationen erstellt werden. Objekte der Kategorie Grease Pencil sind dabei eigentlich Behälter-Objekte, in welche anschliessend die Linien gezeichnet werden.
+
+# Armature
+
+<div class="marginnote"> Armaturen </div>
+
+Armaturen werden verwendet, um Meshes zu animieren. Hierbei wird einem animierten Mesh ein Gerüst gebaut, anhand dem die Animation anschliessend erfolgen soll. Dieses Gerüst stellt wie das Skelett dar, welches anschliessend für die Animation verwendet werden soll. Dementsprechend werden die einzelnen Gerüst-Teile auch Bones (Knochen) genannt.
+Armaturen werden beim Rendern nicht angezeigt. Bei ihnen handelt es sich lediglich um ein Werkzeug zur Animation.
+
+# Lattice
+
+<div class="marginnote"> Lattice </div>
+
+Das Lattice stellt ein dreidimensionales Gerüst aus Punkten dar, welches allerdings nicht gerendert werden kann. Es dient als Werkzeug zur komplexeren Transformation von anderen Objekten.
+
+# Empty
+
+<div class="marginnote"> Empties </div>
+
+Empties sind Knotenpunkte an einem einzigen Punkt in der virtuellen Welt. Sie beinhalten weder Oberflächen noch Volumen und können auch nicht gerendert werden. Sie lassen sich allerdings beispielsweise als Bezugspunkte für virtuelle Objekte verwenden.
+
+# Image
+
+<div class="marginnote"> Bilder </div>
+
+Blender ermöglichet es, dass auch externe Bilddateien direkt in eine Szene hinzugefügt werden. Hierfür kann ein solches Objekt erstellt werden und das Bild anschliessend dem Objekt hinzugefügt werden. Bilder können allerdings auch direkt in den Viewport-Display gezogen werden, wodurch sie anschliessend hinzugefügt werden.
+
+# Light
+
+<div class="marginnote"> Lichtquellen </div>
+
+Licht-Objekte stellen die Quelle für die Beleuchtung von Szenen dar. Sie sind nicht als Mesh oder Kurve modellierbar, sondern stellen vielmehr einen Punkt oder Bereich dar, von dem die Beleuchtung ausgeht.
+
+# Light Probe
+
+<div class="marginnote"> Light Probes </div>
+
+Light Probes werden in der Eevee-Render-Engine als Hilfsobjekte verwendet. Dabei werden beispielsweise Informationen über indirekte Beleuchtungseffekte gespeichert. Diese Informationen werden anschliessend im finalen Render berücksichtigt, während das Objekt als solches nicht im finalen Render dargestellt wird.
+
+# Camera
+
+<div class="marginnote"> Kamera </div>
+
+Kameras stellen den Punkt dar, aus dem die Szenen in der gerenderten Szene aus betrachtet werden. Die Kameras als solche sind in den gerenderten Bildern nicht sichtbar.
+
+# Speaker
+
+<div class="marginnote"> Lautsprecher </div>
+
+Speaker werden verwendet, um an bestimmten Positionen in der Szene Klänge erklingen zu lassen. So wie die Lichtquellen sind die Speaker nicht modellierbar, sondern stellen einen Punkt in der dreidimensionalen Welt dar, von dessen Position ein Klang ausgeht.
+
+# Force Field
+
+<div class="marginnote"> Kraftfelder </div>
+
+Force Fields sind Objekte, welche in Simulationen Kräfte auf andere Objekte ausüben können. So können andere Objekte beispielsweise angezogen oder absorbiert werden. Beim Rendern sind diese Objekte als solches nicht sichtbar, allerdings die Auswirkungen, welche deren Kräfte auf Objekte haben können. 
+
+# Collection Instance
+
+<div class="marginnote"> Collections </div>
+
+Collections sind Einheiten, um Objekte anzuordnen und zu gruppieren. Sie erscheinen nicht im Viewport, sind aber im Outliner-Panel aufzufinden. Sie können wie die Dateiordner verstanden werden.
+
+# Zusammenfassung der Objektarten
+
+<div class="marginnote"> Verschiedene Objektarten </div>
+
+Die verschiedenen Objekt-Arten dienen also entweder der Darstellung von Objekten, der Darstellung von externen Dateien, der Darstellung der Szene oder haben vor allem unterstützende Funktionen:
+
+
+
+
+
+Renderbare Objekte	Szenen-Tools	Externe Daten	Hilfs-Werkzeuge
+Gitter-basiert	Kurven-basiert	Metas	Striche			
+Mesh	Curve	Metaball	Grease Pencil	Camera	Volumes	Armature
+	Surface			Light	Images	Lattice
+	Text			Speaker		Empty
+						Force Field
+						Speaker
+						Light-Probe
+						Collections

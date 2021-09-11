@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>13. Hilfestellungen für die Objektbearbeitung im Edit-Mode</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/materialien_theme1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Einführung in die Arbeitsoberfläche von Blender</li>
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
+    <li>
+      <a href="Chapter_6.html">6. Objektarten</a>
+    </li>
+    <li>
+      <a href="Chapter_7.html">7.	Primitive Meshes</a>
+    </li>
+    <li>
+      <a href="Chapter_8.html">8.	Methoden der Objekt-Transformation</a>
+    </li>
+    <li>
+      <a href="Chapter_9.html">9.	Objekte im Viewport Display transformieren</a>
+    </li>
+    <li>
+      <a href="Chapter_10.html">10.	Object und Edit-Mode</a>
+    </li>
+    <li class="dropdown-header">Grundmechanismen der Objektbearbeitung</li>
+    <li>
+      <a href="Chapter_11.html">11.	Einstieg in den Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_12.html">12.	Methoden der Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_13.html">13.	Hilfestellungen für die Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_14.html">14.	Tutorial: Erstellen eines Glases</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">13. Hilfestellungen für die Objektbearbeitung im Edit-Mode</h1>
+
+</div>
+
+
+<p>Blender bietet eine Reihe weiterer Funktionen, welche nützlich für die Erstellung von 3D-Objekten sein können. Einige dieser Hilfestellungen sind in mittig in der Menüleiste des 3D Viewports aufzufinden.</p>
+<div id="die-position-des-3d-cursors-verändern" class="section level1">
+<h1>Die Position des 3D Cursors verändern</h1>
+<div class="marginnote">
+3D Cursor verschieben und rotieren
+</div>
+<p>Der 3D Cursor stellt für einige der Hilfsmittel eine wichtige Komponente dar. Deshalb ist es sinnvoll, sich damit zu befassen, wie der 3D-Cursor bewegt werden kann. In der Sidebar, welche mit der Taste N ein- und ausgeblendet werden kann, befindet sich unter dem Register «View» ein Abschnitt zum 3D-Cursor. An dieser Stelle kann die Position des Cursors im dreidimensionalen Raum anhand der drei Achsen definiert werden. Nebst der Position verfügt der 3D-Cursor über eine Rotation, welche an dieser Stelle ebenfalls definiert werden kann. Durch eine Veränderung der Rotation des 3D-Cursors verändert sich auch die Rotation der Linien, welche dem 3D-Cursor sein Fadenkreuz-Design geben. Diese Linien stellen daher die Rotation des 3D-Cursors dar.</p>
+<div class="marginnote">
+Snap Menü
+</div>
+<p>Mittels der Tastenkombination ƒ + S lässt sich zudem das Snap-Menü öffnen. Dieses erscheint jeweils direkt beim Maus-Cursor und ermöglicht es, entweder die ausgewählten Objekte oder den 3D-Cursors an bestimmte Positionen zu verschieben. Das Menü beinhaltet folgende Optionen:</p>
+<ul>
+<li><strong>Cursor to Grid</strong>: Dadurch wird der 3D Cursor an der nächsten liegenden Position des Koordinatengitters verschoben, welches als Viewport Overlay angezeigt wird.</li>
+<li><strong>Cursor to World Origin</strong>: Dadurch wird der 3D Cursor an den Ursprung der Welt positioniert. Dies entspricht dem Nullpunkt aller drei Achsen.</li>
+<li><strong>Cursor to Selected</strong>: Der 3D Cursor wird an der Position des ausgewählten Objektes, respektive dem Median der aktuellen Auswahl, positioniert.</li>
+<li><strong>Cursor to Active</strong>: Der 3D Cursor wird an der Position des aktiven Elementes positioniert.</li>
+<li><strong>Selection to Cursor (Keep Offset)</strong>: Alle ausgewählten Elemente werden zum 3D Cursor verschoben, so dass der Median der Elemente der Position des 3D Cursors entspricht. Die Relationen zwischen den ausgewählten Objekten bleiben dabei bestehen.</li>
+<li><strong>Selection to Cursor</strong>: Alle ausgewählten Elemente werden zum 3D Cursor verschoben, so dass die Position jedes individuellen Elementes der Position des 3D Cursors entspricht. Im Edit-Mode führt dies etwa dazu, dass alle ausgewählten Vertices auf der Position des 3D Cursors liegen.</li>
+<li><strong>Selection to Active</strong>: Die Auswahl wird an die Position des aktiven Objektes verschoben. Im Edit-Mode führt dies etwa dazu, dass alle ausgewählten Vertices anschliessend auf derselben Position liegen.</li>
+<li><strong>Selection to Grid</strong>: Das ausgewählte Elemente oder der Median der ausgewählten Elemente wird an der nächsten liegenden Position des Koordinatengitters verschoben, welches als Viewport Overlay angezeigt wird. Im Edit-Mode führt dies etwa dazu, dass alle ausgewählten Vertices anschliessend auf derselben Position liegen.</li>
+</ul>
+</div>
+<div id="transform-orientation" class="section level1">
+<h1>Transform Orientation</h1>
+<div class="marginnote">
+Verschieden Orientierungen für Transformationen
+</div>
+<p>Bei Transformationen können jeweils die X-, Y- und Z-Achsen zu Hilfe gezogen werden. Diese Achsen scheinen zunächst fix fest gelegt zu sein. Es ist allerdings möglich diese Achsen zu verschieben. Die Transform Orientation beschreibt die Verschiebung dieser Achsen. Es stehen folgende Orientierungen zur Verfügung:</p>
+<ul>
+<li>Global</li>
+<li>Local</li>
+<li>Normal</li>
+<li>Gimbal</li>
+<li>View</li>
+<li>Cursor</li>
+</ul>
+<div class="marginnote">
+Gizmos helfen bei der Orientierung
+</div>
+<p>Um ein besseres Verständnis für die Unterschiede in den Transform Orientierungen zu bekommen ist es sinnvoll unter dem Dropdown-Menü für die Viewport Gizmos das Gizmo für die Bewegung einzuschalten. Dadurch erscheint ein Gizmo, welches jeweils vorgibt in welche Richtung sich die Achsen durch die Transform Orientierung erstrecken.</p>
+<div id="global" class="section level2">
+<h2>Global</h2>
+<div class="marginnote">
+Globale Orientierung
+</div>
+<p>Die globale Orientierung entspricht immer genau den Achsen der Welt. Das heisst, man kann sich dabei immer an den vorgegebenen Achsen im Viewport Overlay orientieren.</p>
+</div>
+<div id="local" class="section level2">
+<h2>Local</h2>
+<div class="marginnote">
+Lokale Orientierung
+</div>
+<p>Die lokale Orientierung entspricht jeweils der Orientierung eines Objektes. Wenn ein Objekt etwa im Object-Mode um 20° rotiert wurde, sind auch die Achsen um diese 20° rotiert. Dies Einstellung gilt sowohl für den Object- als auch für den Edit-Mode.</p>
+</div>
+<div id="normal" class="section level2">
+<h2>Normal</h2>
+<div class="marginnote">
+Orientierung entlang der Normalen
+</div>
+<p>Die Orientierung anhand der Normalen verläuft im Edit-Mode so, dass die Z-Achse immer entlang der Normalen der ausgewählten Einheiten entspricht. Die X- und Y-Achse beschreiben dann die Achsen im Verhältnis zu den Normalen. Wenn mehrere Elemente ausgewählt sind, entspricht die Z-Achse dem Mittelwert der Normalen. Im Object-Mode ist diese Orientierung äquivalent zur lokalen Orientierung.</p>
+</div>
+<div id="gimbal" class="section level2">
+<h2>Gimbal</h2>
+<div class="marginnote">
+Gimbal Orientierung
+</div>
+<p>Die Gimbal-Orientierung stellt eine fortgeschrittene Orientierungsmethode dar, welche bei Euler-Rotationen von Nutzen sein können. Im Rahmen dieses Kurses werden Euler-Rotationen allerdings nicht behandelt, weshalb auch diese Orientierung nicht weiter behandelt wird.</p>
+</div>
+<div id="view" class="section level2">
+<h2>View</h2>
+<div class="marginnote">
+Orientierung entlang der Ansicht
+</div>
+<p>Die View Orientierung entspricht der Orientierung entsprechend der Ansicht auf dem Bildschirm. Die X-Achse verläuft dabei horizontal über den Bildschirm und die Y-Achse vertikal. Die Z-Achse beschreibt die Achse der eigenen Ansicht nach näher oder weiter weg.</p>
+</div>
+<div id="cursor" class="section level2">
+<h2>Cursor</h2>
+<div class="marginnote">
+Orientierung entsprechend dem 3D Cursor
+</div>
+<p>Die 3D-Cursor Orientierung verläuft entlang des 3D-Cursors. Dabei wird die Rotation des Cursors berücksichtig, so dass die Achsen entsprechend der 3D-Cursor-Rotierung verlaufen.</p>
+</div>
+<div id="custom" class="section level2">
+<h2>Custom</h2>
+<div class="marginnote">
+Eigene Orientierung hinzufügen
+</div>
+<p>Es ist zudem möglich eigene Orientierungen zu erstellen mittels dem Plus-Button. So kann beispielsweise die lokale Orientierung eines Objekts abgespeichert werden um sie bei anderen Objekten, die eigentlich eine andere lokale Orientierung aufweisen, ebenfalls benutzen zu können.</p>
+</div>
+</div>
+<div id="pivot-point" class="section level1">
+<h1>Pivot Point</h1>
+<div class="marginnote">
+Verschiedene Drehpunkte
+</div>
+<p>Eine Reihe von Transformationen orientieren sich an einem bestimmten Drehpunkt im dreidimensionalen Raum. Wenn vom Standard-Würfel etwa nacheinander zwei gegenüberliegende Faces ausgewählt werden, orientiert sich eine Skalierung der Faces anhand der Medianposition der Vertice. Mittels dem Menüreiter «Transform Pivot Point» können allerdings auch andere Drehpunkte ausgewählt werden. Die Optionen sind dabei:</p>
+<ul>
+<li>Bounding Box Center</li>
+<li>3D Cursor</li>
+<li>Individual Origins</li>
+<li>Median Point</li>
+<li>Active Element</li>
+</ul>
+<div id="bounding-box-center" class="section level2">
+<h2>Bounding Box Center</h2>
+<div class="marginnote">
+Bounding Box Center als Drehpunkt
+</div>
+<p>Die Option “Bounding Box Center” berechnet jeweils eine dreidimensionale Box um die ausgewählten Einheiten herum, welche gerade so gross ist, dass sich die gesamte Auswahl darin befindet. Der Mittelpunkt dieser Box wird anschliessend als Drehpunkt für Transformationen verwendet. Im Object-Mode werden lediglich die Ursprünge von Objekten für die Berechnung der Box verwendet, nicht die Meshes. Im Edit-Mode wird die Box hingegen um alle ausgewählten Einheiten berechnet.</p>
+</div>
+<div id="d-cursor" class="section level2">
+<h2>3D Cursor</h2>
+<div class="marginnote">
+3D Cursor als Drehpunkt
+</div>
+<p>Die Option “3D Cursor” verwendet die Position des 3D-Cursors als Drehpunkt für Transformationen. Die Position des 3D-Cursors kann auch in seiner Position verändert werden. Dadurch lässt sich jede beliebige Stelle im dreidimensionalen Raum als Drehpunkt verwenden.</p>
+</div>
+<div id="individual-origins" class="section level2">
+<h2>Individual Origins</h2>
+<div class="marginnote">
+Individual Origin als Drehpunkt
+</div>
+<p>Die Option “individual Origins” benutzt für jede ausgewählte Einheit den entsprechenden Ursprung als Drehpunkt. Wenn im Object-Mode mehrere Objekte ausgewählt sind, deren Ursprünge sich an verschiedenen Positionen befinden, verwendet jedes Objekt seinen individuellen Ursprung als Drehpunkt. Im Edit-Mode werden dabei Einheiten, die nicht direkt miteinander verbunden sind als individuelle Einheiten betrachtet. Diese verwenden dann ihren individuellen Median als Drehpunkt für Transformationen. Werden vom Default-Cube beispielsweise zwei gegenüberliegende Faces ausgewählt, wird von jedem Face individuell der Median berechnet und dieser für das jeweilige Face als Drehpunkt verwendet. Wenn mehrere Faces, die direkt nebeneinander liegen ausgewählt sind, werden die aneinanderlegenden Faces zusammengefasst und für diese gemeinsam ein individueller Ursprung berechnet und als Drehpunkt verwendet.</p>
+</div>
+<div id="median-point" class="section level2">
+<h2>Median Point</h2>
+<div class="marginnote">
+Median als Drehpunkt
+</div>
+<p>Die Option «Median Point» wird bei neuen Projekten als Default-Auswahl für den Drehpunkt von Transformationen verwendet. Dabei handelt es sich um die mittlere Position zwischen allen ausgewählten Vertices im Edit-Mode. Wenn mehrere Objekte im Object-Mode ausgewählt sind, wird der Median zwischen den Objekt-Ursprungspositionen als Drehpunkt verwendet.</p>
+</div>
+<div id="active-element" class="section level2">
+<h2>Active Element</h2>
+<div class="marginnote">
+Ursprung des aktiven Elements als Drehpunkt
+</div>
+<p>Die Option «Active Element» verwendet jeweils den Ursprung des aktiven Elements als Drehpunkt für Transformationen. Beim aktiven Element handelt es sich um das zuletzt ausgewählte Objekt, welches jeweils mit einer orangen Umrandung gekennzeichnet ist. Der Ursprungspunkt dieses Objekts wird anschliessend als Drehpunkt für Transformationen verwendet. Im Edit-Mode ist das aktive Element jeweils mit einer weissen Einfärbung markiert. Dieses Element, respektive der Median dieses Elements bei Faces oder Edges, wird anschliessend als Drehpunkt für Transformationen verwendet.</p>
+</div>
+</div>
+<div id="snap" class="section level1">
+<h1>Snap</h1>
+<div class="marginnote">
+Elemente an anderen Elementen andocken lassen
+</div>
+<p>Die Option Snap ist bei der Verschiebung von Objekten nützlich. Dabei können andere Elemente benutzt werden, um die zu verschiebenden Objekte direkt an deren Struktur andocken zu lassen. So müssen nicht die etwaigen Koordinaten ermittelt werden, sondern Blender rastet die zu bewegenden Objekte direkt an dieser Auswahl ein. Die anvisierten Strukturen können dabei im Edit-Mode Teil des eigenen Objekts sein, aber auch Teil eines anderen Objektes. Im Object-Mode wird zudem jeweils der Ursprung des Objektes zum Andocken verwendet. Im Drop-Down-Menü kann eingestellt werden, an welchen Stellen jeweils angedockt werden soll:</p>
+<div class="marginnote">
+Verschiedene Andock-Stellen
+</div>
+<ul>
+<li>Increment</li>
+<li>Vertex</li>
+<li>Edge</li>
+<li>Face</li>
+<li>Volume</li>
+<li>Edge Center</li>
+<li>Edge Perpendicular</li>
+</ul>
+<div id="increment" class="section level2">
+<h2>Increment</h2>
+<div class="marginnote">
+Snap auf ein Inkrement
+</div>
+<p>Ist Snap auf die Inkremente aktiviert, so werden die Inkremente der Welt verwendet, um Objekte anders zu platzieren. Mit diesen Inkrementen sind die Gitter Raster im Hintergrund der 3D-Ansicht gemeint. Jedes Viereck stellt dabei ein Inkrement dar. Durch stärkeres hinein- oder hinaus-zoomen werden jeweils grössere oder kleinere Inkremente sichtbar. Die ausgewählten Objekte rasten jeweils an derselben proportionalen Stelle in einem Inkrement ein.</p>
+</div>
+<div id="vertex" class="section level2">
+<h2>Vertex</h2>
+<div class="marginnote">
+Snap auf Vertices
+</div>
+<p>Ist Snap auf Vertex eingestellt, so können jeweils andere Vertices angesteuert werden und Blender verbindet die Auswahl direkt auf die entsprechende Position. Dabei können auch die Vertices von anderen Objekten angesteuert werden, selbst wenn diese nicht innerhalb des Edit-Mode mit aktiviert wurden.</p>
+</div>
+<div id="edge" class="section level2">
+<h2>Edge</h2>
+<div class="marginnote">
+Snap auf Edges
+</div>
+<p>Ist Snap auf Edge eingestellt, so können andere Edges als Ziel angesteuert werden und die Auswahl wird direkt passend auf eine Position auf dem Edge eingestellt. Dabei kann die ganze Länge eines Edges ausgewählt werden. Es können zudem auch Edges von anderen Objekten angesteuert werden, selbst wenn diese nicht innerhalb des Edit-Mode mit aktiviert wurden.</p>
+</div>
+<div id="face" class="section level2">
+<h2>Face</h2>
+<div class="marginnote">
+Snap auf Faces
+</div>
+<p>Ist Snap auf Faces eingestellt, so versucht Blender die Auswahl direkt an der Position von anderen Faces anzudocken. Dabei kann jeder Punkt auf einem Face ausgewählt werden. Zudem können auch hier die Faces von anderen Objekten angesteuert werden.</p>
+</div>
+<div id="volume" class="section level2">
+<h2>Volume</h2>
+<div class="marginnote">
+Snap auf das Volumen
+</div>
+<p>Mittels der Einstellung von Snap auf Volume lässt sich das Volumen eines Objektes als genaues Ziel zum Einrasten einer Auswahl verwenden. Oftmals ist nicht so einfach ersichtlich, wo genau das Objekt nun einrastet, da das Volumen eines Objektes häufig durch die Faces verdeckt sind. Hierbei kann die Wireframe-Ansicht etwas helfen, jedoch ist dabei die Position auf einer Achse nicht ganz ersichtlich. Auf dieser Achse wird in der Regel die Mitte des Volumens anvisiert.</p>
+</div>
+<div id="edge-center" class="section level2">
+<h2>Edge Center</h2>
+<div class="marginnote">
+Snap auf die Mitte von Edges
+</div>
+<p>Mittels der Einstellung von Snap auf Edge Center werden jeweils die Mittelpunkte von Edges anvisiert. Hierbei werden also keine Vertices anvisiert, sondern der Median des Edges. Andere Punkte auf dem Edge werden nicht zum Einhaken angeboten.</p>
+</div>
+<div id="edge-perpendicular" class="section level2">
+<h2>Edge Perpendicular</h2>
+<div class="marginnote">
+Snap auf senkrechte Edges
+</div>
+<p>Mittels der Einstellung von Snap auf Edge Perpencidular wird die Auswahl bei dem Punkt eines Edges eingerastet, welcher im Lot zur aktuellen Auswahl steht. Dabei können allerdings nicht alle Edges verwendet werden da nicht alle einen solchen Winkel zur Auswahl ermöglichen.</p>
+</div>
+<div id="was-wird-eingehackt" class="section level2">
+<h2>Was wird eingehackt?</h2>
+<div class="marginnote">
+Quelle des Snaps einstellen
+</div>
+<p>Wenn lediglich ein einzelner Vertex ausgewählt und verschoben wird, ist klar, welcher Punkt jeweils an den anvisierten Stellen einzuhacken hat: der ausgewählte Vertex. Wenn allerdings mehrere Elemente ausgewählt wurden, benutzt Blender per Default das jeweils am ursprünglich am nächsten liegenden Element zum Einrasten. Es ist allerdings auch möglich einzustellen, dass der Median der aktivierten Auswahl verwendet wird, oder das aktive Element. Hierzu kann die entsprechende Auswahl unter «Snap With» eingestellt werden. Zusätzlich gibt es hier noch die Auswahl «Center», welche zusätzlich noch weitere Abweichungen vom Drehpunkt mitberücksichtigt (beispielsweise die Ursprüngliche Abweichung vom 3D Cursor).</p>
+</div>
+</div>
+<div id="proportional-editing" class="section level1">
+<h1>Proportional Editing</h1>
+<div class="marginnote">
+Proportionale Bearbeitung mittels O aktivieren
+</div>
+<p>Die Option «Propotional Editing» ermöglicht es, dass nahe beieinander liegende Elemente proportional zu ihrer Nähe bearbeitet werden können. Diese Option kann zudem mit der Taste O aktiviert werden. Wenn diese Option aktiviert ist und eine Transformation durchgeführt wird (z.B. eine Rotation), erscheint um den Bezugspunkt ein Kreis. Alle Elemente, welche sich innerhalb dieses Kreises befinden, werden diese Transformation nun ebenfalls durchführen. Der Radius des Kreises kann mittels dem Mausrad vergrössert oder verkleinert werden. Dadurch wird der Erfassungsbereichs der proportionalen Bearbeitung variiert. Alternativ kann die Taste ¢ zum Vergrössern des Kreises oder « zum Verkleinern des Kreises gedrückt werden.</p>
+<div class="marginnote">
+Proportionale Bearbeitung im Object-Mode
+</div>
+<p>Im Object-Mode müssen sich jeweils die Ursprünge der Objekte, welche proportional mit transformiert werden sollen, innerhalb des Erfassungskreises liegen. Dabei spielt es keine Rolle, ob das Mesh des Objektes ebenfalls erfasst wird oder nicht. Im Edit-Mode können lediglich die Vertices der aktuell bearbeiteten Objekte proportional mit transformiert werden. Zudem gibt es im Edit-Mode noch die Möglichkeit im Sub-Menü des Proportional Editings die Option «Connected Only» anzuwählen. Dadurch werden lediglich Vertices mit bearbeitet, die über Edges mit den zu bearbeitenden Vertices verbunden sind.</p>
+<div class="marginnote">
+Form der proportionalen Bearbeitung
+</div>
+<p>Die Elemente, welche sich innerhalb des Erfassungskreises befinden, werden anschliessend alle proportional mit transformiert. Die Proportion erfolgt dabei einer vorgegebenen Kurve. Diese lässt sich anhand des Sub-Menüs genauer definieren. Dadurch lassen sich mit der Bearbeitung eines einzigen Vertex gleich komplexe Strukturen erstellen.</p>
+<div class="figure">
+<img src="images/Chapter13/proportionals.png" alt="" />
+<p class="caption">Abbildung 13.1: Die verschiedenen Formen zur proportionalen Bearbeitung im Vergleich. Beispiele zeigen eine Fläche mit 16x16 Faces, die mittig um den Werte 0.5 nach oben bewegt wurden.</p>
+</div>
+<div class="marginnote">
+Anwendungs-Bereiche für proportionale Bearbeitung
+</div>
+<p>Gerade natürliche Objekte (Früchte, Landschaften, Bäume, Blumen, usw.) sind selten schön symmetrisch. Oftmals gibt es Dellen oder andere Verformungen. Mittels dem Proportional Editing können solche Verformungen leicht auf grössere Flächen angewendet werden, ohne dass jeder Vertex einzeln bearbeitet werden muss.</p>
+</div>
+<div id="übung-8-proportional-editing" class="section level1 exercise">
+<h1>Übung 8: Proportional Editing</h1>
+<div id="übung-8.1" class="section level2">
+<h2>Übung 8.1</h2>
+<p>Erstellen sie eine UV Sphere und versuchen Sie daraus eine Birne zu modellieren. Nutzen Sie hierfür proportional Editing.</p>
+</div>
+</div>
+<div id="optionen" class="section level1">
+<h1>Optionen</h1>
+<div class="marginnote">
+Symmetrische Bearbeitung
+</div>
+<p>Im Edit Mode sind in der oberen rechten Ecke zudem noch weitere Optionen verfügbar. Zum einen sind die drei Achsen X, Y und Z als Symbol anwählbar. Durch das Anwählen einer dieser Icons wird das Objekt entsprechend der ausgewählten Achse symmetrisch bearbeitet. Eine Veränderung des Objekts auf der einen Seite der Achse wird dabei also gleichzeitig auch auf der gegenüberliegenden Achse durchgeführt. Gerade bei symmetrischen Objekten hat dies den Vorteil, dass der Fokus nur auf eine Seite gelegt werden muss, ohne dass di Bearbeitungen auf der anderen Seite nochmals wiederholt werden müssen.</p>
+<div class="marginnote">
+Vertices automatisch verbinden
+</div>
+<p>Neben den drei Achsen befindet sich zudem das Icon für die Option «Auto Merge». Durch das Aktivieren dieser Option werden Vertice, welche während der weiteren Bearbeitung auf derselben Position platziert werden, automatisch miteinander. Dadurch ist es nicht mehr nötig von Hand Vertices zusammenzufassen.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

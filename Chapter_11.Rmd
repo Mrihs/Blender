@@ -1,0 +1,89 @@
+---
+title: "11.	Einstieg in den Edit-Mode"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Ein Grossteil der Bearbeitungsmöglichkeiten, welche im Object-Modus mit Objekten möglich sind, können im Edit-Mode auch auf die Strukturelemente der Objekte angewendet werden.
+
+# Grab, Scale, Rotate
+
+<div class="marginnote"> Ein Vertex kann nur bewegt werden </div>
+
+Wenn ein einzelner Vertex ausgewählt wird, sind die Transformationsmöglichkeiten relativ beschränkt. Mittels der Taste G lässt sich der Vertex im dreidimensionalen Raum verschieben. Da der Vertex allerdings nur einen isolierten Punkt ohne eine Dimension darstellt kann er allerdings weder skaliert, noch rotiert werden. Dementsprechend wird in der Sidebar auch lediglich die Position des Vertex angegeben, während die Skalierung und Rotation – anders als im Object-Mode – nicht mehr angegeben werden.
+
+<div class="marginnote"> Skalierung und Rotation geschieht um den Median der Auswahl </div>
+
+Sobald zwei Vertices ausgewählt werden, wird in der Sidebar nicht mehr die Position der einzelnen Vertices angegeben, sondern die Position des Medians zwischen diesen beiden Vertices. Dies ist unabhängig davon, ob die Vertices mittels Edges oder Faces miteinander verbunden sind oder nicht. Mittels der Taste R oder S kann die Auswahl rotiert oder skaliert werden. Beide Transformationen beziehen sich dabei auf den Median zwischen diesen beiden Vertices. Wird also beispielsweise eine Skalierung um den Faktor 2 getätigt (Mittels der Tasten S und 2), vergrössert sich der Abstand zwischen den beiden Vertices zum Median. Rotationen führen ebenso dazu, dass die Vertices um den Median rotiert werden.
+
+<div class="marginnote"> Skalierung und Rotation verändert Position von Vertices </div>
+
+Dadurch lässt sich bereits ein wichtiges Merkmal der Bearbeitung im Edit-Mode betrachten: Mittels einer Skalierung lässt sich etwa die Distanz zwischen zwei Vertices verändern und mittels der Rotation deren Position. Dadurch wird in beiden Fällen lediglich die Position der Vertices im Verhältnis zueinander verändert. Die Struktur von 3D Objekten ergibt sich somit also lediglich anhand der Positionen der einzelnen Vertices und nicht anhand von Rotationen oder Skalierungen. Dies macht auch einen Reiter für die Skalierung oder Rotation in der Sidebar obsolet – da jegliche Transformation lediglich zu einer Veränderung der einzelnen Positionen führt.
+Anstatt der Vertices können auch Edges und Faces direkt angewählt werden. Dabei werden allerdings auch automatisch die dazugehörigen Vertices mit ausgewählt. Trotzdem beziehen sich die Transformationen immer noch auf den räumlichen Mittelpunkt zwischen den einzelnen Vertices, weshalb auch in diesem Modus eine Skalierung oder Rotation zu einer Veränderung der Position führen.
+ 
+::: {.exercise  data-latex="{exercise}"}
+
+# Merke…
+
+*   Wie auch im Object-Mode können Vertice, Edges und Faces mittels der Taste <kbd>G</kbd> bewegt, mittels der Taste <kbd>S</kbd> skaliert und mittels der Taste <kbd>R</kbd> rotiert werden. 
+*   Skalierungen und Rotationen im Edit-Mode führen lediglich zu einer Veränderung der Position der einzelnen Vertices basierend dem Median der Positionen.
+
+:::
+ 
+# Add, Delete, Dissolve
+
+<div class="marginnote"> Elemente löschen mit X </div>
+
+Wie auch im Object-Mode können ausgewählte Objekte gelöscht werden, indem die Taste X oder æ gedrückt wird. Anders als im Object-Mode erscheint bei beiden Tasten ein Menü bei der Maus, allerdings weil in diesem Falle der Löschvorgang präzisiert werden muss. So lassen sich jeweils die ausgewählten Faces, die ausgewählten Edges oder die ausgewählten Vertices löschen.
+
+<div class="marginnote"> Elemente, welche beim Löschen ebenfalls entfernt werden </div>
+
+Wird etwa beim Default Cube eine einzelne Fläche ausgewählt und das Face gelöscht, so bleiben die Edges, welche sich um die Fläche bilden erhalten – lediglich das ausgewählte Face wird gelöscht. Wenn allerdings die Edges gelöscht werden, verschwinden alle Edges, welche das ausgewählte Face bilden – lediglich die Vertices bleiben bestehen. Durch die fehlenden Edges verschwinden nun allerdings auch die angrenzenden Faces, da diesen nun ebenfalls ein Edge fehlt. Wenn stattdessen die Vertices gelöscht werden, fehlen auch für die angrenzenden Edges die Bezugspunkte. Als Folge bleibt nur noch die gegenüberliegende Fläche bestehen.
+
+<div class="marginnote"> Faces und Edges isoliert löschen </div>
+
+Bei der Auswahl von mehreren Flächen oder Edges kann das Löschen von Elementen zu grösseren Veränderungen führen. So werden beim Löschen von mehreren aneinandergerieten Faces auch die Edges, welche die Faces abgrenzen, gelöscht. Um dies zu verhindern kann beim Löschen die Option «Only Faces» ausgewählt werden. Dadurch bleiben die Edges bestehen. Zudem gibt es die Option «Only Edges & Faces» um etwa lediglich die einzelnen Vertices zu erhalten.
+
+<div class="marginnote"> Elemente auflösen </div>
+
+Nebst dem Löschen von Elementen besteht auch die Auswahl, dass Elemente aufgelöst werden. Hierfür wird die Option «dissolve» im Lösch-Menü angeboten. Dadurch werden die ausgewählten Elemente gelöscht, aber die benachbarten Elemente auch verbunden. Wird ein einzelnes Edge ausgewählt, welches zwischen zwei Faces liegt, werden die beiden Faces durch das Auflösen zu einem Face kombiniert. Ähnlich verhält es sich bei Faces und Vertices.
+
+<div class="marginnote"> Primitives innerhalb eines Objektes hinzufügen </div>
+
+Innerhalb eines Objektes im Edit-Mode können zudem weitere Mesh-Primitives hinzugefügt werden. Dies geschieht wie im Object-Mode mit der Tastenkombination ƒ + A. Die Auswahl ist allerdings nur noch auf Mesh-Primitives beschränkt. Dementsprechend ist es nicht möglich einem Mesh im Edit-Mode ein Kurven-Objekt anzufügen. Allerdings stehen alle primitiven Formen der Meshes zur Verfügung. Wie auch im Object-Mode werden die Objekte an der Position des 3D-Cursors hinzugefügt.
+
+# Duplicate
+
+<div class="marginnote"> Duplizieren mittels D </div>
+
+Auch im Edit-Mode können Elemente mittels der Taste D dupliziert werden, wenn sie vorgängig ausgewählt wurden. Nach dem Tastendruck ist es direkt möglich die Objekte zu bewegen und mittels der †, ¶ oder √ zu platzieren. Mittels der Taste € oder Ω kann diese Bewegung abgebrochen werden und das Objekt wird an derselben Stelle platziert, wie sich auch das Originalobjekt befindet. Dadurch ist es allerdings oftmals nicht mehr ersichtlich, dass sich die identischen Objekte an derselben Stelle befinden, weshalb dies vermieden werden sollte.
+
+# Globale vs. lokale Koordinaten
+
+<div class="marginnote"> Globale Koordinaten </div>
+
+Im Edit-Mode gibt es zwei Arten von 3D-Koordinaten, mit denen die Position eines Vertex, respektive der Median der Auswahl angegeben wird: Die globale und die lokale Koordinate. Die globale Koordinate entspricht derselben Koordinate, wie sie auch im Object-Mode bekannt ist.
+
+<div class="marginnote"> Lokale Koordinaten </div>
+
+Die lokale Koordinate bezieht sich jeweils auf die Koordinate des aktuellen Objektes. Das heisst, dass diese Koordinaten sich immer auf den Ursprung des Objektes beziehen. Wenn sich der Ursprung des Objektes am Nullpunkt aller drei Achsen befindet und keine Skalierung oder Rotation auf das Objekt angewendet wird, dann sind die globalen und die lokalen Koordinaten identisch. Wenn sich das Objekt allerdings an einer anderen Stelle im Raum befindet, bezieht sich die lokale Koordinate immer zum Ursprung des Objektes als Nullpunkt.
+
+<div class="marginnote"> Skalierung des Objekts ist unabhängig von Edit-Mode </div>
+
+Zudem bleibt die lokale Ansicht auch unangetastet von Skalierungen und Rotationen, welche im Objekt-Modus für ein Objekt angegeben wurde. Wird der Default-Cube im Objekt-Modus gedreht, verändert sich die Position der Vertices also in der globalen Koordinate, allerdings nicht in der lokalen Koordinate.
+
+::: {.exercise  data-latex="{exercise}"}
+
+# Übung 5: Edit-Mode
+
+## Übung 5.1 
+
+Verändern Sie den Default-Cube so, dass die Position der einzelnen Vertices in der globalen Koordinate gegenüber der lokalen Koordinate doppelt so hohe absolute Beträge aufweisen.
+
+## Übung 5.2 
+
+Verändern Sie den Default-Cube so, dass sich sein Ursprung nicht mehr in der Mitte seines Volumen befindet, sondern in der Mitte seiner unteren Fläche.
+
+:::

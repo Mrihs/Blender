@@ -33,6 +33,7 @@ navbar:
     - text: "Skript"
       icon: fa-glasses
       menu:
+        - text: "Einführung in die Arbeitsoberfläche von Blender"
         - text: "1.	Vorbereitung von Blender"
           href: Chapter_1.html
         - text: "2.	Die Arbeitsoberfläche von Blender"
@@ -43,5 +44,22 @@ navbar:
           href: Chapter_4.html
         - text: "5.	Erste Schritte"
           href: Chapter_5.html
-        
-        
+        - text: "6. Objektarten"
+          href: Chapter_6.html
+        - text: "7.	Primitive Meshes"
+          href: Chapter_7.html
+        - text: "8.	Methoden der Objekt-Transformation"
+          href: Chapter_8.html        
+        - text: "9.	Objekte im Viewport Display transformieren"
+          href: Chapter_9.html
+        - text: "10.	Object und Edit-Mode"
+          href: Chapter_10.html
+        - text: "Grundmechanismen der Objektbearbeitung"
+        - text: "11.	Einstieg in den Edit-Mode"
+          href: Chapter_11.html
+        - text: "12.	Methoden der Objektbearbeitung im Edit-Mode"
+          href: Chapter_12.html
+        - text: "13.	Hilfestellungen für die Objektbearbeitung im Edit-Mode"
+          href: Chapter_13.html
+        - text: "14.	Tutorial: Erstellen eines Glases"
+          href: Chapter_14.html

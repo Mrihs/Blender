@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>6. Objektarten</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arbeiten mit Blender</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-lightbulb"></span>
+     
+    Cheatsheets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="cheatsheets/cheatsheet.pdf">Tastenkombinationen</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-folder"></span>
+     
+    Ressourcen
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="tba.html">Übung 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-images"></span>
+     
+    Folien
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Folien/materialien_theme1.pdf">Theme 1</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme2.pdf">Theme 2</a>
+    </li>
+    <li>
+      <a href="Folien/materialien_theme3.pdf">Theme 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-glasses"></span>
+     
+    Skript
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Einführung in die Arbeitsoberfläche von Blender</li>
+    <li>
+      <a href="Chapter_1.html">1.	Vorbereitung von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_2.html">2.	Die Arbeitsoberfläche von Blender</a>
+    </li>
+    <li>
+      <a href="Chapter_3.html">3.	Die Arbeitsoberfläche des 3D Viewports</a>
+    </li>
+    <li>
+      <a href="Chapter_4.html">4.	Navigation der Ansicht im 3D Viewport</a>
+    </li>
+    <li>
+      <a href="Chapter_5.html">5.	Erste Schritte</a>
+    </li>
+    <li>
+      <a href="Chapter_6.html">6. Objektarten</a>
+    </li>
+    <li>
+      <a href="Chapter_7.html">7.	Primitive Meshes</a>
+    </li>
+    <li>
+      <a href="Chapter_8.html">8.	Methoden der Objekt-Transformation</a>
+    </li>
+    <li>
+      <a href="Chapter_9.html">9.	Objekte im Viewport Display transformieren</a>
+    </li>
+    <li>
+      <a href="Chapter_10.html">10.	Object und Edit-Mode</a>
+    </li>
+    <li class="dropdown-header">Grundmechanismen der Objektbearbeitung</li>
+    <li>
+      <a href="Chapter_11.html">11.	Einstieg in den Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_12.html">12.	Methoden der Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_13.html">13.	Hilfestellungen für die Objektbearbeitung im Edit-Mode</a>
+    </li>
+    <li>
+      <a href="Chapter_14.html">14.	Tutorial: Erstellen eines Glases</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">6. Objektarten</h1>
+
+</div>
+
+
+<div class="marginnote">
+Verschiedene Arten von Objekten
+</div>
+<p>Beim Hinzufügen von Objekten mittels der Taste <kbd>Shift</kbd> + <kbd>A</kbd> erscheint das Menü für das Hinzufügen von Objekten beim Maus-Cursor. Die verschiedenen Objekte sind dabei in verschiedene Typen von Objekten unterteilt. Diese Objekte unterscheiden sich hinsichtlich ihres Aufbaus, aber auch hinsichtlich ihrer Funktion.</p>
+<div id="mesh" class="section level1">
+<h1>Mesh</h1>
+<div class="marginnote">
+Meshes
+</div>
+<p>Ein Mesh stellt ein 3D-Objekt dar. Meshes haben eine Gitterähnliche Struktur aus Punkten, Linien und verbundenen Flächen, welche in ihrer Gesamtstruktur das Objekt darstellen. Der Hauptfokus dieses Kurses wird auf die Meshes gelegt, von daher werden sie später noch ausführlich beschrieben.</p>
+</div>
+<div id="curve" class="section level1">
+<h1>Curve</h1>
+<div class="marginnote">
+Kurven
+</div>
+<p>Vor der Entwicklung der Meshes wurden in Computergrafiken Kurven und Oberflächen verwendet. Sie haben den Vorteil, dass sie weniger Computerleistung benötigen. Kurven verfügen über weniger Kontrollpunkte, wodurch sie auch einfacher zu bearbeiten sind. In einigen Anwendungen werden sie heute immer noch verwendet. Blender verfügt über zwei Arten von Kurven, Bézier-Kurven und NURBS-Kurven. Die beiden Arten von Kurven unterscheiden sich hinsichtlich ihrer zugrundeliegenden Berechnungen.</p>
+<div class="marginnote">
+Kurven können Oberflächen enthalten
+</div>
+<p>Neu hinzugefügt Kurven beinhalten zunächst keine Oberfläche und erscheinen dadurch nicht beim Rendern. Allerdings können ihnen Oberflächen hinzugefügt werden, so dass sie auch als Objekte erkennbar werden. Zudem können Kurven auch als Hilfestellung bei Animationen verwendet werden, indem etwa Pfade für eine Animation mit ihnen vorgegeben werden.</p>
+</div>
+<div id="surface" class="section level1">
+<h1>Surface</h1>
+<div class="marginnote">
+Oberflächen
+</div>
+<p>Die Oberflächen sind ähnlich zu den Kurven. Während Kurven 2D-Objekte darstellen, sind die Oberflächen ihre 3D-Erweiterungen. Obwohl Kurven und Oberflächen somit denselben Typ von Objekten darstellen können sie nicht gleichzeitig auftreten. In einem Objekt können somit nicht sowohl Kurven als auch Oberflächen vorhanden sein.</p>
+</div>
+<div id="metaball" class="section level1">
+<h1>Metaball</h1>
+<div class="marginnote">
+Metas
+</div>
+<p>Metabälle gehören zur Objekt-Familie der Metas, welche Blender prozedural aufbaut. Anders als beispielsweise Meshes oder Kurven sind sie nicht durch Kontrollpunkte oder Gitternetze aufgebaut, sondern werden mathematisch von Blender berechnet. Wenn zwei Meta-Objekte in der Nähe voneinander sind, können sie miteinander interagieren.</p>
+</div>
+<div id="text" class="section level1">
+<h1>Text</h1>
+<div class="marginnote">
+Text
+</div>
+<p>Text-Objekte beinhalten einen Text, der anschliessend als Objekt dargestellt wird. Der Text hat dabei wie die Kurven oder die Oberflächen lediglich zwei Dimensionen, so wie auch 2D-Kurven.</p>
+</div>
+<div id="volume" class="section level1">
+<h1>Volume</h1>
+<div class="marginnote">
+Volumen
+</div>
+<p>Volume-Objekte sind lediglich Objekt-Container. Ihnen können OpenVDB-Dateien angehängt werden um volumetrische Daten (beispielsweise Wolken oder Rauch) zu erzeugen. Diese Dateien können mittels Blenders eigenen Simulationen erzeugt werden, oder in anderen Programmen erzeugt und abgespeichert werden.</p>
+</div>
+<div id="grease-pencil" class="section level1">
+<h1>Grease Pencil</h1>
+<div class="marginnote">
+Grease Pencil
+</div>
+<p>Grease Pencils sind Objekte, welche es ermöglichen, direkt in den dreidimensionalen Raum zu zeichnen. Dadurch können etwa 2D-Animationen erstellt werden. Objekte der Kategorie Grease Pencil sind dabei eigentlich Behälter-Objekte, in welche anschliessend die Linien gezeichnet werden.</p>
+</div>
+<div id="armature" class="section level1">
+<h1>Armature</h1>
+<div class="marginnote">
+Armaturen
+</div>
+<p>Armaturen werden verwendet, um Meshes zu animieren. Hierbei wird einem animierten Mesh ein Gerüst gebaut, anhand dem die Animation anschliessend erfolgen soll. Dieses Gerüst stellt wie das Skelett dar, welches anschliessend für die Animation verwendet werden soll. Dementsprechend werden die einzelnen Gerüst-Teile auch Bones (Knochen) genannt. Armaturen werden beim Rendern nicht angezeigt. Bei ihnen handelt es sich lediglich um ein Werkzeug zur Animation.</p>
+</div>
+<div id="lattice" class="section level1">
+<h1>Lattice</h1>
+<div class="marginnote">
+Lattice
+</div>
+<p>Das Lattice stellt ein dreidimensionales Gerüst aus Punkten dar, welches allerdings nicht gerendert werden kann. Es dient als Werkzeug zur komplexeren Transformation von anderen Objekten.</p>
+</div>
+<div id="empty" class="section level1">
+<h1>Empty</h1>
+<div class="marginnote">
+Empties
+</div>
+<p>Empties sind Knotenpunkte an einem einzigen Punkt in der virtuellen Welt. Sie beinhalten weder Oberflächen noch Volumen und können auch nicht gerendert werden. Sie lassen sich allerdings beispielsweise als Bezugspunkte für virtuelle Objekte verwenden.</p>
+</div>
+<div id="image" class="section level1">
+<h1>Image</h1>
+<div class="marginnote">
+Bilder
+</div>
+<p>Blender ermöglichet es, dass auch externe Bilddateien direkt in eine Szene hinzugefügt werden. Hierfür kann ein solches Objekt erstellt werden und das Bild anschliessend dem Objekt hinzugefügt werden. Bilder können allerdings auch direkt in den Viewport-Display gezogen werden, wodurch sie anschliessend hinzugefügt werden.</p>
+</div>
+<div id="light" class="section level1">
+<h1>Light</h1>
+<div class="marginnote">
+Lichtquellen
+</div>
+<p>Licht-Objekte stellen die Quelle für die Beleuchtung von Szenen dar. Sie sind nicht als Mesh oder Kurve modellierbar, sondern stellen vielmehr einen Punkt oder Bereich dar, von dem die Beleuchtung ausgeht.</p>
+</div>
+<div id="light-probe" class="section level1">
+<h1>Light Probe</h1>
+<div class="marginnote">
+Light Probes
+</div>
+<p>Light Probes werden in der Eevee-Render-Engine als Hilfsobjekte verwendet. Dabei werden beispielsweise Informationen über indirekte Beleuchtungseffekte gespeichert. Diese Informationen werden anschliessend im finalen Render berücksichtigt, während das Objekt als solches nicht im finalen Render dargestellt wird.</p>
+</div>
+<div id="camera" class="section level1">
+<h1>Camera</h1>
+<div class="marginnote">
+Kamera
+</div>
+<p>Kameras stellen den Punkt dar, aus dem die Szenen in der gerenderten Szene aus betrachtet werden. Die Kameras als solche sind in den gerenderten Bildern nicht sichtbar.</p>
+</div>
+<div id="speaker" class="section level1">
+<h1>Speaker</h1>
+<div class="marginnote">
+Lautsprecher
+</div>
+<p>Speaker werden verwendet, um an bestimmten Positionen in der Szene Klänge erklingen zu lassen. So wie die Lichtquellen sind die Speaker nicht modellierbar, sondern stellen einen Punkt in der dreidimensionalen Welt dar, von dessen Position ein Klang ausgeht.</p>
+</div>
+<div id="force-field" class="section level1">
+<h1>Force Field</h1>
+<div class="marginnote">
+Kraftfelder
+</div>
+<p>Force Fields sind Objekte, welche in Simulationen Kräfte auf andere Objekte ausüben können. So können andere Objekte beispielsweise angezogen oder absorbiert werden. Beim Rendern sind diese Objekte als solches nicht sichtbar, allerdings die Auswirkungen, welche deren Kräfte auf Objekte haben können.</p>
+</div>
+<div id="collection-instance" class="section level1">
+<h1>Collection Instance</h1>
+<div class="marginnote">
+Collections
+</div>
+<p>Collections sind Einheiten, um Objekte anzuordnen und zu gruppieren. Sie erscheinen nicht im Viewport, sind aber im Outliner-Panel aufzufinden. Sie können wie die Dateiordner verstanden werden.</p>
+</div>
+<div id="zusammenfassung-der-objektarten" class="section level1">
+<h1>Zusammenfassung der Objektarten</h1>
+<div class="marginnote">
+Verschiedene Objektarten
+</div>
+<p>Die verschiedenen Objekt-Arten dienen also entweder der Darstellung von Objekten, der Darstellung von externen Dateien, der Darstellung der Szene oder haben vor allem unterstützende Funktionen:</p>
+<p>Renderbare Objekte Szenen-Tools Externe Daten Hilfs-Werkzeuge Gitter-basiert Kurven-basiert Metas Striche<br />
+Mesh Curve Metaball Grease Pencil Camera Volumes Armature Surface Light Images Lattice Text Speaker Empty Force Field Speaker Light-Probe Collections</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
