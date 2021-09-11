@@ -151,7 +151,7 @@ Um ein Editor-Fenster zu schliessen, wird jeweils ein anderes Editor-Fenster üb
 ## Übung 1.1
 Ordnen Sie die Arbeitsoberflächen entsprechend der nachfolgenden Abbildung an.
 ![](images/Chapter2/Exercise_1.png)
-
+Die Lösung für die Übung finden Sie [hier](Sol1_1.html)
 
 # Übung 1.2
 Ordnen Sie die Arbeitsoberflächen entsprechend der nachfolgenden Abbildung an.

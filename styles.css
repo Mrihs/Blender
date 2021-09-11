@@ -11,7 +11,7 @@ body {
 }
 
 kbd {
-  background-color: white;
+  background-color: transparent;
   border: 1px outset #333;
   color: black;
   padding: 1px 3px;
@@ -38,18 +38,19 @@ kbd {
   border-radius: 10px;
   background: #A9D18E 5px center/3em no-repeat; 
     background-image: url(images/icons/info.png);
-  background-size: 15%;
+  background-size: 25%;
   min-height: 150px;
 }
 
 .remember {
   padding: 1.5em 1.5em 1.5em 10em;
   margin-bottom: 10px;
-  border: 2px #FFE699;
+  border: 2px #C29100;
   border-radius: 10px;
-  background: #FFD966 5px center/3em no-repeat;
+  background: #FFBF00 5px center/3em no-repeat;
     background-image: url(images/icons/remember.png);
-  background-size: 15%;
+  background-size: 25%;
+  background-position: left top;
   min-height: 150px;
 }
 

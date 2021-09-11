@@ -16,38 +16,50 @@ Jegliche 3D-Meshes beinhalten drei grundlegende Eigenschaften. Diese Grundeigens
 *   Rotation 
 *   Skalierung
 
+<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
+![Animation 1: Bewegung von Objekten.](images/Chapter8/Move.gif){width=100%}
+</div>
+
 Alle drei Optionen sind in der Sidebar (ein/ausblenden mittels <kbd>N</kbd>) unter dem Menü Item unter dem Reiter Transform sichtbar. Die Eigenschaften beziehen sich jeweils auf das ausgewählte Objekt. Wenn kein Objekt ausgewählt ist, beziehen sie sich auf das zuletzt ausgewählte Objekt. Mittels der Eigenschaften in der Sideview lassen sich diese drei Eigenschaften beliebig mittels der Eingabe von Zahlen variieren.
 
 ## Location
 
 <div class="marginnote"> Position </div>
 
+
 Die Location beschreibt die Position eines 3D-Meshes in der dreidimensionalen Welt. Die Position wird mittels drei Werten angegeben, einem Wert für die X-Achse, einem Wert für die Y-Achse und einem Wert für die Z-Achse. Jede dieser drei Werte lässt sich individuell verändern. Durch das Verschieben des X-Wertes verschiebt sich das Objekt beispielsweise der X-Achse entlang.
 
 <div class="marginnote"> Position befindet sich am Ursprung des Objekts </div>
 
-![Animation 1: Bewegung von Objekten.](images/Chapter8/Move.gif){width=25%}
+<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
+![Abbildung 1: Der orange Punkt markiert den Ursprung (Origin) eines Objektes.](images/Chapter8/origin.png){width=100%}
+</div>
 
 Die genaue Position des Objektes wird anhand eines kleinen orangen Punktes im Viewport Display angezeigt. Bei diesem Punkt handelt es sich um den Ursprung des Objektes (Origin). Die Position eines Objektes bezieht sich immer auf diesen orangen Punkt, selbst wenn das Mesh selbst diese Position gar nicht abdeckt.
 
-![Abbildung 1: Der orange Punkt markiert den Ursprung (Origin) eines Objektes.](images/Chapter8/origin.png){width=50%}
 
-
-##### ABBILDUNG 5 ######
 
 ## Rotation
 
 <div class="marginnote"> Rotation </div>
 
+<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
+![Animation 2: Rotation eines Würfels entlang der X-Achse.](images/Chapter8/rotate.gif){width=100%}
+</div>
+
 Die Rotation eines Objektes beschreibt, wie sehr das Objekt entlang der drei Achsen rotiert wird. Analog zur Position ist die Rotation ebenfalls in die drei Achsen X, Y und Z aufgeteilt. Beispielsweise, eine Veränderung der Rotation beim Wert X führt dazu, dass das Objekt entsprechend entlang der X-Achse rotiert wird. Durch die Verwendung aller drei Achsen können so komplexe Rotationen erfolgen. Indem alle Werte erneut auf 0 gesetzt werden, befindet sich das Objekt wieder in seiner Grundposition.
 
-![Animation 2: Rotation eines Würfels entlang der X-Achse.](images/Chapter8/rotate.gif){width=25%}
 
 <div class="marginnote"> Drehpunkt der Rotation </div>
 
+
+
+<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
+![Animation 2: Rotation eines Würfels mit einem Ursprung ausserhalb des Objektes.](images/Chapter8/rotate2.gif){width=100%}
+</div>
+
 Der Ursprung des Objektes stellt den Drehpunkt für die Rotation mittels der Sidebar dar. Das heisst, die Objekte werden jeweils um den Ursprungspunkt herum rotiert. Dies wird beispielsweise deutlich, wenn sich der Ursprungspunkt ausserhalb eines Objektes befindet.
 
-![Animation 2: Rotation eines Würfels mit einem Ursprung ausserhalb des Objektes.](images/Chapter8/rotate2.gif){width=25%}
 
 ## Scale
 
@@ -84,8 +96,9 @@ Die Werte links neben dem Schloss lassen sich allerdings immer noch verändern. 
 ## Übung 3.1 
 Versuchen Sie den Standardwürfel so zu skalieren, dass er einen in die Höhe ragenden Quader darstellt, entsprechend der Abbildung.
 
-![](images/Chapter8/quader.png){width=15%}
-
+<div style= "float:right;position: relative; padding: 1%; width: 12.5%;">
+![](images/Chapter8/quader.png){width=100%}
+</div>
 
 
 ## Übung 3.2 

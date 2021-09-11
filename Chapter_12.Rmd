@@ -1,5 +1,5 @@
 ---
-title: "12.	Methoden der Objektbearbeitung im Edit-Mode"
+title: "12.\tMethoden der Objektbearbeitung im Edit-Mode"
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +16,9 @@ Mittels der Taste F lässt sich der Befehl «Fill» verwenden. Werden etwa zwei 
 
 # Extrude
 
-![Abbildung 12.1: Extrude-Icon](images/Chapter12/extrude.jpeg){width=15%}
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.1: <br> Extrude-Icon](images/Chapter12/extrude.jpeg){width=100%}
+</div>
 
 
 <div class="marginnote"> Extrudieren mittels E </div>
@@ -44,11 +46,13 @@ Beim Extrudieren von Faces erfolgt die Bearbeitung per Default entlang der Norma
 # Übung 6: Extrudieren
 ## Übung 6.1 
 Erstellen Sie folgende Objekte ausgehend von einem Würfel.
-![](images/Chapter12/exercise_extrude.png){width=50%}
+![](images/Chapter12/exercise_extrude.png){width=100%}
 :::
 
 # Knife
-![Abbildung 12.2: Knife-Icon](images/Chapter12/knife.jpeg){width=15%}
+<div style= "float:right;position: relative; padding: 1%; font-size:65%;">
+![Abbildung 12.2: <br> Knife-Icon](images/Chapter12/knife.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Schneiden </div>
 
@@ -68,7 +72,9 @@ Mittels der Taste √ oder ¶ wird der Schneidevorgang bestätigt. Dadurch wird 
 
 # Loop Cut
 
-![Abbildung 12.3: Loop-Cut-Icon](images/Chapter12/loopcut.jpeg){width=15%}
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.3: <br> Loop-Cut-Icon](images/Chapter12/loopcut.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Prinzip des Loop Cuts </div>
 
@@ -96,7 +102,9 @@ Der Loop-Cut kann auch auf Edges angewendet werden, die noch nicht Teil eines Fa
 
 # Edge Slide
 
-![Abbildung 12.4: Edge-Slide-Icon](images/Chapter12/edgeslide.jpeg){width=15%}
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.4: <br> Edge-Slide-Icon](images/Chapter12/edgeslide.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Edge Slide </div>
 
@@ -113,7 +121,9 @@ Dank des Loop-Cuts ist es möglich, dass der Standardwürfel in gleich grosse Un
 Statt alle drei Loop Cuts einzeln machen zu müssen kann der Würfel auch unterteilt werden mittels des Befehles «Subdivide». Dieser ist über das Menü «Edge | Subdivide» verfügbar. Anschliessend werden alle ausgewählten Faces entlang zweier Achsen unterteilt, so dass sie aus vier einzelnen Faces bestehen. Im Kontext-Menü zur letzten durchgeführten Aktion kann zudem die Anzahl Unterteilungen erhöht werden.
 
 # Bevel
-![Abbildung 12.5: Bevel-Icon](images/Chapter12/bevel.jpeg){width=15%}
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.5: <br> Bevel-Icon](images/Chapter12/bevel.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Abrunden mittels B </div>
 
@@ -132,7 +142,10 @@ Im Kontext-Menü zur letzten durchgeführten Aktion sind jeweils weitere Optione
 Die Bevel-Transformation kann sowohl für Edges als auch für Vertices angewendet werden. Wenn etwa ein Objekt lediglich aus einer Fläche besteht und die Ecken dieser Fläche bearbeitet werden, wird die Bevel-Transformation auf die Vertices in den Ecken angewendet. In diesem Falle muss im Kontext-Menü zur letzten durchgeführten Aktion eingestellt werden, dass die Vertices bearbeitet werden anstelle der Edges. Hierfür wird unter der Zeile «Affect» Vertices ausgewählt. Bei der Bearbeitung von Kanten zwischen mehreren Faces werden jeweils die Edges der Bevel-Transformation unterzogen, so dass die Zeile «Affect» auf Edges gestellt werden muss.
 
 # Inset Faces
-![Abbildung 12.6: Inset Faces-Icon](images/Chapter12/inset.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.6: <br> Inset Faces-Icon](images/Chapter12/inset.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Intrusion mittels I </div>
 
@@ -151,7 +164,10 @@ Die Intrusion wird anhand der Dicke der neu erstellten Faces beschrieben. Wird b
 Die Funktion Inset Faces kann zudem auch auf die Faces individuell angewendet werden. Im Normallfall werden zwei nebeneinander ausgewählte Faces gemeinsam bearbeitet. Es ist jedoch auch möglich die Faces individuell anzusteuern, so dass die ausgewählten Faces individuell bearbeitet werden. Hierfür muss im Kontext-Menü zur letzten durchgeführten Aktion die Option «Individual» angewählt werden.
 
 # Spin
-![Abbildung 12.7: Spin-Icon](images/Chapter12/spin.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.7: <br> Spin-Icon](images/Chapter12/spin.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Spin </div>
 
@@ -196,7 +212,10 @@ Diese Methode ist besonders geeignet um allfällige Vertices, welche an derselbe
 Nebst den bisher behandelten Operationen zur Objektbearbeitung im Edit-Mode bietet die Toolbar noch eine Reihe weiterer Optionen, welche der Vollständigkeit halber noch kurz aufgeführt werden.
 
 ## Add Cube
-![Abbildung 12.8: Add Cube-Icon](images/Chapter12/addcube.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.8: <br> Add Cube-Icon](images/Chapter12/addcube.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Würfel hinzufügen </div>
 
@@ -204,35 +223,50 @@ Mittels des Befehles «Add Cube» kann ein neuer Würfel erstellt werden. Um den
 Die neu erstellten Würfel werden im Edit Mode zu Bestandteilen des Objekts, welches gerade bearbeitet werden. Der Befehl «Add Cube» steht allerdings auch im Object-Mode zur Verfügung. Werden dort neue Würfel erstellt bilden diese jeweils eigenständige Objekte.
 
 ## Smooth
-![Abbildung 12.9: Smooth-Icon](images/Chapter12/smooth.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.9: <br> Smooth-Icon](images/Chapter12/smooth.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Objekte glätten </div>
 
 Mittels dem Befehl Smooth können Objekte glatter gemacht werde. Dies geschieht, indem die Winkel der Edges gemittelt werden. Statt eines 90° Winkels entsteht dann ein geringerer Winkel.
 
 ## Shrink/Fatten
-![Abbildung 12.10: Shrink/Fatten-Icon](images/Chapter12/shrinkenfatten.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.10: <br> Shrink/Fatten-Icon](images/Chapter12/shrinkenfatten.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Objekte zusammenziehen oder aufblähen </div>
 
 Beim Befehl «Shrink/Fatten» werden die ausgewählten Vertices entlang ihrer eigenen Normalen bewegt. Dadurch kann das Objekt aufgebläht oder zusammengezogen werden. Dies ist beispielsweise nützlich, wenn der Mantel eines Zylinders ausgewählt und sein Radius vergrössert werden soll, ohne dessen Höhe zu verändern.
 
 ## Shear
-![Abbildung 12.11: Shear-Icon](images/Chapter12/shear.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.11: <br> Shear-Icon](images/Chapter12/shear.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Objekte auseinanderziehen </div>
 
 Mittels der Shear-Transformation werden die ausgewählten Punkte in einer Achse auseinandergezogen. Die Transformation geschieht dabei so, dass parallel verlaufende Linien geschert werden und praktisch nebeneinander vorbeiziehen.
 
 ## Rip Region
-![Abbildung 12.12: Rip Region Icon](images/Chapter12/ripregion.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.12: <br> Rip Region Icon](images/Chapter12/ripregion.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Regionen aufteilen </div>
 
 Mittels des Befehls “Rip Region” können Vertice, welche an mehreren Faces andocken aufgeteilt werden. Die Faces werden dabei an der Stelle der entsprechenden Vertices getrennt und werden durch Vertice, welche sozusagen von den originalen Vertices abgezogen werden, neu gebildet.
 
 ## Poly Build
-![Abbildung 12.13: Poly Build-Icon](images/Chapter12/polybuild.jpeg){width=15%}
+
+<div style= "float:right;position: relative; padding: 1%; width: 15%; font-size:60%;">
+![Abbildung 12.13: <br> Poly Build-Icon](images/Chapter12/polybuild.jpeg){width=100%}
+</div>
 
 <div class="marginnote"> Poly Build Modus </div>
 
@@ -243,14 +277,19 @@ Beim Poly Build handelt es sich um einen interaktiven Modus um Geometrien zu erw
 # Übung 7: Objektbearbeitung
 
 ## Übung 7.1  
+<div style= "float:right;position: relative; padding: 1%; width: 12.5%;">
+![](images/Chapter12/haus.png){width=100%}
+</div>
 
 Verändern Sie den Standardwürfel im Edit-Mode so, dass er die Form eines Hauses hat.
-![](images/Chapter12/haus.png){width=15%}
+
 
 
 ## Übung 7.2 Leistungsnachweis 2
+<div style= "float:right;position: relative; padding: 1%; width: 12.5%;">
+![](images/Chapter12/vase.png){width=100%}
+</div>
 
 Erstellen Sie eine Vase. Die Vase sollte rund sein und eine Öffnung haben – ansonsten sind Sie frei in Ihrer Gestaltung. Achten Sie zudem darauf, dass Sie unterschiedliche Faces für den Innenbereich der Vase, als auch für den Aussenbereich der Vase verwenden, so dass die Vase ein gewisse Dicke besitzt. 
-![](images/Chapter12/vase.png){width=15%}
 
 ::::
