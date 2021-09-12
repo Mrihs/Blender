@@ -27,21 +27,22 @@ Durch die bisherigen Transformationen haben wird allerdings nur das Objekt als G
 Im Rahmen dieses Kurses wird vor allem mit dem Object- und dem Edit-Mode gearbeitet. Der Wechsel zwischen diesen beiden Modi stellt allerdings generell einen wichtigen Modi-Wechsel dar. Deshalb ist es auch möglich mittels einer einzigen Taste zwischen diesen beiden Modi hin und her zu wechseln – nämlich mittels der Taste œ. Dabei wird in den Edit-Mode für das aktuell ausgewählte Objekt gewechselt. Für Objekte, welche nicht aus einzelnen Komponenten bestehen (beispielsweise Kameras oder Lichtquellen) ist kein Edit-Mode verfügbar.
 
 
-#### INFO #######
-
+::: {.info  data-latex="{info}"}
 Das Zurücksetzen der Transformationen kann direkt mittels folgenden Shortcuts erfolgen: 
-Zurücksetzen der Position: 	<kbd>Alt</kbd> + <kbd>G</kbd>
-Zurücksetzen der Rotation: 	<kbd>Alt</kbd> + <kbd>R</kbd>
-Zurücksetzen der Skalierung: 	<kbd>Alt</kbd> + <kbd>S</kbd>
 
+*   Zurücksetzen der Position: 	<kbd>Alt</kbd> + <kbd>G</kbd>
+*   Zurücksetzen der Rotation: 	<kbd>Alt</kbd> + <kbd>R</kbd>
+*   Zurücksetzen der Skalierung: 	<kbd>Alt</kbd> + <kbd>S</kbd>
 
-
-
-
+:::
 
 # Struktur von 3D-Meshes
 
 <div class="marginnote"> Der Gitteraufbau von 3D-Meshes </div>
+
+<div style= "float:right;position: relative; padding: 1%; width: 50%; font-size:60%;">
+![Abbildung 1: Vertices, Edges und Faces](images/Chapter10/structure.png){width=100%}
+</div>
 
 Beim Wechseln in den Edit-Mode erscheint das Modell in seiner Struktur bestehend aus mehreren Polygonen. Die Polygone - und somit auch das Modell - besteht in seiner grundlegenden Struktur aus folgenden Elementen:
 
@@ -49,17 +50,13 @@ Beim Wechseln in den Edit-Mode erscheint das Modell in seiner Struktur bestehend
 *   Edges: Linien zwischen zwei Vertices in einem Mesh
 *   Faces: Flächen zwischen mehreren Edges/Vertices in einem Mesh
 
-![Abbildung 1: Vertices, Edges und Faces](images/Chapter10/structure.png){width=25%}
-
-
-#### ABBILDUNG 6 ######
-
 <div class="marginnote"> Select-Modus wechseln </div>
 
+<div style= "float:right;position: relative; padding: 1%; width: 25%; font-size:60%;">
+![Abbildung 2: Buttons für den Vertice- Edge- und Face-Select-Modus in der linken oberen Ecke des Edit-Modus.](images/Chapter10/select_icons.png){width=100%}
+</div>
+
 Im Edit-Mode kann jeweils eines der drei Elemente ausgewählt werden, je nachdem in welchem Select-Modus man sich befindet. Die drei Select-Modi sind in der linken oberen Ecke, direkt neben dem Auswahlfeld für den Bearbeitungs-Modi (in dem Falle der Edit-Mode) aufzufinden.
-
-
-![Abbildung 2: Buttons für den Vertice- Edge- und Face-Select-Modus in der linken oberen Ecke des Edit-Modus.](images/Chapter10/select_icons.png){width=25%}
 
 ## Vertices
 
@@ -99,9 +96,9 @@ Der Default-Cube, den Blender jeweils beim Start eines neuen Projektes zur Verf�
 
 <div class="marginnote"> Bezeichnung von Faces aufgrund Anzahl Vertices </div>
 
-*   Triangles (Tris): bestehen aus drei Vertices
-*   Quadrangles (Quads): Bestehen aus vier Vertices
-*   N-Gons: Bestehen aus n Vertices
+*   **Triangles** (**Tris**): bestehen aus drei Vertices
+*   **Quadrangles** (**Quads**): Bestehen aus vier Vertices
+*   **N-Gons**: Bestehen aus n Vertices
 
 
 ::: {.info  data-latex="{info}"}
@@ -110,10 +107,11 @@ Polygone und Faces sind in ihrer Bedeutung praktisch deckungsgleich. In der gena
 
 <div class="marginnote"> Tris aus Quads ableiten </div>
 
+<div style= "float:right;position: relative; padding: 1%; width: 35%; font-size:60%;">
+![Abbildung 8: Der Standardwürfel bestehend aus Tris statt aus Quads.](images/Chapter10/tris.png){width=100%}
+</div>
+
 Aus Quads lassen sich sehr einfach Tris bilden. Hierfür muss lediglich jedes Quad zwischen zwei gegenüberliegenden Vertices zerschnitten werden. Somit wird also jede Fläche in zwei Dreiecke unterteil. Beim Rendern von Bildern anhand der Objekte werden Quads sogar automatisch in Tris unterteilt. Im Normalfall ist dies für den Benutzer allerdings kaum ersichtlich.
-
-
-![Abbildung 8: Der Standardwürfel bestehend aus Tris statt aus Quads.](images/Chapter10/tris.png){width=25%}
 
 
 <div class="marginnote"> Bevorzugung von Quads </div>
@@ -124,11 +122,7 @@ Trotzdem ist es sinnvoll sich beim Modellieren von 3D-Objekten eher an die Verwe
 
 Arbeiten mit Tris ist trotzdem durchaus möglich. Zudem ist es auch nicht problematisch, wenn in einem 3D-Objekt vereinzelte Tris auftauchen. In manchen Situationen sind Tris allerdings auch flexibler als Quads. Wenn allerdings die Objekte komplett aus Tris bestehen sollen, macht dies gerade in gemeinschaftlichen Prozessen nur Sinn, wenn alle beteiligten Personen mit Tris umgehen können. 
 
-
 ![Abbildung 4: Links eine gerenderte 3D Figur und rechts die Figur in ihrer Gitterstruktur.](images/Chapter10/profs.png)
-
-
-
 
 ::: {.remember  data-latex="{remember}"}
 
@@ -145,15 +139,15 @@ Arbeiten mit Tris ist trotzdem durchaus möglich. Zudem ist es auch nicht proble
 
 <div class="marginnote"> Auswahl von Vertices, Edges und Faces im Edit-Mode </div>
 
-Abhängig davon, welcher Select-Mode gerade aktiviert ist, lassen sich entweder die Vertices, die Edges oder Faces auswählen. Die Auswahl der jeweiligen Elemente geschieht mittels der linken Maustaste. Wie auch im Object-Mode können mittels gedrückter ƒ Taste zusätzliche Elemente ausgewählt werden. Ebenso kann mit der Taste C der Circle-Select-Mode und mittels der Taste B der Box-Select-Mode verwendet werden. Zudem kann mit der Tastenkombination ≈ + I die Auswahl umgekehrt werden.
+Abhängig davon, welcher Select-Mode gerade aktiviert ist, lassen sich entweder die Vertices, die Edges oder Faces auswählen. Die Auswahl der jeweiligen Elemente geschieht mittels der linken Maustaste. Wie auch im Object-Mode können mittels gedrückter <kbd>Shift</kbd> Taste zusätzliche Elemente ausgewählt werden. Ebenso kann mit der Taste <kbd>C</kbd> der Circle-Select-Mode und mittels der Taste <kbd>B</kbd> der Box-Select-Mode verwendet werden. Zudem kann mit der Tastenkombination <kbd>Cmd</kbd> + <kbd>I</kbd> die Auswahl umgekehrt werden.
 
-<div class="marginnote"> Select linked mittels L </div>
+<div class="marginnote"> Select linked mittels <kbd>L</kbd> </div>
 
-Im Edit-Modus gibt es zudem noch einige zusätzliche Auswahl-Optionen. Wenn sich die Maus über einem Element eines Objekts befindet kann mit der Taste L beispielsweise alle Elemente, welche direkt über Edges damit verbunden sind ausgewählt werden. Dies ermöglich es, alle verbundenen Elemente auszuwählen. Um auch unverbundene Elemente eines Objektes auszuwählen kann die Taste A gedrückt werden.
+Im Edit-Modus gibt es zudem noch einige zusätzliche Auswahl-Optionen. Wenn sich die Maus über einem Element eines Objekts befindet kann mit der Taste <kbd>L</kbd> beispielsweise alle Elemente, welche direkt über Edges damit verbunden sind ausgewählt werden. Dies ermöglich es, alle verbundenen Elemente auszuwählen. Um auch unverbundene Elemente eines Objektes auszuwählen kann die Taste <kbd>A</kbd> gedrückt werden.
 
-<div class="marginnote"> Edge-Loop-Select bei gedrückter Taste ¥ </div>
+<div class="marginnote"> Edge-Loop-Select bei gedrückter Taste <kbd>Alt</kbd> </div>
 
-Zudem lassen sich auch ganze Verbindungen von Edges auswählen, wenn die Taste ¥ während der Auswahl gedrückt wird. Dadurch werden alle Edges, die gemeinsam eine Linie bilden ausgewählt. Dies ist auch im Vertex Select-Modus möglich. Im Face-Select-Modus werden alle Faces, die gemeinsam eine Linie bilden ausgewählt (hierfür muss der Mausklick allerdings bei einem Edge erfolgen – nicht in der Fläche des Faces).
+Zudem lassen sich auch ganze Verbindungen von Edges auswählen, wenn die Taste <kbd>Alt</kbd> während der Auswahl gedrückt wird. Dadurch werden alle Edges, die gemeinsam eine Linie bilden ausgewählt. Dies ist auch im Vertex Select-Modus möglich. Im Face-Select-Modus werden alle Faces, die gemeinsam eine Linie bilden ausgewählt (hierfür muss der Mausklick allerdings bei einem Edge erfolgen – nicht in der Fläche des Faces).
 
 # Das Innere des Objekts
 
@@ -185,7 +179,7 @@ Die Normalen eines 3D-Objektes lassen sich lediglich in der Edit-View betrachten
 
 <div class="marginnote"> Normalen umkehren und neu berechnen </div>
 
-Wenn alle Faces innerhalb eines Objekts ausgewählt werden, mittels der Taste A, kann anschliessend mittels der Tastenkombination ¥ + N das Normals-Menü bei der Maus geöffnet werden. Unter der Option «Flip» können anschliessend alle Normals in die umgekehrte Richtung gekehrt werden. Zudem können die Normals hier auch mittels der Option «Recalculate Outside» zur äusseren Seite hin berechnet werden oder mittels «Reculaculate Inside» zur inneren Seite hin berechnet werden.
+Wenn alle Faces innerhalb eines Objekts ausgewählt werden, mittels der Taste <kbd>A</kbd>, kann anschliessend mittels der Tastenkombination <kbd>Alt</kbd> + <kbd>N</kbd> das Normals-Menü bei der Maus geöffnet werden. Unter der Option «Flip» können anschliessend alle Normals in die umgekehrte Richtung gekehrt werden. Zudem können die Normals hier auch mittels der Option «Recalculate Outside» zur äusseren Seite hin berechnet werden oder mittels «Reculaculate Inside» zur inneren Seite hin berechnet werden.
 
 ::: {.info  data-latex="{info}"}
 Je nach Einstellungen von Game-Engines oder Materialien kann es sein, dass die Rückseite gar nicht dargestellt wird. In diesem Falle würde man durch die Seiten, auf der sich keine Normalen befinden durchschauen und das andere Ende des Objektes an dieser Stelle sehen, da dort die Normalen auf die eigene Ansicht hin zugewendet sind.

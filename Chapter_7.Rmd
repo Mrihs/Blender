@@ -66,9 +66,12 @@ Der Kegel stellt einen Spezialfall des Zylinders dar, bei dem die Radien der bei
 
 <div class="marginnote"> Torus </div>
 
+<div style= "float:right;position: relative; padding: 1%; width: 50%; font-size:60%;">
+![Abbildung 4: Major- und Minor-Komonente des Torus](images/Chapter7/torus.png)
+</div>
+
 Der Torus stellt eine Ringförmige Gestalt dar, welche aus einer Major- und einer Minor-Komponente besteht. Die Major-Komponente beschreibt dabei den Kreis von der Vogelperspektive herab auf den Torus und die Minor-Komponente den Kreis, welcher sich aus dem Querschnitt des Torus ergibt. Für beide Komponenten kann die Anzahl Vertices über das Segment-Feld im Kontext-Menü eingegeben werden. Die Dimensionalität kann entweder auch hinsichtlich der Major- und Minor-Komponente festgelegt werden oder alternativ als der Radius des inneren und des äusseren Ringes.
 
-![Abbildung 4: Major- und Minor-Komonente des Torus](images/Chapter7/torus.png)
 
 
 # Grid

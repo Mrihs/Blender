@@ -361,13 +361,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="Folien/materialien_theme1.pdf">Theme 1</a>
+      <a href="Folien/introduction.pdf">Einführung</a>
     </li>
     <li>
-      <a href="Folien/materialien_theme2.pdf">Theme 2</a>
-    </li>
-    <li>
-      <a href="Folien/materialien_theme3.pdf">Theme 3</a>
+      <a href="Folien/materials.pdf">Materialien</a>
     </li>
   </ul>
 </li>
@@ -444,18 +441,20 @@ div.tocify {
 Ziel dieses Tutorials
 </div>
 <p>Bislang wurden die grundlegenden Prinzipien der Objektbearbeitung behandelt. Dieser ermöglichen bereits eine Vielzahl von Bearbeitungsmöglichkeiten, so dass schon sehr komplexe Objekte modelliert werden können. Nachfolgend daher eine Erklärung, wie beispielsweise die erläuterten Bearbeitungsmöglichkeiten verwendet werden können, um ein Glas zu modellieren, wie beispielsweise in Abbildung 24.</p>
+<div style="float:right;position: relative; padding: 1%; width: 60%; font-size:60%;">
 <div class="figure">
 <img src="images/Chapter14/glasvorlage.png" alt="" />
 <p class="caption">Abbildung 24: Bildvorlage zur Erstellung eines Glases.</p>
 </div>
+</div>
 <div class="marginnote">
 Würfel löschen
 </div>
-<p>Zunächst wird ein neues Blender-Projekt geöffnet. Da das Glas eine runde Form hat, ist der Standardwürfel nicht geeignet, um das Glas nachzubilden. Aus diesem Grund wird er mittels der Taste X gelöscht.</p>
+<p>Zunächst wird ein neues Blender-Projekt geöffnet. Da das Glas eine runde Form hat, ist der Standardwürfel nicht geeignet, um das Glas nachzubilden. Aus diesem Grund wird er mittels der Taste <kbd>X</kbd> gelöscht.</p>
 <div class="marginnote">
 Referenzbild einfügen
 </div>
-<p>Generell ist es empfehlenswert bei der Erstellung von Objekten mit Referenzbildern zu arbeiten. Aus diesem Grund benötigen wir eine Bildvorlage für das Glas. Hierfür kann eine Bilddatei direkt aus dem Browser in den 3D Viewport hinein bewegt werden, so dass das Bild anschliessend direkt in der Szene sichtbar wird. Das Bild wird allerdings so eingefügt, dass es senkrecht zur eigenen Ansicht sichtbar ist. Das bedeutet, dass das Bild entsprechend der eigenen Ansicht rotiert wird. Aus diesem Grund empfiehlt es sich vor dem Hineinziehen des Bildes in die Frontansicht zu wechseln. Dadurch wird das Bild lediglich entlang der X-Achse um 90° rotiert eingefügt. Alternativ kann das Bild über das «Add»-Menü (ƒ + A) unter «Image | Reference» hinzugefügt werden. Zudem ist das Bild jeweils nur sichtbar, wenn die Viewport Overlays sichtbar sind.</p>
+<p>Generell ist es empfehlenswert bei der Erstellung von Objekten mit Referenzbildern zu arbeiten. Aus diesem Grund benötigen wir eine Bildvorlage für das Glas. Hierfür kann eine Bilddatei direkt aus dem Browser in den 3D Viewport hinein bewegt werden, so dass das Bild anschliessend direkt in der Szene sichtbar wird. Das Bild wird allerdings so eingefügt, dass es senkrecht zur eigenen Ansicht sichtbar ist. Das bedeutet, dass das Bild entsprechend der eigenen Ansicht rotiert wird. Aus diesem Grund empfiehlt es sich vor dem Hineinziehen des Bildes in die Frontansicht zu wechseln. Dadurch wird das Bild lediglich entlang der X-Achse um 90° rotiert eingefügt. Alternativ kann das Bild über das «Add»-Menü (<kbd>Shift</kbd> + <kbd>A</kbd>) unter «<em>Image | Reference</em>» hinzugefügt werden. Zudem ist das Bild jeweils nur sichtbar, wenn die Viewport Overlays sichtbar sind.</p>
 <div class="marginnote">
 Bild platzieren
 </div>
@@ -463,55 +462,57 @@ Bild platzieren
 <div class="marginnote">
 Primitive Mesh erstellen
 </div>
-<p>Als nächstes wird nun das Objekt hinzugefügt, aus dem anschliessend das Glas geformt werden soll. Dieses hat im Idealfall bereits eine ähnliche Form, wie das zu erstellende Projekt. In diesem Falle würde dies einem Zylinder entsprechen. Über das Add-Menü (ƒ + A) wird unter «Mesh | Cylinder» ein Zylinder an der Position des 3D-Cursors erstellt. Der Zylinder kann dabei in seinen Default-Einstellungen so belassen werden.</p>
+<p>Als nächstes wird nun das Objekt hinzugefügt, aus dem anschliessend das Glas geformt werden soll. Dieses hat im Idealfall bereits eine ähnliche Form, wie das zu erstellende Projekt. In diesem Falle würde dies einem Zylinder entsprechen. Über das Add-Menü (<kbd>Shift</kbd> + <kbd>A</kbd>) wird unter «<em>Mesh | Cylinder</em>» ein Zylinder an der Position des 3D-Cursors erstellt. Der Zylinder kann dabei in seinen Default-Einstellungen so belassen werden.</p>
 <div class="marginnote">
 Zylinder positionieren
 </div>
-<p>Mittels der Taste œ wird in den Edit-Mode gewechselt, um die Bearbeitung des Zylinders zu starten. Die Höhe des Zylinders erstreckt sich nun von Z=-1m bis Z=1m. Somit lieg ein Teil des Zylinders unterhalb des Ursprungs des Objektes. Deshalb wird der Zylinder nun um einen Meter entlang der Z-Achse verschoben. Mittels der Taste A werden alle Elemente des Zylinders ausgewählt. Um nun eine Verschiebung entlang der Z-Achse um einen Meter zu bewirken, wird die Taste G zum Starten der Bewegung, die Taste Z zum Einrasten entlang der Z-Achse, die Zahl 1 zur Angabe der Bewegung um einen Meter und die Taste ¶ zum Bestätigen gedrückt. Nun sollte der Boden des Zylinders am Nullpunkt liegen, so wie in Abbildung 25.</p>
+<p>Mittels der Taste <kbd>Tab</kbd> wird in den Edit-Mode gewechselt, um die Bearbeitung des Zylinders zu starten. Die Höhe des Zylinders erstreckt sich nun von Z=-1m bis Z=1m. Somit lieg ein Teil des Zylinders unterhalb des Ursprungs des Objektes. Deshalb wird der Zylinder nun um einen Meter entlang der Z-Achse verschoben. Mittels der Taste <kbd>A</kbd> werden alle Elemente des Zylinders ausgewählt. Um nun eine Verschiebung entlang der Z-Achse um einen Meter zu bewirken, wird die Taste <kbd>G</kbd> zum Starten der Bewegung, die Taste <kbd>Z</kbd> zum Einrasten entlang der Z-Achse, die Zahl <kbd>1</kbd> zur Angabe der Bewegung um einen Meter und die Taste <kbd>Enter</kbd> zum Bestätigen gedrückt. Nun sollte der Boden des Zylinders am Nullpunkt liegen, so wie in Abbildung 25.</p>
+<div style="float:right;position: relative; padding: 1%; width: 50%; font-size:60%;">
 <div class="figure">
 <img src="images/Chapter14/glas_cilinder.png" alt="" />
 <p class="caption">Abbildung 25: Der Zylinder, nachdem seine Vertices um einen Meter entlang der Z-Achse verschoben wurden.</p>
 </div>
+</div>
 <div class="marginnote">
 Höhe des Zylinder-Deckels anpassen
 </div>
-<p>Der Zylinder ist nun zwar an der Position des Glases, allerdings weist er noch die falschen Dimensionen auf. Wenn der Zylinder nun skaliert würde, sich auch der gerade angepasste Boden verschieben. Deshalb werden die Vertices des Deckels manuell ausgewählt und verschoben. Hierfür wird bei gedrückter ¥ Taste ein Edge entlang des Zylinder-Deckels ausgewählt. Dadurch werden alle Vertices entlang der Schlaufe dieses Edges ausgewählt – also in dem Falle alle Vertices auf dem Deckel des Zylinders. Diese Vertices werden nun entlang der Z-Achse um den Wert -1.2 verschoben, so dass sie die Höhe Z=0.8 aufweisen. Als nächstes wird der Mantel des Zylinders angepasst, so dass er der maximalen Breite des Glases entspricht. Es werden also alle Vertices ausgewählt und entlang der X- und Z-Achse kleiner skaliert. Hierfür werden zunächst alle Vertices des Objektes mittels der Taste A ausgewählt. Anschliessend wird mittels der Taste S der Skalierungsvorgang gestartet, und mittels der Tastenkombination ƒ + Z die Z-Achse ignoriert. Durch die Eingabe von 0.6 und der Bestätigung mittels ¶ wird anschliessend das Objekt entlang der X- und Y-Achse um den Faktor 0.6 skaliert.</p>
+<p>Der Zylinder ist nun zwar an der Position des Glases, allerdings weist er noch die falschen Dimensionen auf. Wenn der Zylinder nun skaliert würde, sich auch der gerade angepasste Boden verschieben. Deshalb werden die Vertices des Deckels manuell ausgewählt und verschoben. Hierfür wird bei gedrückter Taste <kbd>Alt</kbd> ein Edge entlang des Zylinder-Deckels ausgewählt. Dadurch werden alle Vertices entlang der Schlaufe dieses Edges ausgewählt – also in dem Falle alle Vertices auf dem Deckel des Zylinders. Diese Vertices werden nun entlang der Z-Achse um den Wert -1.2 verschoben, so dass sie die Höhe Z=0.8 aufweisen. Als nächstes wird der Mantel des Zylinders angepasst, so dass er der maximalen Breite des Glases entspricht. Es werden also alle Vertices ausgewählt und entlang der X- und Z-Achse kleiner skaliert. Hierfür werden zunächst alle Vertices des Objektes mittels der Taste <kbd>A</kbd> ausgewählt. Anschliessend wird mittels der Taste <kbd>S</kbd> der Skalierungsvorgang gestartet, und mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>Z</kbd> die Z-Achse ignoriert. Durch die Eingabe von <kbd>0</kbd> <kbd>.</kbd> <kbd>6</kbd> und der Bestätigung mittels <kbd>Enter</kbd>wird anschliessend das Objekt entlang der X- und Y-Achse um den Faktor 0.6 skaliert.</p>
 <div class="marginnote">
 Zylindermantel in Edges unterteilen
 </div>
-<p>In den nächsten Bearbeitungsschritten muss der Mantel des Zylinders entsprechend der Form angepasst werden. Hierfür werden allerdings weitere Vertices Innerhalb des Zylindermantels benötigt. Um diese hinzuzufügen, werden mittels eines Loop-Cuts 10 Edges entlang des Zylindermantels eingefügt. Hierfür wird mittels der Tastenkombination ≈ + R zunächst der Loop-Cut Modus gestartet. Anschliessend wird der Mauszeiger über die Edges, welche vertikal dem Zylindermantel entlang verlaufen, bewegt. Dadurch sollte Blender nun einen Schnitt entlang des Zylindermantels in der Mitte der Höhe vorschlagen. Um statt einem Schnitt gleich 10 Schnitte zu erhalten, wird die Zahl 10 eingegeben und der Schnitt anschliessen mittels † oder ¶ bestätigt. Anschliessend muss nochmals mittels † oder ¶ bestätigt werden, dass der Loop-Cut mittig der Flächen verlaufen soll.</p>
+<p>In den nächsten Bearbeitungsschritten muss der Mantel des Zylinders entsprechend der Form angepasst werden. Hierfür werden allerdings weitere Vertices Innerhalb des Zylindermantels benötigt. Um diese hinzuzufügen, werden mittels eines Loop-Cuts 10 Edges entlang des Zylindermantels eingefügt. Hierfür wird mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>R</kbd> zunächst der Loop-Cut Modus gestartet. Anschliessend wird der Mauszeiger über die Edges, welche vertikal dem Zylindermantel entlang verlaufen, bewegt. Dadurch sollte Blender nun einen Schnitt entlang des Zylindermantels in der Mitte der Höhe vorschlagen. Um statt einem Schnitt gleich 10 Schnitte zu erhalten, wird die Zahl <kbd>1</kbd><kbd>0</kbd> eingegeben und der Schnitt anschliessen mittels der linken Maustaste oder <kbd>Enter</kbd> bestätigt. Anschliessend muss nochmals mittels der linken Maustaste oder <kbd>Enter</kbd> bestätigt werden, dass der Loop-Cut mittig der Flächen verlaufen soll.</p>
 <div class="marginnote">
 Anpassen der Breite von Hand
 </div>
-<p>Die neu erstellten Edges werden nun horizontal der Breite des Glases auf der jeweiligen Höhe angepasst. Dies kann zum einen manuell von Hand für jede Reihe an Edges erfolgen. Hierfür wird mittels ¥ + † auf ein horizontales Edge die gesamte Reihe von Edges ausgewählt. Mittels der Skalierung (S) entlang der X- und Z-Achse (ƒ + Z) kann anschliessend der Radius für die entsprechende Höhe eingestellt werden. Dies wird anschliessend nacheinander für jede Edge-Reihe erstellt.</p>
+<p>Die neu erstellten Edges werden nun horizontal der Breite des Glases auf der jeweiligen Höhe angepasst. Dies kann zum einen manuell von Hand für jede Reihe an Edges erfolgen. Hierfür wird mittels <kbd>Alt</kbd> und der linken Maustaste auf ein horizontales Edge die gesamte Reihe von Edges ausgewählt. Mittels der Skalierung (<kbd>S</kbd>) entlang der X- und Z-Achse (<kbd>Shift</kbd> + <kbd>Z</kbd>) kann anschliessend der Radius für die entsprechende Höhe eingestellt werden. Dies wird anschliessend nacheinander für jede Edge-Reihe erstellt.</p>
 <div class="marginnote">
 Anpassen der Breite mittels proportional Editing
 </div>
-<p>Alternativ kann auch auf das Proportional Editing zurückgegriffen werden, welches mittels der Taste O aktiviert wird. Nun kann etwa die oberste Reihe von Edges mittels ¥ + † auf ein horizontales Edge entlang des oberen Randes des Zylinders ausgewählt werden. Anschliessend wird mittels der Taste S die Skalierung gestartet. Für das proportionale Editing wird nun ein Kreis dargestellt. Dieser kann mittels dem Mausrad verkleinert oder vergrössert werden. Sein Radium ist im oberen Bildschirmrand angezeigt und sollte wohl rund .75 betragen. Anschliessend kann die Skalierung entlang der X- und Z-Achse festgelegt werden (ƒ + Z) und um den Faktor 0.85 skaliert werden. Dieser Vorgang wird anschliessend nochmals am unteren Rand des Zylinders wiederholt (mit einem Radius von ca. 0.5 und einer Skalierung um den Faktor 0.5). Anschliessend wird bei deaktiviertem Propotional-Editing noch der Untere Rand erneut um den Faktor 0.9 entlang der X- und Y- Achse skaliert, und der obere Rand ebenfalls um den Faktor 0.975.</p>
+<p>Alternativ kann auch auf das Proportional Editing zurückgegriffen werden, welches mittels der Taste <kbd>O</kbd> aktiviert wird. Nun kann etwa die oberste Reihe von Edges mittels <kbd>Alt</kbd> und der linken Maustaste auf ein horizontales Edge entlang des oberen Randes des Zylinders ausgewählt werden. Anschliessend wird mittels der Taste <kbd>S</kbd> die Skalierung gestartet. Für das proportionale Editing wird nun ein Kreis dargestellt. Dieser kann mittels dem Mausrad verkleinert oder vergrössert werden. Sein Radius ist im oberen Bildschirmrand angezeigt und sollte wohl rund .75 betragen. Anschliessend kann die Skalierung entlang der X- und Z-Achse festgelegt werden (<kbd>Shift</kbd> + <kbd>Z</kbd>) und um den Faktor 0.85 skaliert werden. Dieser Vorgang wird anschliessend nochmals am unteren Rand des Zylinders wiederholt (mit einem Radius von ca. 0.5 und einer Skalierung um den Faktor 0.5). Anschliessend wird bei deaktiviertem Propotional-Editing noch der Untere Rand erneut um den Faktor 0.9 entlang der X- und Y- Achse skaliert, und der obere Rand ebenfalls um den Faktor 0.975.</p>
 <div class="marginnote">
 Zylinder-Deckel löschen
 </div>
-<p>Der Zylinder sollte nun bereits die Form des Glases aufweisen. Durch einen Wechsel in den Face-Select-Modus ist es möglich anschliessend direkt das Face, welches den Deckel des Zylinders darstellt, auszuwählen und mittels X zu löschen. Anschliessend ist das Glas so gut wie fertig – es fehlt im lediglich noch eine Dicke.</p>
+<p>Der Zylinder sollte nun bereits die Form des Glases aufweisen. Durch einen Wechsel in den Face-Select-Modus ist es möglich anschliessend direkt das Face, welches den Deckel des Zylinders darstellt, auszuwählen und mittels <kbd>X</kbd> zu löschen. Anschliessend ist das Glas so gut wie fertig – es fehlt im lediglich noch eine Dicke.</p>
 <div class="marginnote">
 3D Cursor verschieben
 </div>
-<p>Um die Dicke des Glases zu erstellen, sollen alle Faces gegen den Mittelpunkt des oberen Randes des Zylinders hinausgezogen werden. Hierfür muss zunächst der 3D-Cursor mittig des oberen Randes platziert werden. Dies geschieht, indem alle Edges entlang dem oberen Rand ausgewählt werden (hierfür muss wieder in den Edge- oder Vertex-Select-Modus gewechselt werden). Anschliessend wird mittels der Tastenkombination ƒ + S das Snap-Menü geöffnet. Hier wird anschliessend «Cursor to Selected» ausgewählt, um den Cursor mittig in der Auswahl zu platzieren.</p>
+<p>Um die Dicke des Glases zu erstellen, sollen alle Faces gegen den Mittelpunkt des oberen Randes des Zylinders hinausgezogen werden. Hierfür muss zunächst der 3D-Cursor mittig des oberen Randes platziert werden. Dies geschieht, indem alle Edges entlang dem oberen Rand ausgewählt werden (hierfür muss wieder in den Edge- oder Vertex-Select-Modus gewechselt werden). Anschliessend wird mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>S</kbd> das Snap-Menü geöffnet. Hier wird anschliessend «Cursor to Selected» ausgewählt, um den Cursor mittig in der Auswahl zu platzieren.</p>
 <div class="marginnote">
 Fläche nach innen extrudieren
 </div>
-<p>Anschliessend wird der Bezugspunkt für Transformationen auf den 3D-Cursor gewechselt (unter dem Button «Transform Pivot Point» im Header). Nachdem alle Elemente des Zylinders mittels A ausgewählt wurden, können nun alle Flächen mittels der Taste E extrudiert werden. Mittels der Taste S wird skalierend extrudiert und mittels der Taste 0.95 der Faktor 0.95 festgelegt. Dies kann schliessend mittels † oder ¶ bestätigt werden. Mit diesem Schritt ist das Glas bereits fertiggestellt. Es sieht noch etwas eckig und kantig aus, aber in den nächsten Kapiteln wird behandelt, wie das Glas noch glatter erscheint.</p>
+<p>Anschliessend wird der Bezugspunkt für Transformationen auf den 3D-Cursor gewechselt (unter dem Button «Transform Pivot Point» im Header). Nachdem alle Elemente des Zylinders mittels <kbd>A</kbd> ausgewählt wurden, können nun alle Flächen mittels der Taste <kbd>E</kbd> extrudiert werden. Mittels der Taste <kbd>S</kbd> wird skalierend extrudiert und mittels der Taste <kbd>0</kbd><kbd>.</kbd><kbd>9</kbd><kbd>5</kbd> der Faktor 0.95 festgelegt. Dies kann schliessend mittels linken Maustaste oder <kbd>Enter</kbd> bestätigt werden. Mit diesem Schritt ist das Glas bereits fertiggestellt. Es sieht noch etwas eckig und kantig aus, aber in den nächsten Kapiteln wird behandelt, wie das Glas noch glatter erscheint.</p>
 <div class="marginnote">
 Back-Up-Objekt erstellen
 </div>
-<p>Es gibt noch eine andere Methode zur Erstellung des Glases. Zur Veranschaulichung dieser Methode kann im Object-Mode nach der Auswahl des Glases mittels der Taste D ein Duplikat erstellt werden, welches mit der Taste H versteckt werden kann. Dadurch bleibt dieses Duplikat erhalten, so dass trotzdem die andere Methode ausprobiert werden kann.</p>
+<p>Es gibt noch eine andere Methode zur Erstellung des Glases. Zur Veranschaulichung dieser Methode kann im Object-Mode nach der Auswahl des Glases mittels der Taste <kbd>D</kbd> ein Duplikat erstellt werden, welches mit der Taste <kbd>H</kbd> versteckt werden kann. Dadurch bleibt dieses Duplikat erhalten, so dass trotzdem die andere Methode ausprobiert werden kann.</p>
 <div class="marginnote">
 Querschnitt des Glases erstellen
 </div>
-<p>Nun wird das andere Glas im Edit-Mode bearbeitet. Das Ziel ist es hierbei, dass ein Querschnitt des Glases entsteht. Diese Methode erfordert den Vertex-Select-Mode. Mittels ¥ + † wird ein Edge, welches vertikal dem Glas entlang verläuft ausgewählt und mittels der Tastenkombination ≈ + I die Auswahl umgekehrt. Nun werden alle anderen Vertices mittels X gelöscht. Dadurch sollten nun lediglich die Vertices übrigbleiben, die den Rand eines Glases vertikal darstellen. Die äussersten Vertices werden anschliessend extrudiert und auf ihrer jeweiligen Höhe am Nullpunkt der Szene platziert.</p>
+<p>Nun wird das andere Glas im Edit-Mode bearbeitet. Das Ziel ist es hierbei, dass ein Querschnitt des Glases entsteht. Diese Methode erfordert den Vertex-Select-Mode. Mittels <kbd>Alt</kbd> und der linken Maustaste wird ein Edge, welches vertikal dem Glas entlang verläuft ausgewählt und mittels der Tastenkombination <kbd>Cmd</kbd> + <kbd>I</kbd> die Auswahl umgekehrt. Nun werden alle anderen Vertices mittels <kbd>X</kbd> gelöscht. Dadurch sollten nun lediglich die Vertices übrigbleiben, die den Rand eines Glases vertikal darstellen. Die äussersten Vertices werden anschliessend extrudiert und auf ihrer jeweiligen Höhe am Nullpunkt der Szene platziert.</p>
 <div class="marginnote">
 Kreisförmiges Herausziehen mittels dem Spin-Tool
 </div>
-<p>Anhand eines solchen Querschnittes eines Glases kann nun mittels dem Spin-Tool kreisförmig die Form des Glases extrudiert werden. Hierfür wird zunächst in der Toolbar das Spin-Tool aktiviert. Anschliessend werden alle Vertices mit der Taste A ausgewählt. Durch das Ziehen entlang eines der beiden «+»-Symbole entlang des Spin-Gizmos kann anschliessend das Glas kreisförmig aus dem Querschnitt herausgezogen werden. Im Kontext-Menü zur letzten Aktion kann anschliessend der Radius noch auf 360° festgelegt werden und darunter «Auto Merge» aktiviert werden. Dadurch werden die beiden Enden des extrudierten Bereichs zusammen verbunden. Zusätzlich kann unter «Steps» noch die Anzahl extrudierter Faces erhöht werden, um einen glatteren Kreis zu erhalten.</p>
+<p>Anhand eines solchen Querschnittes eines Glases kann nun mittels dem Spin-Tool kreisförmig die Form des Glases extrudiert werden. Hierfür wird zunächst in der Toolbar das Spin-Tool aktiviert. Anschliessend werden alle Vertices mit der Taste <kbd>A</kbd> ausgewählt. Durch das Ziehen entlang eines der beiden «+»-Symbole entlang des Spin-Gizmos kann anschliessend das Glas kreisförmig aus dem Querschnitt herausgezogen werden. Im Kontext-Menü zur letzten Aktion kann anschliessend der Radius noch auf 360° festgelegt werden und darunter «Auto Merge» aktiviert werden. Dadurch werden die beiden Enden des extrudierten Bereichs zusammen verbunden. Zusätzlich kann unter «Steps» noch die Anzahl extrudierter Faces erhöht werden, um einen glatteren Kreis zu erhalten.</p>
 <div id="übung-9-eigenes-glas-erstellen" class="section level1 exercise">
 <h1>Übung 9: Eigenes Glas erstellen</h1>
 <div id="übung-9.1" class="section level2">

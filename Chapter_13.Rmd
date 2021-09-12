@@ -16,7 +16,7 @@ Der 3D Cursor stellt für einige der Hilfsmittel eine wichtige Komponente dar. D
 
 <div class="marginnote"> Snap Menü </div>
 
-Mittels der Tastenkombination ƒ + S lässt sich zudem das Snap-Menü öffnen. Dieses erscheint jeweils direkt beim Maus-Cursor und ermöglicht es, entweder die ausgewählten Objekte oder den 3D-Cursors an bestimmte Positionen zu verschieben. Das Menü beinhaltet folgende Optionen: 
+Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>S</kbd> lässt sich zudem das Snap-Menü öffnen. Dieses erscheint jeweils direkt beim Maus-Cursor und ermöglicht es, entweder die ausgewählten Objekte oder den 3D-Cursors an bestimmte Positionen zu verschieben. Das Menü beinhaltet folgende Optionen: 
 
 *   **Cursor to Grid**: Dadurch wird der 3D Cursor an der nächsten liegenden Position des Koordinatengitters verschoben, welches als Viewport Overlay angezeigt wird. 
 *   **Cursor to World Origin**: Dadurch wird der 3D Cursor an den Ursprung der Welt positioniert. Dies entspricht dem Nullpunkt aller drei Achsen.
@@ -193,9 +193,9 @@ Wenn lediglich ein einzelner Vertex ausgewählt und verschoben wird, ist klar, w
 
 # Proportional Editing
 
-<div class="marginnote"> Proportionale Bearbeitung mittels O aktivieren </div>
+<div class="marginnote"> Proportionale Bearbeitung mittels <kbd>O</kbd> aktivieren </div>
 
-Die Option «Propotional Editing» ermöglicht es, dass nahe beieinander liegende Elemente proportional zu ihrer Nähe bearbeitet werden können. Diese Option kann zudem mit der Taste O aktiviert werden. Wenn diese Option aktiviert ist und eine Transformation durchgeführt wird (z.B. eine Rotation), erscheint um den Bezugspunkt ein Kreis. Alle Elemente, welche sich innerhalb dieses Kreises befinden, werden diese Transformation nun ebenfalls durchführen. Der Radius des Kreises kann mittels dem Mausrad vergrössert oder verkleinert werden. Dadurch wird der Erfassungsbereichs der proportionalen Bearbeitung variiert. Alternativ kann die Taste ¢ zum Vergrössern des Kreises oder « zum Verkleinern des Kreises gedrückt werden.
+Die Option «Propotional Editing» ermöglicht es, dass nahe beieinander liegende Elemente proportional zu ihrer Nähe bearbeitet werden können. Diese Option kann zudem mit der Taste <kbd>O</kbd> aktiviert werden. Wenn diese Option aktiviert ist und eine Transformation durchgeführt wird (z.B. eine Rotation), erscheint um den Bezugspunkt ein Kreis. Alle Elemente, welche sich innerhalb dieses Kreises befinden, werden diese Transformation nun ebenfalls durchführen. Der Radius des Kreises kann mittels dem Mausrad vergrössert oder verkleinert werden. Dadurch wird der Erfassungsbereichs der proportionalen Bearbeitung variiert. Alternativ kann die Taste <kbd>Page up</kbd> zum Vergrössern des Kreises oder <kbd>Page down</kbd> zum Verkleinern des Kreises gedrückt werden.
 
 <div class="marginnote"> Proportionale Bearbeitung im Object-Mode </div>
 

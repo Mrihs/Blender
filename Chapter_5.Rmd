@@ -26,8 +26,6 @@ Die Default-Szene kann manuell angepasst werden. Hierfür muss zunächst eine De
 
 <div class="marginnote"> Auswahl und Abwahl mittels Mausklick </div>
 
------- Hinweis ------
-
 Durch das Anklicken mittels der linken Maustaste können Objekte im 3D Viewport ausgewählt werden. Die ausgewählten Objekte sind anschliessend anhand einer farblichen Markierung erkennbar. Durch das Klicken in den leeren Raum des Viewport Display lassen sich die Objekte wieder abwählen. Zudem wird durch die Auswahl eines anderen Objektes, das vorher ausgewählte Objekt abgewählt.
 
 <div class="marginnote"> Mehrfachwahl mittels <kbd>Shift</kbd> </div>
@@ -57,7 +55,7 @@ Im Outliner auf der rechten Seite wird mittels einer blauen Markierung angezeigt
 
 # Hinzufügen von Objekten
 
-Hinzufügen von Objekten mittels <kbd>Shift</kbd> + <kbd>A</kbd>
+<div class="marginnote"> Hinzufügen von Objekten mittels <kbd>Shift</kbd> + <kbd>A</kbd> </div>
 
 Mittels der Tastenkombination <kbd>Shift</kbd> + <kbd>A</kbd> erscheint beim Mauszeiger das Menü-Feld «*Add*». Dabei handelt es sich um dasselbe Menü-Feld, welches auch unter dem Reiter «*Add*», in der linken oberen Ecke aufgerufen werden kann. Mithilfe dieses Menü-Felds können eine Reihe von verschiedenen Objekten im Viewport Display hinzugefügt werden. Dabei gibt es eine Reihe verschiedener Objektarten, welche hinzugefügt werden können. Beispielsweise kann unter «*Mesh | Cube*» ein Würfel in die Szene hinzugefügt werden. Ein neues Objekt wird jeweils an der Position des 3D-Cursors eingefügt.
 
@@ -103,7 +101,7 @@ Erstellen Sie einen neuen Würfel mit der Grösse 1 und einer Rotation von 90°.
 
 :::
 
-#Objekte vervielfältigen
+# Objekte vervielfältigen
 
 <div class="marginnote"> Methoden zur Vervielfältigung von Objekten </div>
 Ausgewählte Objekte können auf verschiedene Arten dupliziert werden. Jede diese Arten hat ihre eigenen Besonderheiten:

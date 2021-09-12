@@ -1,5 +1,5 @@
 ---
-title: "2.	Die Arbeitsoberfläche von Blender"
+title: "2.\tDie Arbeitsoberfläche von Blender"
 ---
 
 ```{r setup, include=FALSE}
@@ -11,9 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div class="marginnote"> Optionen im Willkommens-fenster </div>
 
-Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «*Recent Files*» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «*New File*» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.
 
+<div style= "float:right;position: relative; padding: 1%; width: 60%; font-size:60%;">
 ![Abbildung 2.1: Das Willkommensfenster von Blender](images/Chapter2/Welcome_Screen.png)
+</div>
+
+Blender begrüsst seine Nutzer mit einem Willkommen-Fenster. In diesem Fenster werden die letzten geöffneten Projekte auf der rechten Seite unter den «*Recent Files*» aufgelistet. Auf der linken Seite des Willkommen-Fenster kann unter «*New File*» ein neues Projekt erstellt werden. Dabei lässt sich die Art des Projekts bereits genauer definieren. Je nach ausgewählter Projekt-Art werden unterschiedliche Ansichts-Vorlagen geladen.
 
 <div class="marginnote"> Auswahl von Ansichtsvorlagen </div>
 
@@ -30,7 +33,7 @@ Zu den möglichen Ansichts-Vorlagen gehören:
 Dieser Kurs wird sich auf die 3D-Modellierung fokussieren. Deshalb wird jeweils die Ansichts-Vorlage «*General*» verwendet. Diese Vorlage ist so generell, dass sie im Hintergrund sogar schon geladen ist, während das Willkommens-Fenster dargestellt wird. Deshalb ist es auch möglich einfach ausserhalb des Willkommens-Fensters zu klicken. Dadurch verschwindet das Willkommen-Fenster und die General-Vorlage, die bereits im Hintergrund besteht, wird sichtbar.
 
 
-#Die verschiedenen Panels beim General-Projekt
+# Die verschiedenen Panels beim General-Projekt
 
 <div class="marginnote"> Default Editore </div>
 
@@ -49,9 +52,11 @@ Gerade der 3D Viewport, der Outliner und die Properties sind für das Erstellen 
 
 <div class="marginnote"> Editore austauschen </div>
 
-In jedem Editor-Areal befindet sich in der linken oberen Ecke ein Knopf. Durch das Drücken dieses Knopfes wird ein Drop-Down-Menü geöffnet. Darin sind alle verfügbaren Editore aufgelistet. Durch das Auswählen eines Editors wird der Editor in dem entsprechenden Areal durch den ausgewählten Editor ersetzt.
-
+<div style= "float:right;position: relative; padding: 1%; width: 60%; font-size:60%;">
 ![Abbildung 2.3: Die Auswahl an verschiedenen Editoren, welche Blender standardmässig mit sich bringt.](images/Chapter2/Editor_Select.png)
+</div>
+
+In jedem Editor-Areal befindet sich in der linken oberen Ecke ein Knopf. Durch das Drücken dieses Knopfes wird ein Drop-Down-Menü geöffnet. Darin sind alle verfügbaren Editore aufgelistet. Durch das Auswählen eines Editors wird der Editor in dem entsprechenden Areal durch den ausgewählten Editor ersetzt.
 
 <div class="marginnote"> General Editore </div>
 

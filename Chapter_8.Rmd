@@ -1,5 +1,5 @@
 ---
-title: "7.	Primitive Meshes"
+title: "8.	Methoden der Objekt-Transformation"
 ---
 
 ```{r setup, include=FALSE}
@@ -15,10 +15,6 @@ Jegliche 3D-Meshes beinhalten drei grundlegende Eigenschaften. Diese Grundeigens
 *   Position
 *   Rotation 
 *   Skalierung
-
-<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
-![Animation 1: Bewegung von Objekten.](images/Chapter8/Move.gif){width=100%}
-</div>
 
 Alle drei Optionen sind in der Sidebar (ein/ausblenden mittels <kbd>N</kbd>) unter dem Menü Item unter dem Reiter Transform sichtbar. Die Eigenschaften beziehen sich jeweils auf das ausgewählte Objekt. Wenn kein Objekt ausgewählt ist, beziehen sie sich auf das zuletzt ausgewählte Objekt. Mittels der Eigenschaften in der Sideview lassen sich diese drei Eigenschaften beliebig mittels der Eingabe von Zahlen variieren.
 
@@ -43,23 +39,15 @@ Die genaue Position des Objektes wird anhand eines kleinen orangen Punktes im Vi
 
 <div class="marginnote"> Rotation </div>
 
-<div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
-![Animation 2: Rotation eines Würfels entlang der X-Achse.](images/Chapter8/rotate.gif){width=100%}
-</div>
-
 Die Rotation eines Objektes beschreibt, wie sehr das Objekt entlang der drei Achsen rotiert wird. Analog zur Position ist die Rotation ebenfalls in die drei Achsen X, Y und Z aufgeteilt. Beispielsweise, eine Veränderung der Rotation beim Wert X führt dazu, dass das Objekt entsprechend entlang der X-Achse rotiert wird. Durch die Verwendung aller drei Achsen können so komplexe Rotationen erfolgen. Indem alle Werte erneut auf 0 gesetzt werden, befindet sich das Objekt wieder in seiner Grundposition.
 
-
 <div class="marginnote"> Drehpunkt der Rotation </div>
-
-
 
 <div style= "float:right;position: relative; padding: 1%; width: 30%; font-size:60%;">
 ![Animation 2: Rotation eines Würfels mit einem Ursprung ausserhalb des Objektes.](images/Chapter8/rotate2.gif){width=100%}
 </div>
 
 Der Ursprung des Objektes stellt den Drehpunkt für die Rotation mittels der Sidebar dar. Das heisst, die Objekte werden jeweils um den Ursprungspunkt herum rotiert. Dies wird beispielsweise deutlich, wenn sich der Ursprungspunkt ausserhalb eines Objektes befindet.
-
 
 ## Scale
 

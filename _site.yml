@@ -24,12 +24,10 @@ navbar:
     - text: "Folien"
       icon: fa-images
       menu: 
-        - text: "Theme 1"
-          href: Folien/materialien_theme1.pdf
-        - text: "Theme 2"
-          href: Folien/materialien_theme2.pdf
-        - text: "Theme 3"
-          href: Folien/materialien_theme3.pdf
+        - text: "Einführung"
+          href: Folien/introduction.pdf
+        - text: "Materialien"
+          href: Folien/materials.pdf
     - text: "Skript"
       icon: fa-glasses
       menu:
